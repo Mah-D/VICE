@@ -1,0 +1,6 @@
+//@execute 0 = 97
+component convert01 {
+	method main(arg: int) -> int {
+		return ::int('a');
+	}
+}

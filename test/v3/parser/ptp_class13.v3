@@ -1,0 +1,5 @@
+//@parse
+
+
+class class13<X, Y> extends class13a<X, Y -> int> {
+}

@@ -1,0 +1,4 @@
+//@seman =TypeError @ 3:27
+component new_tuple01 {
+	field f: (int, int) = new (int, int)();
+}

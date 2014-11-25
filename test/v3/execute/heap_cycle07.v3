@@ -1,0 +1,11 @@
+//@execute 0 = 7
+class heap_cycle07_o {
+	field val: (int, heap_cycle07_o) = (7, this);
+}
+component heap_cycle07 {
+	field o: heap_cycle07_o = new heap_cycle07_o();
+	method main(arg: int) -> int {
+		o = o.val.1;
+		return o.val.0;
+	}
+}

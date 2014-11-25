@@ -1,0 +1,9 @@
+//@execute 0=false; 1=true; 2=true; 3=false
+
+component scope02 {
+    method main(arg: int) -> bool {
+	{ local a = 1; if ( arg == a ) return true; }
+	{ local a: bool = true; if ( arg == 2 ) return a; }
+	return false;
+    }
+}

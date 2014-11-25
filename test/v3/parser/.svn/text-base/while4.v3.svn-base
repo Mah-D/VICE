@@ -1,0 +1,21 @@
+//@parse
+class while4 {
+  method m() {
+     local a: int;
+     local foo: bool;
+
+     while ( true ) {
+       local x = a;
+
+       while ( true ) {
+         local x = a;
+       }
+
+       while ( foo ) {
+         local x = a;
+         x = x + 1;
+       }
+
+     }
+  }
+}

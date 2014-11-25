@@ -1,0 +1,19 @@
+//@execute 0 = 1
+
+class instof06_a {
+}
+
+class instof06_b extends instof06_a {
+}
+
+class instof06_c extends instof06_b {
+}
+
+component instof06 {
+    field foo: instof06_a = new instof06_c();
+
+    method main(arg: int) -> int {
+	if (<: instof06_b foo) return 1;
+	return 0;
+    }
+}

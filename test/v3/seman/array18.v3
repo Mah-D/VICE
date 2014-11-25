@@ -1,0 +1,6 @@
+//@seman = TypeError @ 6:11
+class array18 {
+    method testm() -> Array<Array<int>> {
+        return new Array<int>(2);
+    }
+}

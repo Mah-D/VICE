@@ -1,0 +1,16 @@
+//@seman
+class inh20_a {
+    method getf() -> void -> int { return this.val; }
+    private method val() -> int { return 1; }
+}
+
+class inh20_b extends inh20_a {
+    private method val() -> int { return 2; }
+}
+
+component inh20 {
+    field a: void -> int = new inh20_a().getf();
+    field b: void -> int = new inh20_b().getf();
+    field av: int = a();
+    field bv: int = b();
+}

@@ -1,0 +1,6 @@
+//@parse
+
+
+class new2 {
+  field foo: Type = new Type<int -> bool>();
+}

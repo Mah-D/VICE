@@ -1,0 +1,11 @@
+//@execute 0 = 41
+component ptex_new_class02 {
+	method main(args: int) -> int {
+		local val: ptex_new_class02_o<int> = new ptex_new_class02_o<int>();
+		return val.x;
+	}
+}
+
+class ptex_new_class02_o<T> {
+	field x: int = 41;
+}

@@ -1,0 +1,18 @@
+//@execute 0 = 42
+
+class heap_cycle02_o {
+	field foo: (heap_cycle02_o, int) = (this, 0);
+	field result: int = 42;
+}
+
+component heap_cycle02 {
+	field obj: heap_cycle02_o = new heap_cycle02_o();
+	method main(arg: int) -> int {
+		local i = 0, o = obj;
+		while (i < 100) {
+			o = o.foo.0;
+			i = i + 1;
+		}
+		return o.result;
+	}
+}

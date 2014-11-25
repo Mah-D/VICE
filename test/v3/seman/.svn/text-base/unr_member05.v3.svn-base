@@ -1,0 +1,9 @@
+//@seman = UnresolvedMember @ 7:8
+
+class type01 {
+    
+    method testm() {
+        local foo: int = 1;
+        foo.bar();
+    }
+}

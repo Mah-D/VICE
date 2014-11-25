@@ -1,0 +1,9 @@
+//@execute 0 = false
+component tquery01 {
+	method main(arg: int) -> bool {
+		return <:tquery01_a(null);
+	}
+}
+
+class tquery01_a {
+}

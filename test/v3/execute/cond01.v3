@@ -1,0 +1,6 @@
+//@execute 0 = false; -1 = true; 1 = false
+component cond01 {
+	method main(arg: int) -> bool {
+		return arg < 0 && arg >= -1;
+	}
+}

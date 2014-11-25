@@ -1,0 +1,10 @@
+//@execute 0 = !DivideByZeroException
+program div02 { entrypoint main = div02.main; }
+component div02 {
+	method main(a: int) -> int {
+		return other();
+	}
+	method other() -> int {
+		return 1 / 0;
+	}
+}

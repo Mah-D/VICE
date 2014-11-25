@@ -1,0 +1,9 @@
+//@execute 0=true
+component if_cond12 {
+	method main(arg: int) -> bool {
+		assert(arg == 0);
+		return true;
+	}
+	method assert(val: bool) {
+	}
+}

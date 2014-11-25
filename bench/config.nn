@@ -1,0 +1,2 @@
+suppress-null-checks = true
+suppress-bounds-checks = true

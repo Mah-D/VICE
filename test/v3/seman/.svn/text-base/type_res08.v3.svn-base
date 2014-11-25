@@ -1,0 +1,8 @@
+//@seman = UnresolvedType @ 6:5
+
+class type_res08 {
+    
+    method testm() {
+        new foo();
+    }
+}

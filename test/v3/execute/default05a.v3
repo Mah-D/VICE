@@ -1,0 +1,15 @@
+//@execute 0='*'; 1='\0'; 2='\0'; 3='\0'; 4='\0'; 5='\0'; 6='*'
+
+component default05a {
+    field foo: Array<char> = new Array<char>(4);
+    field bar: char = foo(0);
+
+    method main(arg: int) -> char {
+	if ( arg == 1 ) return foo(0);
+	if ( arg == 2 ) return foo(0);
+	if ( arg == 3 ) return foo(0);
+	if ( arg == 4 ) return foo(0);
+	if ( arg == 5 ) return bar;
+	return '*';
+    }
+}

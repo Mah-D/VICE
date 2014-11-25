@@ -1,0 +1,11 @@
+//@execute 0 = 3
+class alloc_obj01_o {
+	value foo: int;
+	new(foo) { }
+}
+
+component alloc_obj01 {
+	method main(arg: int) -> int {
+		return new alloc_obj01_o(3).foo;
+	}
+}

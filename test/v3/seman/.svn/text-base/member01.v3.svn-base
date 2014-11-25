@@ -1,0 +1,7 @@
+//@seman = MemberRedefined @ 6:11
+
+class member01 {
+   method m(a: int) {}
+
+   method m();
+}

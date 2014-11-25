@@ -1,0 +1,11 @@
+// @Harness: v2-seman
+// @Result: PASS
+
+component mp_id05 {
+    method test() {
+	local x: int = id('a');
+    }
+    method id<X>(x: X): X {
+	return x;	
+    }
+}

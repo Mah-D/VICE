@@ -1,0 +1,7 @@
+//@seman
+class type_func02 {
+  field f: void -> void = null;
+  field g: (int) -> void = null;
+  field h: (int, int) -> void = null;
+  field i: (int) -> int = null;
+}

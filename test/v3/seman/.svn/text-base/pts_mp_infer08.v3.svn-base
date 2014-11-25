@@ -1,0 +1,9 @@
+//@seman
+component mp_infer08 {
+    method apply<T>(a: T, f: (T) -> T) -> T {
+        return f(a);
+    }
+    method test() {
+        local x: int = apply(0, null);
+    }
+}

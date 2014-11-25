@@ -1,0 +1,16 @@
+//@parse = ParseError @ 7:6
+class dowhile2 {
+  method m() {
+     local a: int;
+     local foo: bool;
+
+     do {
+       local x = a;
+     } while ( true ) ;
+
+     do {
+       local x = a;
+       x = x + 1;
+     } while ( foo ) ;
+  }
+}

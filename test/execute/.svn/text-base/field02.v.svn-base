@@ -1,0 +1,15 @@
+// @Harness: v2-exec
+// @Test: field initialization
+// @Result: 0=13, 1=13, 2=13
+
+class field02_obj {
+    field bar: int = 13;
+}
+
+component field02 {
+    field foo: field02_obj = new field02_obj();
+
+    method main(arg: int): int {
+	return foo.bar;
+    }
+}

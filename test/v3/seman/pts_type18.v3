@@ -1,0 +1,6 @@
+//@seman
+
+
+class type18<X, Y> {
+    field f: type18<int, bool>;
+}

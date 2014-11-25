@@ -1,0 +1,10 @@
+//@execute 0=1
+component type_void10 {
+	method main(arg: int) -> int {
+		if (m((), 0) == ()) return 1;
+		return 2;
+	}
+	method m(a: void, b: int) {
+		return a;
+	}
+}

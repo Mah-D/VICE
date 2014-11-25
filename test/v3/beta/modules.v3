@@ -1,0 +1,101 @@
+module Virgil {
+	type bool {
+		value true, false;
+		operator (a: bool, b: bool) -> bool "a == b";
+		operator (a: bool, b: bool) -> bool "a != b";
+		operator (a: bool) -> bool "! a";
+	}
+	type void {
+	}
+	type int {
+	}
+	type char {
+	}
+	type interface Array<T> implements For<int, T> {
+		operator (a: Array<T>, index: int) -> T "a ( index )";
+		operator (a: Array<T>, index: int, v: T) -> T "a ( index ) = v";
+		member length: int;
+		method iterator() -> int { return this.length; }
+		method done(iter: int) -> bool { return iter < this.length; }
+		method next(iter: int) -> T { return this(iter); }
+	}
+	class interface String {
+	}
+	type interface For<I, T> {
+		method iterator() -> I;
+		method done(iter: I) -> bool;
+		method next(iter: I) -> (I, T);
+	}
+}
+
+module Basic {
+	component interface FileSystem {
+		method createPath(string: String) -> Path;
+		method openFile(path: Path, mode: FileAccessMode) -> File;
+		method openDirectory(path: Path) -> Directory;
+		method createFile(path: Path);
+		method createDirectory(path: Path);
+		method removeFile(path: Path);
+		method removeDirectory(path: Path);
+		method copyFile(src: Path, dest: Path);
+	}
+	class interface File {
+		method read() -> byte;
+		method write(val: byte);
+		method ready() -> int;
+		method size() -> int;
+		method seek(offset: int);
+		method close();
+	}
+	class interface Directory {
+		method find(func: Path -> bool) -> Path;
+		method findAll(func: Path -> bool) -> Array<Path>;
+	}
+	class interface Path {
+		method name() -> String;
+		method exists() -> bool;
+		method isFile() -> bool;
+		method isDirectory() -> bool;
+		method parent() -> Path;
+		method plus(path: Path) -> Path;
+	}
+
+	component interface FileSystemAccessControl {
+		value ACCESS_READ: int;
+		value ACCESS_WRITE: int;
+		value ACCESS_EXECUTE: int;
+
+		method getPathAccessControl(path: Path) -> PathAccessControl;
+		method setPathAccessControl(path: Path, PathAccessControl);
+		method createAccessControl(owner: int, group: int, ownerPerm: int, groupPerm: int, otherPerm: int) -> PathAccessControl;
+		method getName(id: int) -> String;
+		method getId(user: String) -> int;
+	}
+	class interface PathAccessControl {
+		method owner() -> int;
+		method group() -> int;
+		method ownerPermission() -> int;
+		method groupPermission() -> int;
+		method otherPermission() -> int;
+	}
+
+	component interface Terminal {
+		method height() -> int;
+		method width() -> int;
+		method seek(column: int, row: int);
+		method cursor() -> (int, int);
+		method writeChar(ch: char);
+		method writeChars(chars: Array<char>, length: int);
+		method getAttribute() -> int;
+		method setAttribute(attribute: int);
+		method addNotification(func: void -> void);
+		method removeNotification(func: void -> void);
+	}
+	component interface TerminalUtil {
+		method clearLine();
+		method nextLine();
+		method home();
+		method end();
+		method clear(x: int, y: int, width: int, height: int);
+	}
+}

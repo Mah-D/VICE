@@ -1,0 +1,8 @@
+//@seman = ParseError @ 7:25
+
+class type44 {
+    
+    method testm() {
+        local a = false << 3;
+    }
+}

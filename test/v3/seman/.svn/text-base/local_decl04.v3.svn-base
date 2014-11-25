@@ -1,0 +1,8 @@
+//@seman
+
+class bound3 {
+
+    method testm(a: int) {
+        local a: char = 'i';
+    }
+}

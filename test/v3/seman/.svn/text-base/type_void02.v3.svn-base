@@ -1,0 +1,6 @@
+//@seman
+class type_void02 {
+  method testm() {
+    if ( testm() == testm() ) ;
+  }
+}

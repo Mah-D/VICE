@@ -1,0 +1,6 @@
+//@seman = TypeQueryError @ 3:24
+component tquery_err01 {
+	method m(arg: int) -> bool {
+		return <:bool(arg);
+	}
+}

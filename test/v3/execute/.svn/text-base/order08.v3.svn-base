@@ -1,0 +1,29 @@
+//@execute 0=0; 1=1; 2=2; 3=3; 4=0
+
+component order08 {
+    field order: Array<int> = [0, 0];
+    field pos: int = 0;
+
+    method first() -> (int) -> int {
+        order(pos) = 1;
+        pos = pos + 1;
+        return add;
+    }
+
+    method second(a: int) -> int {
+        order(pos) = 2;
+        pos = pos + 1;
+        return a;
+    }
+
+    method add(a: int) -> int { return a + 2; }
+
+    method main(arg: int) -> int {
+	pos = 0;
+        local result = first()(second(1));
+	if ( arg == 1 ) return order(0);
+	if ( arg == 2 ) return order(1);
+	if ( arg == 3 ) return result;
+	return 0;
+    }
+}

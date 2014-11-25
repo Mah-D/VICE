@@ -1,0 +1,9 @@
+// @Harness: v2-parse
+// @Result: ParseError @ 4:15
+
+component comp5 extends comp5a {
+  field f: type;
+  method m();
+  method n(): type;
+  method o(a: type): type;
+}

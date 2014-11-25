@@ -1,0 +1,78 @@
+//
+// DNA reverse complement program from the programming language shootout.
+// @author Ben L. Titzer
+//
+program ReverseComp {
+	entrypoint main = ReverseComp.main;
+}
+
+component ReverseComp {
+
+	value map: Array<char> = new Array<char>(128);
+
+	new() {
+		local i = 0;
+		while (i < map.length) {
+			map(i) = ::char(i);
+			i = i + 1;
+		}
+
+		map('t') = map('T') = 'A';
+		map('a') = map('A') = 'T';
+		map('g') = map('G') = 'C';
+		map('c') = map('C') = 'G';
+		map('v') = map('V') = 'B';
+		map('h') = map('H') = 'D';
+		map('r') = map('R') = 'Y';
+		map('m') = map('M') = 'K';
+		map('y') = map('Y') = 'R';
+		map('k') = map('K') = 'M';
+		map('b') = map('B') = 'V';
+		map('d') = map('D') = 'H';
+		map('u') = map('U') = 'A';
+	}
+
+	method main(args: Array<Array<char>>) -> int {
+		if (args.length < 1) {
+			System.puts("Error: no file specified.\n");
+			return -1;
+		}
+		local data = System.fileLoad(args(0));
+		if (data == null) {
+			System.puts("Error: input file not found.\n");
+			return -1;
+		}		
+
+		local i = 0;
+		while (i < data.length) {
+			local start = i, end = i;
+			while (true) {
+				if (end == data.length) {
+					i = end;
+					break;
+				}
+				if (data(end) == '>') {
+					local j = end;
+					while (j < data.length && data(j) != '\n') j = j + 1;
+					i = j + 1;
+					break;
+				}
+				end = end + 1;
+			}
+			while (start < end) {
+				end = end - 1;
+				if (data(end) == '\n') end = end - 1;
+				if (start < end) {
+					local tmp = map(data(start));
+					data(start) = map(data(end));
+					data(end) = tmp;
+					start = start + 1;
+					if (data(start) == '\n') start = start + 1;
+				}
+			}
+		}
+
+		System.puts(data);
+		return 0;
+	}
+}

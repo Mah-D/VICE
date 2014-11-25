@@ -1,0 +1,19 @@
+//@execute 0=42; 1=42
+
+class virtual_var04_a {
+	method m(arg: virtual_var04_b) -> int { return 41; }
+}
+
+class virtual_var04_b extends virtual_var04_a {
+	method m(arg: virtual_var04_a) -> int { return 42; }
+}
+
+component virtual_var04 {
+	field a: virtual_var04_a = new virtual_var04_b();
+	field b: virtual_var04_b = new virtual_var04_b();
+	method main(arg: int) -> int {
+		if (arg == 0) return a.m(b);
+		if (arg == 1) return b.m(a);
+		return 1;
+	}
+}

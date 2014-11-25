@@ -1,0 +1,7 @@
+//@parse
+component cast3 {
+	field f: T = ::T 0 + a;
+	field f: T = ::T 1 - a;
+	field f: T = ::T 2 * a;
+	field f: T = ::T 3 / a;
+}

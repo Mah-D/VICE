@@ -1,0 +1,15 @@
+//@execute 0 = 5
+class alloc_obj05_o {
+	field foo: int;
+	new(foo) { }
+}
+
+class alloc_obj05_b extends alloc_obj05_o {
+	new(f: int) : super(f + 2) { }
+}
+
+component alloc_obj05 {
+	method main(arg: int) -> int {
+		return new alloc_obj05_b(3).foo;
+	}
+}

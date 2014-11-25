@@ -1,0 +1,11 @@
+//@parse = ParseError
+component cast2 {
+	field f: T = -a :: T;
+	field f: T = +a :: T;
+	field f: T = ~a :: T;
+	field f: T = !a :: T;
+	field f: T = --a :: T;
+	field f: T = ++a :: T;
+	field f: T = a-- :: T;
+	field f: T = a++ :: T;
+}

@@ -1,0 +1,25 @@
+// @Harness: v2-exec
+// @Test: null exceptions
+// @Result: 0=42, 1=NullCheckException, 2=13, 3=14, 4=NullCheckException, 5=42
+
+class rtex_null13_obj {
+    field a: int[];
+    constructor(i: int[]) { a = i; }
+    method getf(i: int): int {
+        return a[i];
+    }
+}
+
+component rtex_null13 {
+    field i: int[] = { 13, 14 };
+    field a: rtex_null13_obj = new rtex_null13_obj(null);
+    field b: rtex_null13_obj = new rtex_null13_obj(i);
+    field c: rtex_null13_obj = new rtex_null13_obj(null);
+    method main(arg: int): int {
+	if ( arg == 1 ) return a.getf(0);
+	if ( arg == 2 ) return b.getf(0);
+	if ( arg == 3 ) return b.getf(1);
+	if ( arg == 4 ) return c.getf(0);
+	return 42;
+    }
+}

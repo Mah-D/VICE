@@ -1,0 +1,8 @@
+//@seman
+class instof03b_01 {
+    field bar: instof03b_01;
+    field foo: bool = <:instof03b_02(bar);
+}
+
+class instof03b_02 extends instof03b_01 {
+}

@@ -1,0 +1,10 @@
+// @Harness: v2-seman
+// @Result: PASS
+
+class inh_field04_a extends inh_field04_b<int> {
+  field g: int = f;
+}
+
+class inh_field04_b<X> {
+  field f: X;
+}

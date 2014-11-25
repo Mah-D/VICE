@@ -1,0 +1,8 @@
+//@seman
+
+
+component mp_array01 {
+    method makeArray<X>(a: X) -> Array<X> {
+	return new Array<X>(0);	
+    }
+}

@@ -1,0 +1,7 @@
+//@execute 0 = '\000'
+component init04 {
+	method main(arg: int) -> char {
+		local f: char;
+		return f;
+	}
+}

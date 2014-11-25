@@ -1,0 +1,12 @@
+//@execute 0=true
+class delegate_var_cmp02_a {
+}
+class delegate_var_cmp02_b extends delegate_var_cmp02_a {
+}
+component delegate_var_cmp02 {
+	method main(arg: int) -> bool {
+		local f: void -> delegate_var_cmp02_a = m;
+		return m == f;
+	}
+	method m() -> delegate_var_cmp02_b;
+}

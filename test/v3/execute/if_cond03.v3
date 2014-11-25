@@ -1,0 +1,12 @@
+//@execute 0=11; 1=12
+
+component if_cond03 {
+    field foo: Array<int> = [0];
+
+    method main(arg: int) -> int {
+	local r: int;
+	if (true && arg < 1) r = 11;
+	else r = 12;
+	return r;
+    }
+}

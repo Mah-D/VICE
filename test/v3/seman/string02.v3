@@ -1,0 +1,9 @@
+//@seman
+
+
+class string02 {
+    field testf: Array<char>;
+    method foo(str: Array<char>) {
+        testf = str;
+    }
+}

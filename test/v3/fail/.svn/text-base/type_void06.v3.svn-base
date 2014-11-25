@@ -1,0 +1,7 @@
+//@execute 0=1
+component type_void06 {
+	method main(arg: int) -> int {
+		local f = new Array<void>(0);
+		return 1;
+	}
+}

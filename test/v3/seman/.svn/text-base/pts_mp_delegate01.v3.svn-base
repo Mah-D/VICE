@@ -1,0 +1,10 @@
+//@seman = TypeParamInferError @ 9:18
+
+component mp_delegate01 {
+    method makeArray<X>(a: X) -> Array<X> {
+	return new Array<X>(0);	
+    }
+    method test() {
+	local x = makeArray;
+    }
+}

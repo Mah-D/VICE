@@ -1,0 +1,4 @@
+//@parse
+component cast1 {
+	field f: T = ::T a;
+}

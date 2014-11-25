@@ -1,0 +1,18 @@
+//@execute 0=11; 1=12; 3=42
+class ptex_delegate01_a {
+	method m<A, B>(a: A, b: B) -> A { return a; }
+}
+
+class ptex_delegate01_b extends ptex_delegate01_a {
+	method m<U, V>(u: U, v: V) -> U { return u; }
+}
+
+component ptex_delegate01 {
+	field a: (int, bool) -> int = new ptex_delegate01_a().m;
+	field b: (int, int) -> int = new ptex_delegate01_b().m;
+	method main(arg: int) -> int {
+		if (arg == 0) return a(11, false);
+		if (arg == 1) return b(12, -1);
+		return 42;
+	}
+}

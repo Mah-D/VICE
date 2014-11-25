@@ -1,0 +1,14 @@
+//@execute 0=true; 1=false; 2=false; 3=false; 4=false; 5=true
+
+component array08 {
+    field a: Array<bool> = new Array<bool>(1);
+    field b: Array<bool> = new Array<bool>(3);
+
+    method main(arg: int) -> bool {
+	if ( arg == 1 ) return a(0);
+	if ( arg == 2 ) return b(0);
+	if ( arg == 3 ) return b(1);
+	if ( arg == 4 ) return b(2);
+	return true;
+    }
+}

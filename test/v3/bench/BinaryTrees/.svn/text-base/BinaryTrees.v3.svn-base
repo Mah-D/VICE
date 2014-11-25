@@ -1,0 +1,90 @@
+// A Virgil III implementation of the "binarytrees" application
+// from the Programming Language Shootout
+// @author Ben L. Titzer
+
+program BinaryTrees {
+	entrypoint main = BinaryTrees.main;
+}
+
+component BinaryTrees {
+	value minDepth: int = 4;
+
+	method main(args: Array<string>) -> int {
+		local n = 0;
+		if (args.length > 0) n = parseInt(args(0));
+		local maxDepth = n;
+		if (minDepth + 2 > n) maxDepth = minDepth + 2;
+		local stretchDepth = maxDepth + 1;
+
+		local check = bottomUpTree(0,stretchDepth).itemCheck();
+		print2("stretch tree of depth %i\t check: %i\n", stretchDepth, check);
+
+		local longLivedTree = bottomUpTree(0, maxDepth);
+		local depth = minDepth;
+		while (depth <= maxDepth) {
+			local iterations = shift(1, (maxDepth - depth + minDepth));
+			check = 0;
+			local i = 1;
+			while (i <= iterations) {
+				check = check + bottomUpTree(i, depth).itemCheck();
+				check = check + bottomUpTree(0 - i, depth).itemCheck();
+				i = i + 1;
+			}
+			print3("%i\t trees of depth %i\t check: %i", iterations * 2, depth, check);
+			depth = depth + 2;
+		}
+		print2("long lived tree of depth %i\t check: %i\n", maxDepth, longLivedTree.itemCheck());
+		return 0;
+	}
+
+	method shift(val: int, shift: int) -> int {
+		if (shift < 32) { 
+			while (shift > 0) {
+				val = val * 2;
+				shift = shift - 1;
+			}
+		}
+		return val;
+	}
+
+	method parseInt(a: Array<char>) -> int {
+		local accum = 0;
+		local cntr = 0;
+		local zero = ::int('0');
+
+		while (cntr < a.length) {
+			local dig = ::int(a(cntr));
+			accum = accum * 10 + dig - zero; 
+			cntr = cntr + 1;
+		}
+
+		return accum;
+	}
+
+	method print2(format: string, a: int, b: int) {
+	}
+
+	method print3(format: string, a: int, b: int, c: int) {
+	}
+
+	method bottomUpTree(item: int, depth: int) -> TreeNode {
+		if (depth > 0) {
+			return new TreeNode(bottomUpTree(2*item-1, depth-1), bottomUpTree(2*item, depth-1), item);
+		} else {
+			return new TreeNode(null, null, item);
+		}
+	}
+}
+
+class TreeNode {
+	value left: TreeNode;
+	value right: TreeNode;
+	value item: int;
+
+	new(left, right, item) { }
+
+	method itemCheck() -> int {
+		if (left == null) return item;
+		else return item + left.itemCheck() - right.itemCheck();
+	}
+}

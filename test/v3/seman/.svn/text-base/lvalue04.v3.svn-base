@@ -1,0 +1,8 @@
+//@seman = AssignError @ 6:5
+
+class lvalue4 {
+    
+    method testm() {
+        2 = 1;
+    }
+}

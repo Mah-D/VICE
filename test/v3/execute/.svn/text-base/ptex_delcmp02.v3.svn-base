@@ -1,0 +1,11 @@
+//@execute 0=true
+component ptex_delcmp02 {
+	method main(arg: int) -> bool {
+		local a: int -> int = id;
+		local b: int -> int = id;
+		return a == b;
+	}
+	method id<T>(x: T) -> T {
+		return x;
+	}
+}

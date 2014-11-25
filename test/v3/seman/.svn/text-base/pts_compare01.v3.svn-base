@@ -1,0 +1,7 @@
+//@seman
+
+
+class compare01<X> {
+    field f: X;
+    field b: bool = f == f;
+}

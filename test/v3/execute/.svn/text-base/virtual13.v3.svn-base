@@ -1,0 +1,31 @@
+//@execute 0=42; 1=11; 2=21; 3=31; 4=51; 5=61; 6=42
+
+class virtual13_1 {
+    method a() -> bool { return false; }
+    method val() -> int { return 11; }
+}
+
+class virtual13_2 extends virtual13_1 {
+    method val() -> int { return 21; }
+    method foo() -> int { return 51; }
+}
+
+class virtual13_3 extends virtual13_1 {
+    method val() -> int { return 31; }
+    method foo() -> int { return 61; }
+}
+
+component virtual13 {
+    field a: virtual13_1 = new virtual13_1();
+    field b: virtual13_2 = new virtual13_2();
+    field c: virtual13_3 = new virtual13_3();
+
+    method main(arg: int) -> int {
+	if ( arg == 1 ) return a.val();
+	if ( arg == 2 ) return b.val();
+	if ( arg == 3 ) return c.val();
+	if ( arg == 4 ) return b.foo();
+	if ( arg == 5 ) return c.foo();
+	return 42;
+    }
+}

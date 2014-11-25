@@ -1,0 +1,31 @@
+//@execute 0=42; 1=11; 2=21; 3=31; 4=41; 5=32; 6=33; 7=42
+
+class ptex_pair01_p<X, Y> {
+    field a: X;
+    field b: Y;
+
+    new(x: X, y: Y) {
+        a = x;
+       b = y;
+    }
+}
+
+component ptex_pair01 {
+    field a: ptex_pair01_p<int, int> = new ptex_pair01_p<int, int>(11, 21);
+    field b: ptex_pair01_p<char, int> = new ptex_pair01_p<char, int>('c', 31);
+    field c: ptex_pair01_p<int, bool> = new ptex_pair01_p<int, bool>(41, true);
+    field d: ptex_pair01_p<void -> int, void -> int> = new ptex_pair01_p<void -> int, void -> int>(f32, f33);
+
+    method main(arg: int) -> int {
+        if ( arg == 1 ) return a.a;
+        if ( arg == 2 ) return a.b;
+        if ( arg == 3 ) return b.b;
+        if ( arg == 4 ) return c.a;
+        if ( arg == 5 ) return d.a();
+        if ( arg == 6 ) return d.b();
+	return 42;
+    }
+
+    method f32() -> int { return 32; }
+    method f33() -> int { return 33; }
+}

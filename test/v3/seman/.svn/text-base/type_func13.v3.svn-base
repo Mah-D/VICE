@@ -1,0 +1,5 @@
+//@seman = TypeError @ 3:34
+class type_func13 {
+	field f: void -> int = m;
+	method m(i: int) { }
+}

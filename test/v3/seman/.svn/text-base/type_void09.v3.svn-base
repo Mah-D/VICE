@@ -1,0 +1,6 @@
+//@seman
+class type_void09 {
+	method test2() {
+		local v: void = ();
+	}
+}

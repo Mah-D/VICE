@@ -1,0 +1,24 @@
+//@execute 0=false; 1=true; 2=true; 3=true; 4=true; 5=true; 6=true; 7=true; 8=true; 9=false
+
+component const05 {
+    field a: int = 1;
+    field b: int = -1;
+    field c: int = 0b0101 :: int;
+    field d: int = 0xff :: int;
+    field e: int = 0777 :: int;
+    field f: int = 65536;
+    field g: int = -200000;
+    field h: int = -2147483648;
+
+    method main(arg: int) -> bool {
+	if ( arg == 1 ) return a == 1;
+	if ( arg == 2 ) return b == -1;
+	if ( arg == 3 ) return c == 5;
+	if ( arg == 4 ) return d == 255;
+	if ( arg == 5 ) return e == 511;
+	if ( arg == 6 ) return f == 65536;
+	if ( arg == 7 ) return g == -200000;
+	if ( arg == 8 ) return h == -2147483648;
+	return false;
+    }
+}

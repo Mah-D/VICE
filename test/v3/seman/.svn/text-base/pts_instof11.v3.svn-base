@@ -1,0 +1,10 @@
+//@seman
+
+class A<X> { } 
+class B<X> extends A<X> { }
+
+class instof11 {
+   method m(x: A<int>) {
+      local f = <: (B<int>) x;
+   }
+}

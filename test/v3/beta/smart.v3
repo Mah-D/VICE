@@ -1,0 +1,68 @@
+class SmartKey<K> {
+	method equals(k1: K, k2: K) -> bool;
+	method hash(k1: K) -> int;
+	method initial<V>(key: K, val: V) -> PartialMap<K, V>;
+}
+class SmartMap<K, V> extends PartialMap<K, V> {
+	value none: V;
+	value smart: SmartKey<K>;
+	field impl: PartialMap<K, V>;
+
+	new(smart) { }
+
+	method get(key: K) -> V {
+		if (impl == null) return none;
+		return impl.get(key);
+	}
+
+	// @private
+	// Updates this map's value for the specified key.
+	method set(key: K, val: V) {
+		if (impl == null) impl = smart.initial(key, val);
+		else impl.set(key, val);
+	}
+
+	// @public
+	// Checks whether this map contains a value for the specified key.
+	method has(key: K) -> bool {
+		if (impl == null) return false;
+		return impl.has(key, val);
+	}
+
+	// @public
+	// Applies the given function @param{func} to every key/value pair
+	// in this map.
+	method apply(func: (K, V) -> void) {
+		if (impl != null) impl.apply(func);
+	}
+}
+
+class ProfilingMap<K, V> extends PartialMap<K, V> {
+	value none: V;
+	field getCount: int;
+	field getHits: int;
+	field setCount: int;
+	field setOvers: int;
+	field hasCount: int;
+	field appCount: int;
+	field size: int;
+	method get(key: K) -> V {
+		getCount = getCount + 1;
+		local val = map.get(key);
+		if (val != none) getHits = getHits + 1;
+	}
+	method set(key: K, val: V) {
+		setCount = setCount + 1;
+		if (map.has(key)) setOvers = setOvers + 1;
+		else size = size + 1;
+		map.set(key, val);
+	}
+	method has(key: K) -> bool {
+		hasCount = hasCount + 1;
+		return map.has(key);
+	}
+	method apply(func: (K, V) -> void) {
+		appCount = appCount + 1;
+		map.apply(func);
+	}
+}

@@ -1,0 +1,17 @@
+//@seman
+class Self<T> {
+    field me: T;
+    new(t: T) {
+        me = t;
+    }
+}
+
+class A extends Self<A> {
+    new() : super(this) { }
+    method foo() -> A { return me; }
+}
+
+class B extends Self<B> {
+    new() : super(this) { }
+    method foo() -> B { return me; }
+}

@@ -1,0 +1,6 @@
+//@seman
+component local2 {
+    method testm() {
+        local foo: void;
+    }
+}

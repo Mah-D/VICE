@@ -1,0 +1,9 @@
+//@seman = TypeCastError @ 7:31
+
+class cast07_a {
+    field foo: cast07_a;
+    field bar: cast07_b = :: cast07_b foo;
+}
+
+class cast07_b {
+}

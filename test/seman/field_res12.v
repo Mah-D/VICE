@@ -1,0 +1,13 @@
+// @Harness: v2-seman
+// @Test: field resolution
+// @Result: UnresolvedMember @ 11:10
+
+class field_res12_a {
+    private field priv: int;
+}
+class field_res12_b extends field_res12_a {
+    
+    method testm() {
+        this.priv = 0;
+    }
+}

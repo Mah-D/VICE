@@ -1,0 +1,6 @@
+//@parse
+
+
+class type18 {
+    field f: ((bool));
+}

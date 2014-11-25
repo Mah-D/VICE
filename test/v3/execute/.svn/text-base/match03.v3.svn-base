@@ -1,0 +1,20 @@
+//@execute 'a'=10; '*'=11; 'b'=13; '0'=15; ' '=15; 'c'=20; '3'=-1; 'd'=20; 'e'=20; 'f'=-1
+
+component match03 {
+    field foo: int;
+
+    method main(arg: char) -> int {
+	ds(arg);
+	return foo;
+    }
+
+    method ds(v: char) {
+	match ( v ) {
+	    'a': foo = 10;
+	    'b': foo = 13;
+	    'c', 'd', 'e': foo = 20;
+	    '*': foo = 11;
+	    '0', ' ': foo = 15;
+        } else foo = -1;
+    }
+}

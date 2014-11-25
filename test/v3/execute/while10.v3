@@ -1,0 +1,12 @@
+//@execute 1=10; 2=10; 3=10; 10=10; 13=13
+
+component while10 {
+    
+    method main(max: int) -> int {
+	local i = max;
+        while ( i < 10 ) {
+	    i = 10;
+	}
+        return i;
+    }
+}

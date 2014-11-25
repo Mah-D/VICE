@@ -1,0 +1,6 @@
+//@seman
+class func04 {
+    method apply(f: void -> int) -> int {
+        return f();
+    }
+}

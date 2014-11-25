@@ -1,0 +1,22 @@
+//@execute 0=1
+
+class delegate_var02_a {
+	method m() -> delegate_var02_a { return null; }
+}
+
+class delegate_var02_b extends delegate_var02_a {
+	method m() -> delegate_var02_b { return this; }
+}
+
+component delegate_var02 {
+	field a: void -> delegate_var02_a = new delegate_var02_b().m;
+	field b: void -> delegate_var02_b = new delegate_var02_b().m;
+	method main(arg: int) -> int {
+		a = apply(a).m;
+		a = apply(b).m;
+		return 1;
+	}
+	method apply(f: void -> delegate_var02_a) -> delegate_var02_a {
+		return f().m();
+	}
+}

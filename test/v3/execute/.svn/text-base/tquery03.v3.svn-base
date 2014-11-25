@@ -1,0 +1,12 @@
+//@execute 0 = false
+component tquery03 {
+	method main(arg: int) -> bool {
+		return <:tquery03_b(new tquery03_a());
+	}
+}
+
+class tquery03_a {
+}
+
+class tquery03_b extends tquery03_a {
+}

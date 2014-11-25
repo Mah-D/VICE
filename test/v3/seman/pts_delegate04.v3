@@ -1,0 +1,7 @@
+//@seman
+class Item {
+	method accept<A, B>(a: A, b: B) { }
+}
+component pts_delegate04 {
+	field f: (int, bool) -> void = new Item().accept;
+}

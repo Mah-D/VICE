@@ -1,0 +1,30 @@
+//@execute 0=42; 1=11; 2=11; 4=42; 5=11; 6=11; 8=42
+
+class delegate02_a {
+    method val() -> int { return 11; }
+}
+
+class delegate02_b extends delegate02_a {
+}
+
+component delegate02 {
+    field a: delegate02_a = new delegate02_a();
+    field b: delegate02_a = new delegate02_b();
+    field am: void -> int = a.val;
+    field bm: void -> int = b.val;
+
+    method main(arg: int) -> int {
+	if ( arg == 1 ) return am();
+	if ( arg == 2 ) return bm();
+
+        local m = m42;
+	if ( arg == 5 ) m = a.val;
+	if ( arg == 6 ) m = b.val;
+
+	return m();
+    }
+
+    method m42() -> int {
+	return 42;
+    }
+}

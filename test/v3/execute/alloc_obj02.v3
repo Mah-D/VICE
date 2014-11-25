@@ -1,0 +1,13 @@
+//@execute 0 = 3; 1 = 4; 2 = 42
+class alloc_obj02_o {
+	value foo: int;
+	new(foo) { }
+}
+
+component alloc_obj02 {
+	method main(arg: int) -> int {
+		if (arg == 0) return new alloc_obj02_o(3).foo;
+		if (arg == 1) return new alloc_obj02_o(4).foo;
+		return 42;
+	}
+}

@@ -1,0 +1,8 @@
+//@seman = ParseError @ 6:6
+
+class return1 {
+    
+    method testm() -> int {
+        return;
+    }
+}

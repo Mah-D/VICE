@@ -1,0 +1,4 @@
+//@seman =TypeError @ 3:27
+component new_char01 {
+	field f: char = new char();
+}

@@ -1,0 +1,8 @@
+//@seman =TypeError @ 7:9
+
+class assign16<X> {
+   field f: X;
+   method m(x: int) {
+      f = x;
+   }
+}

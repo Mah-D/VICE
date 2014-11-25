@@ -1,0 +1,13 @@
+//@execute 0=31; 1=15; 2=2; 3=28; 4=31
+
+component array_raw05 {
+    field a: 5() = { 0xf, 0b10, 0b11100 };
+    field av: 5  = a(0);
+
+    method main(arg: int) -> 5 {
+	if ( arg == 1 ) return a(0);
+	if ( arg == 2 ) return a(1);
+	if ( arg == 3 ) return a(2);
+	return 0b11111;
+    }
+}

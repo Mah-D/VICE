@@ -1,0 +1,17 @@
+//@execute 0=42; 1=13; 2=15; 3=42
+
+class field14_obj {
+    method bar(i: int) { field14.f = i; }
+}
+
+component field14 {
+    field f: int = 42;
+    field foo: int -> void = new field14_obj().bar;
+
+    method main(arg: int) -> int {
+	f = 42;
+	if ( arg == 1 ) foo(13);
+	if ( arg == 2 ) foo(15);
+	return f;
+    }
+}

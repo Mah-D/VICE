@@ -1,0 +1,11 @@
+//@execute 0 = 1; 4 = !BoundsCheckException
+class multi_array04_o {
+	value f: int;
+	new(f) { }
+}
+component multi_array04 {
+	field array: Array<Array<multi_array04_o>> = [[new multi_array04_o(1), new multi_array04_o(2), new multi_array04_o(7)]];
+	method main(arg: int) -> int {
+		return array(0)(arg).f;
+	}
+}

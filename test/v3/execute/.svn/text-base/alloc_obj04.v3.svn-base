@@ -1,0 +1,13 @@
+//@execute 0 = 7
+class alloc_obj04_o {
+	field foo: int;
+	new(f: int) {
+		this.foo = f + 4;
+	}
+}
+
+component alloc_obj04 {
+	method main(arg: int) -> int {
+		return new alloc_obj04_o(3).foo;
+	}
+}

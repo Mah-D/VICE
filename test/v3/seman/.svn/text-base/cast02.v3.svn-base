@@ -1,0 +1,8 @@
+//@seman
+class cast02_01 {
+    field bar: cast02_02;
+    field foo: cast02_01 = :: cast02_01 bar;
+}
+
+class cast02_02 extends cast02_01 {
+}

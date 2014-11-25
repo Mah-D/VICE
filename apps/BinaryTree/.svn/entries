@@ -1,0 +1,52 @@
+8
+
+dir
+154
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack/virgil/apps/BinaryTree
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack
+
+
+
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f6311483-164f-4dc9-a362-1d9d7795f10a
+
+BinaryTree.v
+file
+
+
+
+
+2010-09-30T20:59:33.635000Z
+7801fd706c406ef6a8ef16adcaf85c39
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+Makefile
+file
+
+
+
+
+2010-09-30T20:59:33.640000Z
+b6d037a8d05ae1eecd2617734e473dee
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+

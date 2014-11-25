@@ -1,0 +1,52 @@
+8
+
+dir
+154
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack/virgil/arch
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack
+
+
+
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f6311483-164f-4dc9-a362-1d9d7795f10a
+
+atmega128.hil
+file
+
+
+
+
+2010-09-30T20:59:55.451000Z
+e6a285fa6b831010725fc693059821db
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+msp430.hil
+file
+
+
+
+
+2010-09-30T20:59:53.492000Z
+38886c2728d0afa84f3f2080c5bb9e81
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+

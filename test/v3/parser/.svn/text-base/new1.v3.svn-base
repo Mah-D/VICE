@@ -1,0 +1,4 @@
+//@parse
+class expr9 {
+  field foo: type = new foo(0);
+}

@@ -1,0 +1,15 @@
+//@seman
+
+
+component mp_unify11 {
+
+    method test() {
+	local a: Array<int> = null;
+	local b: Array<bool> = null;
+	local x = id(0, a);
+	local y = id(true, b);
+    }
+    method id<X>(x: X, y: Array<X>) -> X {
+	return x;	
+    }
+}

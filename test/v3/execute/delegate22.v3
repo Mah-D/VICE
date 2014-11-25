@@ -1,0 +1,10 @@
+//@execute 0 = 42
+class delegate22_o {
+	method m42() -> int { return 42; }
+}
+component delegate22 {
+	method main(arg: int) -> int {
+		local f = new delegate22_o().m42;
+		return f();
+	}
+}

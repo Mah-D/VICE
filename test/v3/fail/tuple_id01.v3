@@ -1,0 +1,9 @@
+//@execute 0 = 0
+component tuple_id01 {
+	method main(arg: int) -> int {
+		return id((0, 1)).0;
+	}
+	method id(a: (int, int)) -> (int, int) {
+		return a;
+	}
+}

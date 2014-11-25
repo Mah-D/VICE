@@ -1,0 +1,13 @@
+// @Harness: v2-exec
+// @Result: 0=202, 1=254, 2=186, 3=190
+
+component raw_u4_02 {
+	field magic: int = 0xCAFEBABE :: int;
+
+	method main(arg: int): char {
+		if (arg == 0) return (magic >> 24) :: 8 :: char;
+		if (arg == 1) return (magic >> 16) :: 8 :: char;
+		if (arg == 2) return (magic >> 8) :: 8 :: char;
+		return magic :: 8 :: char;
+	}
+}

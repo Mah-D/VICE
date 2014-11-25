@@ -1,0 +1,52 @@
+//@execute 0=42; 1=11; 2=21; 3=12; 4=22; 5=42
+
+class ptex_visitor03_v<E, R> {
+    method visitA(n: ptex_visitor03_a, e: E) -> R;
+    method visitB(n: ptex_visitor03_b, e: E) -> R;
+}
+
+class ptex_visitor03_i {
+    method accept<E, R>(v: ptex_visitor03_v<E, R>, e: E) -> R;
+}
+
+class ptex_visitor03_a extends ptex_visitor03_i {
+    method accept<E, R>(v: ptex_visitor03_v<E, R>, e: E) -> R { return v.visitA(this, e); }
+}
+
+class ptex_visitor03_b extends ptex_visitor03_i {
+    method accept<E, R>(v: ptex_visitor03_v<E, R>, e: E) -> R { return v.visitB(this, e); }
+}
+
+class ptex_visitor03_e {
+    field base: int;
+    new(b: int) {
+         base = b;
+    }
+}
+
+class ptex_visitor03_p extends ptex_visitor03_v<ptex_visitor03_e, int> {
+    method visitA(n: ptex_visitor03_a, e: ptex_visitor03_e) -> int {
+        return 1 + e.base;
+    }
+    method visitB(n: ptex_visitor03_b, e: ptex_visitor03_e) -> int {
+        return 2 + e.base;
+    }
+}
+
+component ptex_visitor03 {
+    field af: (ptex_visitor03_v<ptex_visitor03_e, int>, ptex_visitor03_e) -> int = new ptex_visitor03_a().accept;
+    field bf: (ptex_visitor03_v<ptex_visitor03_e, int>, ptex_visitor03_e) -> int = new ptex_visitor03_b().accept;
+
+    field v: ptex_visitor03_p = new ptex_visitor03_p();
+
+    field e1: ptex_visitor03_e = new ptex_visitor03_e(10);
+    field e2: ptex_visitor03_e = new ptex_visitor03_e(20);
+
+    method main(arg: int) -> int {
+	if ( arg == 1 ) return af(v, e1);
+	if ( arg == 2 ) return af(v, e2);
+	if ( arg == 3 ) return bf(v, e1);
+	if ( arg == 4 ) return bf(v, e2);
+	return 42;
+    }
+}

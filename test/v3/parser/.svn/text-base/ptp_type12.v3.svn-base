@@ -1,0 +1,6 @@
+//@parse
+
+
+class type12<X, Y> {
+    field f: type12<X, Y> -> Y;
+}

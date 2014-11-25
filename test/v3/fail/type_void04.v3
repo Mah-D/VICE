@@ -1,0 +1,9 @@
+//@execute 0=1
+component type_void04 {
+	method main(arg: int) -> int {
+		local f: void = n();
+		if (f == f) return 1;
+		return 2;
+	}
+	method n() { }
+}

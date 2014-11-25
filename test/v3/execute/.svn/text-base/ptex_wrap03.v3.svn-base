@@ -1,0 +1,24 @@
+//@execute 0=42; 1=11; 2=21; 3=48; 4=97; 5=42
+
+class ptex_wrap03_w<T> {
+    field val: T;
+    new(v: T) {
+        val = v;
+    }
+}
+
+component ptex_wrap03 {
+
+    field a: ptex_wrap03_w<int> = new ptex_wrap03_w<int>(11);
+    field b: ptex_wrap03_w<int> = new ptex_wrap03_w<int>(21);
+    field c: ptex_wrap03_w<char> = new ptex_wrap03_w<char>('0');
+    field d: ptex_wrap03_w<char> = new ptex_wrap03_w<char>('a');
+
+    method main(arg: int) -> int {
+	if ( arg == 1 ) return a.val;
+	if ( arg == 2 ) return b.val;
+	if ( arg == 3 ) return c.val;
+	if ( arg == 4 ) return d.val;
+	return 42;
+    }
+}

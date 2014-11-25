@@ -1,0 +1,14 @@
+//@execute 0 = 3
+program array_fill { entrypoint main = array_fill01.main; }
+component array_fill01 {
+	field array: Array<int> = [0, -400000, 1, 8, 9, 1024, 0, -1, 55, -8, 7, 122, 7637782, -89237];
+
+	method main(arg: int) -> int {
+		local i = 0;
+		while (i < array.length) {
+			array(i) = i;
+			i = i + 1;
+		}
+		return array(3);
+	}
+}

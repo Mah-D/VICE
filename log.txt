@@ -1,0 +1,147 @@
+
+[Info]  =================================
+[Info]  begin dart testing for entrance:
+[Info]  main
+
+[Info]  new testing
+[begin group random input]
+[value 0]  SCValue: [concrete: int:3765; symbolic: ((Var0:int))])
+[value 1]  SCValue: [concrete: int:370; symbolic: ((Var1:int))])
+[value 2]  SCValue: [concrete: int:3230; symbolic: ((Var2:int))])
+[end group random input]
+[Info]  begin dart execution
+[value|return value]  SCValue: [concrete: int:9998; symbolic: ((9998))]
+[value|linear]  true
+[value|path]  path constraints:  (false1 false1 ((false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false1)) false1)
+[value|constraints solving]  true
+
+[Info]  new testing
+[begin group directed input]
+[value 0]  SCValue: [concrete: int:-32768; symbolic: ((Var0:int))])
+[value 1]  SCValue: [concrete: int:-32768; symbolic: ((Var1:int))])
+[value 2]  SCValue: [concrete: int:-32768; symbolic: ((Var2:int))])
+[value 3]  SCValue: [concrete: raw.8:0xB0; symbolic: ((Var3:8))])
+[value 4]  SCValue: [concrete: raw.8:0x7D; symbolic: ((Var4:8))])
+[Info]  testing runtime error
+[value|error msg]  Dart is not implemented
+
+[Info]  new testing
+[begin group random input]
+[value 0]  SCValue: [concrete: int:110; symbolic: ((Var0:int))])
+[value 1]  SCValue: [concrete: int:41; symbolic: ((Var1:int))])
+[value 2]  SCValue: [concrete: int:885; symbolic: ((Var2:int))])
+[end group random input]
+[Info]  begin dart execution
+[value|return value]  SCValue: [concrete: int:9999; symbolic: ((9999))]
+[value|linear]  true
+[value|path]  path constraints:  (false1 false1 ((false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false1)) true1)
+[value|constraints solving]  true
+
+[Info]  new testing
+[begin group directed input]
+[value 0]  SCValue: [concrete: int:-32768; symbolic: ((Var0:int))])
+[value 1]  SCValue: [concrete: int:-9001; symbolic: ((Var1:int))])
+[value 2]  SCValue: [concrete: int:10000; symbolic: ((Var2:int))])
+[Info]  testing runtime error
+[value|error msg]  Dart is not implemented
+
+[Info]  new testing
+[begin group random input]
+[value 0]  SCValue: [concrete: int:-594; symbolic: ((Var0:int))])
+[value 1]  SCValue: [concrete: int:557; symbolic: ((Var1:int))])
+[value 2]  SCValue: [concrete: int:113; symbolic: ((Var2:int))])
+[end group random input]
+[Info]  begin dart execution
+[value|return value]  SCValue: [concrete: int:9999; symbolic: ((9999))]
+[value|linear]  true
+[value|path]  path constraints:  (false1 false1 ((false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false1)) true1)
+[value|constraints solving]  true
+
+[Info]  new testing
+[begin group directed input]
+[value 0]  SCValue: [concrete: int:-32768; symbolic: ((Var0:int))])
+[value 1]  SCValue: [concrete: int:-9001; symbolic: ((Var1:int))])
+[value 2]  SCValue: [concrete: int:10000; symbolic: ((Var2:int))])
+[value 3]  SCValue: [concrete: raw.8:0xB2; symbolic: ((Var3:8))])
+[value 4]  SCValue: [concrete: raw.8:0x43; symbolic: ((Var4:8))])
+[Info]  testing runtime error
+[value|error msg]  Dart is not implemented
+
+[Info]  new testing
+[begin group random input]
+[value 0]  SCValue: [concrete: int:-270; symbolic: ((Var0:int))])
+[value 1]  SCValue: [concrete: int:-1104; symbolic: ((Var1:int))])
+[value 2]  SCValue: [concrete: int:234; symbolic: ((Var2:int))])
+[end group random input]
+[Info]  begin dart execution
+[value|return value]  SCValue: [concrete: int:9999; symbolic: ((9999))]
+[value|linear]  true
+[value|path]  path constraints:  (false1 false1 ((false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false1)) true1)
+[value|constraints solving]  true
+
+[Info]  new testing
+[begin group directed input]
+[value 0]  SCValue: [concrete: int:-32768; symbolic: ((Var0:int))])
+[value 1]  SCValue: [concrete: int:-9001; symbolic: ((Var1:int))])
+[value 2]  SCValue: [concrete: int:10000; symbolic: ((Var2:int))])
+[value 3]  SCValue: [concrete: raw.8:0x93; symbolic: ((Var3:8))])
+[value 4]  SCValue: [concrete: raw.8:0x70; symbolic: ((Var4:8))])
+[Info]  testing runtime error
+[value|error msg]  Dart is not implemented
+
+[Info]  new testing
+[begin group random input]
+[value 0]  SCValue: [concrete: int:151; symbolic: ((Var0:int))])
+[value 1]  SCValue: [concrete: int:343; symbolic: ((Var1:int))])
+[value 2]  SCValue: [concrete: int:1116; symbolic: ((Var2:int))])
+[end group random input]
+[Info]  begin dart execution
+[value|return value]  SCValue: [concrete: int:9998; symbolic: ((9998))]
+[value|linear]  true
+[value|path]  path constraints:  (false1 false1 ((false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false3 false1)) false1)
+[value|constraints solving]  true
+
+[Info]  new testing
+[begin group directed input]
+[value 0]  SCValue: [concrete: int:-32768; symbolic: ((Var0:int))])
+[value 1]  SCValue: [concrete: int:-32768; symbolic: ((Var1:int))])
+[value 2]  SCValue: [concrete: int:-32768; symbolic: ((Var2:int))])
+[value 3]  SCValue: [concrete: raw.8:0xE2; symbolic: ((Var3:8))])
+[value 4]  SCValue: [concrete: raw.8:0x3D; symbolic: ((Var4:8))])
+[Info]  testing runtime error
+[value|error msg]  Dart is not implemented
+
+[Info]  =================================
+[Info]  begin dart testing for entrance:
+[Info]  intr1
+
+[Info]  new testing
+[begin group random input]
+[end group random input]
+[Info]  begin dart execution
+[value|return value]  SCValue: [concrete: int:22; symbolic: ((22))]
+[value|linear]  true
+[value|path]  path constraints:  (true1)
+[value|constraints solving]  true
+
+[Info]  new testing
+[begin group directed input]
+[value 0]  SCValue: [concrete: int:120; symbolic: ((Var0:8))])
+[value 1]  SCValue: [concrete: raw.8:0xC4; symbolic: ((Var1:8))])
+[end group directed input]
+[Info]  begin dart execution
+[value|return value]  SCValue: [concrete: int:23; symbolic: ((23))]
+[value|linear]  true
+[value|path]  path constraints:  (false1 true1)
+[value|constraints solving]  true
+
+[Info]  new testing
+java.lang.ArrayIndexOutOfBoundsException
+	at java.lang.System.arraycopy(Native Method)
+	at vpc.dart.ExternalVariable.combineToVariableList(ExternalVariable.java:93)
+	at vpc.DartHarness.directedArguments(DartHarness.java:59)
+	at vpc.DartHarness.runTests(DartHarness.java:84)
+	at vpc.DartHarness.runTests(DartHarness.java:130)
+	at vpc.DartHarness.startTest(DartHarness.java:142)
+	at vpc.Interpreter.runDartWithInterrupt(Interpreter.java:194)
+	at vpc.Interpreter.main(Interpreter.java:176)

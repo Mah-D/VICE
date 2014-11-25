@@ -1,0 +1,8 @@
+//@seman = TypeError @ 6:15 
+
+class type57 {
+    
+    method testm() {
+        local a: Array<int> = [false];
+    }
+}

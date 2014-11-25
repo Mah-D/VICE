@@ -1,0 +1,4 @@
+//@parse
+component instof2 {
+	field f: bool = <: T a;
+}

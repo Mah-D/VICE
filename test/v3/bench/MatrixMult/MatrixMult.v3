@@ -1,0 +1,83 @@
+program MatrixMult {
+	entrypoint main = MatrixMult.main;
+}
+
+component MatrixMult {
+	value SIZE: int = 30;
+
+	method main(args: Array<Array<char>>) {
+		local max = 30;
+		if (args.length > 0) max = parseInt(args(0));
+
+		local m1 = mkmatrix(SIZE, SIZE);
+		local m2 = mkmatrix(SIZE, SIZE);
+
+		while (max > 0) {
+			multiply(m1, m2, m2);
+			max = max - 1;
+		}
+		print(m2);
+	}
+
+	method mkmatrix(rows: int, cols: int) -> Array<Array<int>> {
+		local count = 1;
+		local matrix = new Array<Array<int>>(rows);
+		local i = 0;
+		while (i < rows) {
+			local j = 0;
+			matrix(i) = new Array<int>(cols);
+			while (j < cols) {
+				matrix(i)(j) = count;
+				count = count + 1;
+				j = j + 1;
+			}
+			i = i + 1;
+		}
+		return matrix;
+	}
+
+	method multiply(m1: Array<Array<int>>, m2: Array<Array<int>>, m3: Array<Array<int>>) {
+		local i = 0, rows = m1.length, cols = m1(0).length;
+		while (i < rows) {
+			local j = 0;
+			while (j < cols) {
+				local val = 0, k = 0;
+				while (k < cols) {
+					val = val + m1(i)(k) * m2(k)(j);
+					k = k + 1;
+				}
+				m3(i)(j) = val;
+				j = j + 1;
+			}
+			i = i + 1;
+		}
+	}
+
+	method parseInt(a: Array<char>) -> int {
+		local accum = 0;
+		local cntr = 0;
+		local zero = ::int('0');
+
+		while (cntr < a.length) {
+			local dig = ::int(a(cntr));
+			accum = accum * 10 + dig - zero; 
+			cntr = cntr + 1;
+		}
+
+		return accum;
+	}
+
+	method print(m1: Array<Array<int>>) {
+		local i = 0, rows = m1.length, cols = m1(0).length;
+		while (i < rows) {
+			local j = 0;
+			while (j < cols) {
+				System.puti(m1(i)(j));
+				System.putc(' ');
+				j = j + 1;
+			}
+			System.putc('\n');
+			i = i + 1;
+		}
+	}
+}

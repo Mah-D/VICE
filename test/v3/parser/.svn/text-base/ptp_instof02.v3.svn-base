@@ -1,0 +1,6 @@
+//@parse
+class instof02 {
+   method m() {
+      if ( <: Type<X> x) ;
+   }
+}

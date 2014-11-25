@@ -1,0 +1,6 @@
+//@parse
+class instof01 {
+   method m() {
+      local f = <: Type<X> x;
+   }
+}

@@ -1,0 +1,9 @@
+//@seman
+
+class A<X> { } 
+
+class cast10 {
+   method m<T>(x: A<T>) {
+      local f = :: (A<int>) x;
+   }
+}

@@ -1,0 +1,9 @@
+//@seman = NonSwitchableType @ 9:30
+
+class type20 {
+    
+    method testm(a: type20) {
+        match ( a ) {
+        }
+    }
+}

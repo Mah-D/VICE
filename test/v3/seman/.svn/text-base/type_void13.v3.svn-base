@@ -1,0 +1,5 @@
+//@seman
+component type_void13 {
+	field f: void = m(0, (), 1);
+	method m(a: int, b: void, c: int) { }
+}

@@ -1,0 +1,6 @@
+//@seman = TypeError @ 6:25
+
+class type_func09 {
+  field f: void = g;
+  method g() -> int { return 0; }
+}

@@ -1,0 +1,7 @@
+//@parse
+
+
+class type16<X, Y> {
+    field f: Array<int -> bool>;
+    field g: Array<(int -> bool)>;
+}

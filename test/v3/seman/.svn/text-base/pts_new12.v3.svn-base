@@ -1,0 +1,6 @@
+//@seman
+class new12<X> {
+   method m() {
+      local f = new new12<Array<X>>();
+   }
+}

@@ -1,0 +1,5 @@
+//@seman = UnresolvedMember @ 4:24
+component unr_member04 {
+	field a: char;
+	field b: int = a.foo;
+}

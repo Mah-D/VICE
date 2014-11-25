@@ -1,0 +1,5 @@
+//@parse
+class type02<X, Y> {
+    field f: X;
+    field g: Y;
+}

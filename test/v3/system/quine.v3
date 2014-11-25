@@ -1,0 +1,1 @@
+class Quine { method main(args: Array<string>) { local c=34; System.println(s+c+s+c+';'+'}'); } field s: string = "class Quine { method main(args: Array<string>) { local c=34; System.println(s+c+s+c+';'+'}'); } field s: string =";}

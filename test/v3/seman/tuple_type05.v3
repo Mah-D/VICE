@@ -1,0 +1,5 @@
+//@seman
+component tuple_type05 {
+	field a: (char, char);
+	field b: (int, int) = a;
+}

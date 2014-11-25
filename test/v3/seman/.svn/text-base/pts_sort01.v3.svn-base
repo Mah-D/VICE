@@ -1,0 +1,21 @@
+//@seman
+
+
+component sort01 {
+
+    method sort<T>(a: Array<T>, gt: (T, T) -> bool) {
+        local i = 0, len = a.length;
+        while (i < len) {
+	    local j = i + 1;
+            while (j < len) {
+                if ( gt(a(i), a(j)) ) {
+                   local t = a(i);
+                   a(i) = a(j);
+                   a(j) = t;
+                }
+		j = j + 1;
+            }
+	    i = i + 1;
+        }
+    }
+}

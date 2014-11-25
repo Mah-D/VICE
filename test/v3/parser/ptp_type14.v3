@@ -1,0 +1,7 @@
+//@parse
+
+
+class type14<X, Y> {
+    field f: Array<() -> ()>;
+    field g: Array<8 -> 9>;
+}

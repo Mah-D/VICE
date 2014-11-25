@@ -1,0 +1,17 @@
+// @Harness: v2-seman
+// @Test: virtual method invocations
+// @Result: PASS
+
+class pv03_a {
+    method getf(): int { return val; }
+    private field val: int = 1;
+}
+
+class pv03_b extends pv03_a {
+    private field val: int = 2;
+}
+
+component pv03 {
+    field av: int = new pv03_a().getf();
+    field bv: int = new pv03_b().getf();
+}

@@ -1,0 +1,4 @@
+scheduler = fixed
+stages = virgil,init,opt3,emit-c
+suppress-null-checks = true
+suppress-bounds-checks = true

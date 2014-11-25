@@ -1,0 +1,10 @@
+//@execute 0=0
+class tuple_null03_o {
+	field f: (int, int);
+}
+component tuple_null03 {
+	field f: tuple_null03_o = new tuple_null03_o();
+	method main(arg: int) -> int {
+		return f.f.1;
+	}
+}

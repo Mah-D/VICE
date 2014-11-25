@@ -1,0 +1,7 @@
+//@parse
+component cast4 {
+	field f: T = ::T(a.f);
+	field f: T = ::T(a.m());
+	field f: T = ::T g();
+	field f: T = ::T ::V a;
+}

@@ -1,0 +1,6 @@
+//@seman
+class compare08<X> {
+	field f: compare08<X>;
+	field b: bool = neq(f, null);
+	method neq(a: compare08<X>, b: compare08<X>) -> bool { return a != b; }
+}

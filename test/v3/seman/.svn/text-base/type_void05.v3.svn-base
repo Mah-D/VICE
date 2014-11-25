@@ -1,0 +1,7 @@
+//@seman
+class type_void05 {
+	method test1(b: int, val: void) -> void {
+		test1(0, test2());
+	}
+	method test2() { }
+}

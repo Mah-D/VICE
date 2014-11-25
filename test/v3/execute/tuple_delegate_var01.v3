@@ -1,0 +1,21 @@
+//@execute 0=3; 1=4
+class tuple_delegate_var01_a {
+	value x: int;
+	new(x) { }
+}
+class tuple_delegate_var01_b extends tuple_delegate_var01_a {
+	new(x: int) : super(x) { }
+}
+component tuple_delegate_var01 {
+	field a: (int, int -> tuple_delegate_var01_a) = (1, alloca);
+	method main(arg: int) -> int {
+		a = ('0', allocb);
+		return a.1(arg).x;
+	}
+	method alloca(x: int) -> tuple_delegate_var01_a {
+		return new tuple_delegate_var01_a(x + 1);
+	}
+	method allocb(x: int) -> tuple_delegate_var01_b {
+		return new tuple_delegate_var01_b(x + 3);
+	}
+}

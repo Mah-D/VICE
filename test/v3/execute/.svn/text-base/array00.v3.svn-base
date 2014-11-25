@@ -1,0 +1,6 @@
+//@execute 0 = 0
+component array00 {
+	method main(a: int) -> int {
+		return new Array<int>(1)(0);
+	}
+}

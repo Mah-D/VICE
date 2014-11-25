@@ -1,0 +1,5 @@
+//@seman
+class type_void06 {
+	field val: void = test2();
+	method test2() { }
+}

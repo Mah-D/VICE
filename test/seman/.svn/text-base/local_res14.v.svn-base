@@ -1,0 +1,12 @@
+// @Harness: v2-seman
+// @Test: global identifier resolution
+// @Result: UnresolvedIdentifier @ 6:5
+
+class local_res14 {
+    
+    method testm() {
+        foo = 0;
+        testm();
+        local foo: int;
+    }
+}

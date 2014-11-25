@@ -1,0 +1,7 @@
+//@seman = TypeError @ 7:10
+
+class type_void01 {
+  method testm() {
+    if ( testm() == null ) ;
+  }
+}

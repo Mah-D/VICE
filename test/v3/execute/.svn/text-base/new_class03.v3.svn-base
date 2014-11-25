@@ -1,0 +1,11 @@
+//@execute 0 = 42
+component new_class03 {
+	method main(arg: int) -> int {
+		return new new_class03_o(42).x;
+	}
+}
+
+class new_class03_o {
+	field x: int;
+	new (x: int) { this.x = x; }
+}

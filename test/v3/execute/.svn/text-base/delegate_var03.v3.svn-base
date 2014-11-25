@@ -1,0 +1,28 @@
+//@execute 0=1
+program delegate_var03 {
+	entrypoint main = delegate_var03.test;
+}
+
+class delegate_var03_a {
+	method m() -> delegate_var03_a;
+}
+
+class delegate_var03_b extends delegate_var03_a {
+	method m() -> delegate_var03_b { return this; }
+}
+
+component delegate_var03 {
+	field a: void -> delegate_var03_a;
+	field b: void -> delegate_var03_b;
+	method main(arg: int) -> int {
+		a = apply(new delegate_var03_b().m).m;
+		a = apply(new delegate_var03_b().m).m;
+		return 1;
+	}
+	method test(arg: Array<string>) -> int {
+		return main(0);
+	}
+	method apply(f: void -> delegate_var03_a) -> delegate_var03_a {
+		return f().m();
+	}
+}

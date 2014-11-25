@@ -1,0 +1,5 @@
+//@seman
+class tuple_type01 {
+    field f: (int, int);
+    field g: (int, int) = f;
+}

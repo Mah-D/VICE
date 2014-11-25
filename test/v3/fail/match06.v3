@@ -1,0 +1,14 @@
+//@seman = DuplicateCase @ 7:24
+
+class switch06 {
+    
+    method testm(a: int) {
+        match ( a ) {
+            0: ;
+	    1: ;
+	    2: ;
+	    3: ;
+	    0: ;
+        }
+    }
+}

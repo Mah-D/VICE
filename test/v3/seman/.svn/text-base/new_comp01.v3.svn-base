@@ -1,0 +1,4 @@
+//@seman =TypeError @ 3:27
+component new_comp01 {
+	field f: new_comp01 = new new_comp01();
+}

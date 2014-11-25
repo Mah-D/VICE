@@ -1,0 +1,14 @@
+//@seman = ArityMismatch @ 13:34
+
+class new04 {
+
+    field f: int;
+
+    new() {
+        f = 1;
+    }
+
+    method testm() -> new04 {
+        return new new04(0);
+    }
+}

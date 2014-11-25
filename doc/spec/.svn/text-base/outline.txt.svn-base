@@ -1,0 +1,37 @@
+Chapter 1 - Values
+
+Chapter 2 - Expressions
+
+Chapter 3 - Types
+
+Chapter 4 - Variables
+
+Chapter 5 - Tuples and Arrays
+
+Chapter 6 - Methods
+
+Chapter 7 - Components and Classes
+
+Chapter 8 - Delegates
+
+Chapter 9 - Parametric Types
+
+Chapter 10 - Virgil III types
+   - void, int, char, bool
+   - arrays
+   - tuples
+   - functions
+   - classes (extensible)
+
+Chapter 11 - Initialization and Interpretation
+
+Chapter 12 - Grammar and Parsing
+
+Chapter 13 - Type System and Verifier
+
+Chapter 14 - Evaluation rules
+
+Chapter 15 - System calls
+
+Chapter 16 - Simplified internal form
+

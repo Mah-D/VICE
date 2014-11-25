@@ -1,0 +1,6 @@
+//@parse
+class cast04 {
+   method m() {
+      local y = :: (Type<Array<int> >) x;
+   }
+}

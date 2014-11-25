@@ -1,0 +1,24 @@
+//@execute 0=42; 1=11; 2=21; 3=31; 4=42
+
+class ptex_self01_s<T> {
+}
+
+class ptex_self01_m extends ptex_self01_s<ptex_self01_m> {
+    field val: int;
+    new(v: int) {
+        val = v;
+    }
+}
+
+component ptex_self01 {
+    field f: ptex_self01_m = new ptex_self01_m(11);
+    field g: ptex_self01_m = new ptex_self01_m(21);
+    field h: ptex_self01_m = new ptex_self01_m(31);
+
+    method main(arg: int) -> int {
+	if ( arg == 1 ) return f.val;
+	if ( arg == 2 ) return g.val;
+	if ( arg == 3 ) return h.val;
+	return 42;
+    }
+}

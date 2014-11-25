@@ -1,0 +1,4 @@
+//@seman
+component continue02 {
+	method m() { while (true) continue; }
+}

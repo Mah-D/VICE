@@ -1,0 +1,10 @@
+//@seman
+class A {
+	method a<T>(v: V<T>) { }
+}
+class V<T> {
+	method v(a: T) { }
+}
+component pts_delegate02 {
+	field f: V<int> -> void = new A().a;
+}

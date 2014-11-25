@@ -1,0 +1,65 @@
+//
+// A program to test the performance of the functional implementation of lists
+//
+program ListMap {
+	entrypoint main = ListMap.main;
+}
+
+class List<T> {
+	value head: T;
+	value tail: List<T>;
+	new(head, tail) { }
+}
+
+component Lists {
+	method map<A, B>(list: List<A>, func: A -> B) -> List<B> {
+		if (list == null) return null;
+		return new List<B>(func(list.head), map(list.tail, func));
+	}
+	method mapRev<A, B>(list: List<A>, func: A -> B) -> List<B> {
+		local result: List<B> = null;
+		while (list != null) {
+			result = new List<B>(func(list.head), result);
+			list = list.tail;
+		}
+		return result;
+	}
+}
+
+component ListMap {
+	value LENGTH: int = 100;
+	value ITERATIONS: int = 1000;
+	field cumul: int = 0;
+	method main(args: Array<Array<char>>) -> int {
+		local list: List<int> = null;
+		local i = 0;
+		while (i < LENGTH) {
+			list = new List<int>(i, list);
+			i = i + 1;
+		}
+		local j = 0;
+		while (j < ITERATIONS) {
+			Lists.map(list, nothing);
+			Lists.map(list, sum);
+			Lists.mapRev(list, nothing);
+			Lists.mapRev(list, sum);
+			print(j);
+			j = j + 1;
+		}
+		Lists.map(list, print);
+		Lists.mapRev(list, print);
+		return cumul;
+	}
+	method nothing(val: int) -> bool {
+		return true;
+	}
+	method print(val: int) -> char {
+		System.puti(val);
+		System.putc(' ');
+		return ::char(val);
+	}
+	method sum(val: int) -> int {
+		cumul = cumul + val;
+		return cumul;
+	}
+}

@@ -1,0 +1,5 @@
+//@seman
+class cast01 {
+    field bar: cast01;
+    field foo: cast01 = :: cast01 bar;
+}

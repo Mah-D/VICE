@@ -1,0 +1,22 @@
+# What about using a version of Virgil for shell-like scripting?
+# E.g. a dynamically typed version, or one with more type inference
+# that integrates with shell commands and has facilities for process
+# control and text manipulation
+
+import zfs;
+import ls;
+
+for f in (ls *.v3) {
+	zfs -zb f;
+}
+
+# challenges:
+# 1. how to access the input, output, and error streams of a process
+# 2. what to do with the return code
+# 3. integrate Virgil types and values to the basic languages
+# 4. connect to and run Virgil programs
+# 5. Asynchronous termination of processes
+# 6. Pause, stop, kill other processes
+# 7. Integrate with shell commands
+# 8. Integrate options to shell commands to invocation syntax
+# 9. Should there just be a Virgil shell?

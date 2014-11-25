@@ -1,0 +1,30 @@
+//@execute 0=42; 1=21; 2=31; 3=41; 4=42
+
+class ptex_pair06_p<X, Y> {
+    field a: X;
+    field b: Y;
+
+    new(x: X, y: Y) {
+        a = x;
+        b = y;
+    }
+}
+
+class I {
+    field val: int;
+    new(v: int) {
+        val = v;
+    }
+}
+
+component ptex_pair06 {
+    field a: ptex_pair06_p<int, I> = new ptex_pair06_p<int, I>(21, new I(31));
+    field b: I = new I(41);
+
+    method main(arg: int) -> int {
+        if ( arg == 1 ) return a.a;
+        if ( arg == 2 ) return a.b.val;
+        if ( arg == 3 ) return b.val;
+	return 42;
+    }
+}

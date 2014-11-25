@@ -1,0 +1,19 @@
+//@execute true=10; false=11
+
+component match04 {
+    field foo: int;
+
+    method main(arg: bool) -> int {
+	ds(arg);
+	return foo;
+    }
+
+    method ds(v: bool) {
+	match ( v ) {
+		true: foo = 10;
+		false: foo = 11;
+	} else {
+		foo = -1;
+	}
+    }
+}

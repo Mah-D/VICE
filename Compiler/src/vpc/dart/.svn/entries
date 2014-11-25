@@ -1,0 +1,92 @@
+8
+
+dir
+154
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack/virgil/Compiler/src/vpc/dart
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack
+
+
+
+2010-10-16T00:09:10.150862Z
+154
+gbb21
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f6311483-164f-4dc9-a362-1d9d7795f10a
+
+DartInterpreter.java
+file
+
+
+
+
+2010-10-16T00:10:08.129000Z
+83d2b74075ff559c658b0c612032b860
+2010-10-16T00:09:10.150862Z
+154
+gbb21
+has-props
+
+ExternalVariable.java
+file
+
+
+
+
+2010-09-30T20:59:44.645000Z
+f7ab406759e423357e6a5d2a0db34cf4
+2010-02-04T22:32:59.850495Z
+85
+gbb21
+has-props
+
+PathChecker.java
+file
+
+
+
+
+2010-09-30T20:59:44.613000Z
+dc60ea06bf5ac5f7247da91b91d2540c
+2010-02-23T07:44:21.189781Z
+117
+gbb21
+has-props
+
+RandomGenerator.java
+file
+
+
+
+
+2010-09-30T20:59:44.625000Z
+72663ee1a81dcff4333ba5aaa193d675
+2010-01-29T07:18:20.333283Z
+76
+gbb21
+has-props
+
+exception
+dir
+
+selector
+dir
+
+symb
+dir
+
+symc
+dir
+

@@ -1,0 +1,5 @@
+//@parse
+
+class new6 {
+  field foo: type = new Array<int>(1);
+}

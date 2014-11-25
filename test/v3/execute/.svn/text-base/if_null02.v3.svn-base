@@ -1,0 +1,7 @@
+//@execute 0 = false
+component if_null02 {
+	field a1: Array<int>;
+	method main(arg: int) -> bool {
+		return a1 != null;
+	}
+}

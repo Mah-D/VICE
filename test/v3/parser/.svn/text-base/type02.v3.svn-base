@@ -1,0 +1,7 @@
+//@parse
+
+
+class type02 {
+    field f: Array<T> -> void;
+    field g: Array<8> -> 8;
+}

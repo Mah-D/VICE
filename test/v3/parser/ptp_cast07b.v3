@@ -1,0 +1,6 @@
+//@parse
+class cast07b {
+   method m() {
+      local y = ::Type<void -> Y> x;
+   }
+}

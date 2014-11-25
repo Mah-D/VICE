@@ -1,0 +1,5 @@
+//@parse
+
+class new5 {
+  field foo: type = new (foo)(0);
+}

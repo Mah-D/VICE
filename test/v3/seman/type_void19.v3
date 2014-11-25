@@ -1,0 +1,8 @@
+//@seman
+component local4 {
+    
+    method testm() {
+        local foo = bar();
+    }
+    method bar() { }
+}

@@ -1,0 +1,8 @@
+//@seman
+
+
+class new13<X> {
+   method m() -> Array<X> {
+      return new Array<X>(1);
+   }
+}

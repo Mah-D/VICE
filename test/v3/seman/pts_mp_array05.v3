@@ -1,0 +1,11 @@
+//@seman
+
+
+component mp_array05 {
+    method test() {
+	set0(new Array<int>(3), 0);
+    }
+    method set0<X>(a: Array<X>, b: X) {
+	a(0) = b;	
+    }
+}

@@ -1,0 +1,52 @@
+8
+
+dir
+154
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack/virgil/apps/LinkedList
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack
+
+
+
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f6311483-164f-4dc9-a362-1d9d7795f10a
+
+LinkedList.v
+file
+
+
+
+
+2010-09-30T20:59:33.487000Z
+0e2e3a8ea7991a81b8624b6c4f9d8c59
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+Makefile
+file
+
+
+
+
+2010-09-30T20:59:33.493000Z
+44b75107697ee0afbad26af78eeb0e9c
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+

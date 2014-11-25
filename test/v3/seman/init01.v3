@@ -1,0 +1,5 @@
+//@seman = !ExceptionInInitialization @ 2:11
+component C {
+	field f: Array<int>;
+	field g: int = f(0);
+}

@@ -1,0 +1,6 @@
+//@seman
+component return09 {
+	method m() {
+		return ();
+	}
+}

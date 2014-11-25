@@ -1,0 +1,29 @@
+//@execute 0=false; 1=true; 2=true; 3=true; 4=true; 5=true; 6=true; 7=true; 8=true; 9=true; 10=true; 11=true; 12=false
+
+component char_int01 {
+    field a: int = 'a';
+    field b: int = 'b';
+    field c: int = '\n';
+    field d: int = '\t';
+    field e: int = '\0';
+    field f: int = '\r';
+    field g: int = '\'';
+    field h: int = '\"';
+    field i: int = '\377';
+    field j: int = '\\';
+    field k: int = ' ';
+    method main(arg: int) -> bool {
+	if ( arg == 1 )  return a == (::int 'a');
+	if ( arg == 2 )  return b == (::int 'b');
+	if ( arg == 3 )  return c == (::int '\n');
+	if ( arg == 4 )  return d == (::int '\t');
+	if ( arg == 5 )  return e == (::int '\0');
+	if ( arg == 6 )  return f == (::int '\r');
+	if ( arg == 7 )  return g == (::int '\'');
+	if ( arg == 8 )  return h == (::int '\"');
+	if ( arg == 9 )  return i == (::int '\377');
+	if ( arg == 10 ) return j == (::int '\\');
+	if ( arg == 11 ) return k == (::int ' ');
+	return false;
+    }
+}

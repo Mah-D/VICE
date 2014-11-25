@@ -1,0 +1,6 @@
+//@parse
+
+
+class type19 {
+    field f: (int);
+}

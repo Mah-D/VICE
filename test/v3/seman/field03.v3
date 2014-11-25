@@ -1,0 +1,4 @@
+//@seman
+class field3 {
+    field testf: field3 = this;
+}

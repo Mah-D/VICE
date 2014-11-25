@@ -1,0 +1,4 @@
+//@seman = AssignError @ 3:27
+class this_assign01 {
+	method m() { this = null; }
+}

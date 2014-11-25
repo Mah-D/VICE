@@ -1,0 +1,5 @@
+//@seman = TypeError @ 4:13
+class init04 {
+	field f: int;
+	new(f: bool) { }
+}

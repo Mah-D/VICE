@@ -1,0 +1,7 @@
+//@parse
+
+
+class type13<X, Y> {
+    field f: type13<X, Y> -> Array<X>;
+    field g: type13<8, 9> -> Array<Y>;
+}

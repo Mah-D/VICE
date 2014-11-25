@@ -1,0 +1,8 @@
+//@parse
+
+
+class method07 {
+    method m1<X, Y>(a: tuple<X, Y>, b: tuple<Y>) -> tuple<X> {
+        return b;
+    }
+}

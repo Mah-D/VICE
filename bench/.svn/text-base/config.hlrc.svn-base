@@ -1,0 +1,5 @@
+scheduler = fixed
+stages = virgil,init,opt1,emit-c
+object-model = direct
+compress = true
+avr-rom = true

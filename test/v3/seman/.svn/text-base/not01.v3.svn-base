@@ -1,0 +1,8 @@
+//@seman = TypeError @ 6:15
+
+class type45 {
+    
+    method testm() {
+        local a: int = !2;
+    }
+}

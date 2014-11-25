@@ -1,0 +1,5 @@
+//@seman
+class type_comp01 {
+    field b: int;
+    field c: int = b;
+}

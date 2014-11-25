@@ -1,0 +1,7 @@
+//@execute 0 = 1
+component array_length01 {
+	field array: Array<int> = new Array<int>(1);
+	method main(a: int) -> int {
+		return array.length;
+	}
+}

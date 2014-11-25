@@ -1,0 +1,8 @@
+//@seman = TypeError @ 6:6
+
+component return6 {
+    
+    method testm() -> return6 {
+        return null;
+    }
+}

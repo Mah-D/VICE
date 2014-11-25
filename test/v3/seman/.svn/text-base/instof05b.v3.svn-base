@@ -1,0 +1,6 @@
+//@seman = TypeQueryError @ 7:30
+
+class instof05b_01 {
+    field bar: instof05b_01;
+    field foo: bool = <:int(bar);
+}

@@ -1,0 +1,6 @@
+//@seman
+class array01 {
+    method testm(a: Array<int>) -> Array<int> {
+        return testm(a);
+    }
+}

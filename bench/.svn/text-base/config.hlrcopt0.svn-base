@@ -1,0 +1,7 @@
+object-model = direct
+compress = true
+avr-rom = true
+component-structs = false
+compress-array-refs = false
+scheduler = fixed
+stages = virgil,init,opt0,emit-c

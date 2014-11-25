@@ -1,0 +1,6 @@
+//@seman
+component return02 {
+    method test() {
+	return();
+    }
+}

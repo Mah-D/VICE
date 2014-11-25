@@ -1,0 +1,41 @@
+//@execute 0='*'; 1='a'; 2='b'; 3='\n'; 4='\t'; 5='\7'; 6='\r'; 7='\''; 8='"'; 9='\377'; 10='\\'; 11=' '; 12='$'; 13='#'; 14='~'; 15='*'
+
+component const02 {
+    field a: char = 'a';
+    field b: char = 'b';
+    field c: char = '\n';
+    field d: char = '\t';
+    field e: char = '\7';
+    field f: char = '\r';
+    field g: char = '\'';
+    field h: char = '"';
+    field i: char = '\377';
+    field j: char = '\\';
+    field k: char = ' ';
+    field l: char = '$';
+    field m: char = '#';
+    field n: char = '~';
+
+    method main(arg: int) -> char {
+	if ( arg == 1 )  return choose(a, 'a');
+	if ( arg == 2 )  return choose(b, 'b');
+	if ( arg == 3 )  return choose(c, '\n');
+	if ( arg == 4 )  return choose(d, '\t');
+	if ( arg == 5 )  return choose(e, '\7');
+	if ( arg == 6 )  return choose(f, '\r');
+	if ( arg == 7 )  return choose(g, '\'');
+	if ( arg == 8 )  return choose(h, '"');
+	if ( arg == 9 )  return choose(i, '\377');
+	if ( arg == 10 ) return choose(j, '\\');
+	if ( arg == 11 ) return choose(k, ' ');
+	if ( arg == 12 ) return choose(l, '$');
+	if ( arg == 13 ) return choose(m, '#');
+	if ( arg == 14 ) return choose(n, '~');
+	return '*';
+    }
+
+    method choose(a: char, b: char) -> char {
+	if ( a == b ) return a;
+	return 'M';
+    }
+}

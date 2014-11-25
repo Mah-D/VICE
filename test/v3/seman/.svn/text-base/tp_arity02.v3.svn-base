@@ -1,0 +1,4 @@
+//@seman = TypeError @ 3:29 
+class tp_arity02 {
+	field x: Array<int, int>;
+}

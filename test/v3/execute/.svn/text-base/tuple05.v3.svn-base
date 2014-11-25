@@ -1,0 +1,6 @@
+//@execute 0 = 3
+component tuple05 {
+    method main(arg: int) -> int {
+	return (3, 7).0;
+    }
+}

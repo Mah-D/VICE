@@ -1,0 +1,17 @@
+class List<T> {
+	value item: T;
+	value tail: List<T>;
+	new(item, tail) { }
+	method length() -> int {
+		if (tail == null) return 1;
+		return 1 + tail.length();
+	}
+}
+
+component unbound01 {
+	field f: List<int> -> int = List.length;
+	field g: List<int> -> int = List<int>.length;
+	field l: List<int>;
+	field h: int = List.length(l);
+	field i: int = List<int>.length(l);
+}

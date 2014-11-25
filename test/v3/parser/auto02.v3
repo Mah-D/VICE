@@ -1,0 +1,5 @@
+//@parse = ParseError @ 4:24 
+component auto02 {
+	field f: int;
+	field g: int = --f;
+}

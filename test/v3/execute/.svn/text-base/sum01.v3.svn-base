@@ -1,0 +1,31 @@
+//@execute 1=0; 2=1; 3=3; 4=3; 5=4; 6=6; 7=6; 8=!BoundsCheckException
+
+class sum01_a { 
+    field f: int;
+    field t: sum01_a = this;
+    new(i: int) { f = i; }
+}
+
+component sum01 {
+
+    field arr: Array<sum01_a> = build(7);
+
+    method build(len: int) -> Array<sum01_a> {
+        local a = new Array<sum01_a>(len);
+	local cntr = 0;
+	while (cntr < len) {
+		a(cntr) = new sum01_a(cntr % 3);
+		cntr = cntr + 1;
+	}
+	return a;
+    }
+    
+    method main(max: int) -> int {
+	local i = 0, cumul = 0;
+	while (i < max) {
+		cumul = cumul + arr(i).t.f;
+		i = i + 1;
+	}
+        return cumul;
+    }
+}

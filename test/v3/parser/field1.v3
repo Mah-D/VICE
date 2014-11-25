@@ -1,0 +1,9 @@
+//@parse
+
+
+class field1 {
+          field f1: int;
+
+  private field f2: int;
+
+}

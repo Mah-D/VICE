@@ -1,0 +1,6 @@
+//@parse
+
+
+class type01 {
+    field f: int;
+}

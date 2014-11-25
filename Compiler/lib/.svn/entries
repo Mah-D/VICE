@@ -1,0 +1,54 @@
+8
+
+dir
+154
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack/virgil/Compiler/lib
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack
+
+
+
+2009-12-13T06:29:49.400681Z
+13
+gbb21
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f6311483-164f-4dc9-a362-1d9d7795f10a
+
+choco-2.0.0.3.jar
+file
+
+
+
+
+2010-09-30T20:59:36.497000Z
+b8917b424ab95172090bf9f0105beb1a
+2009-12-13T04:18:22.464071Z
+12
+gbb21
+has-props
+
+chocodoc.zip
+file
+
+
+
+
+2010-09-30T20:59:38.228000Z
+65c843c5d6a093e7adab3e61dd1a2021
+2009-12-13T06:29:49.400681Z
+13
+gbb21
+has-props
+

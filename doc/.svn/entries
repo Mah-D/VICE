@@ -1,0 +1,34 @@
+8
+
+dir
+154
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack/virgil/doc
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack
+
+
+
+2010-03-19T01:07:03.054089Z
+145
+gbb21
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f6311483-164f-4dc9-a362-1d9d7795f10a
+
+intro
+dir
+
+spec
+dir
+

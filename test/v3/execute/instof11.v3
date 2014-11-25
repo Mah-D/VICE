@@ -1,0 +1,29 @@
+//@execute 0=0; 1=1; 2=3; 3=0; 4=0
+
+class instof11_a { }
+class instof11_b extends instof11_a { }
+class instof11_c extends instof11_a { }
+class instof11_d { }
+class instof11_e extends instof11_d { }
+class instof11_f { }
+
+component instof11 {
+
+    field a: instof11_a = new instof11_a();
+    field d: instof11_d = new instof11_d();
+    field e: instof11_e = new instof11_e();
+
+    method main(arg: int) -> int {
+	local x = getObj(arg);
+	local r = 0;
+	if ( <: instof11_d x ) r = r + 1;
+	if ( <: instof11_e x ) r = r + 2;
+	return r;
+    }
+
+    method getObj(arg: int) -> instof11_d {
+	if ( arg == 1 ) return d;
+	if ( arg == 2 ) return e;
+	return null;
+    }
+}

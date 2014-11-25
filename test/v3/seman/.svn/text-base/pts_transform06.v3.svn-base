@@ -1,0 +1,29 @@
+//@seman
+class Transform<R, E> {
+    method visitA(n: A, e: E) -> R;
+    method visitB(n: B, e: E) -> R;
+}
+
+class S {
+    method accept<R, E>(v: Transform<R, E>, e: E) -> R;
+}
+
+class A extends S {
+    method accept<R, E>(v: Transform<R, E>, e: E) -> R { return v.visitA(this, e); }
+}
+
+class B extends S {
+    method accept<R, E>(v: Transform<R, E>, e: E) -> R { return v.visitB(this, e); }
+}
+
+class Jewels {
+}
+
+class Thief<E> extends Transform<Jewels, E> {
+    method visitA(n: A, e: E) -> Jewels {
+	return null;
+    }
+    method visitB(n: B, e: E) -> Jewels {
+	return null;
+    }
+}

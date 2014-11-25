@@ -1,0 +1,7 @@
+//@parse
+
+
+class type15 {
+    field f: int -> List<int>;
+    field g: int -> List<8>;
+}

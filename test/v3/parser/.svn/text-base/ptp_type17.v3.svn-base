@@ -1,0 +1,4 @@
+//@parse
+class type17<X, Y> {
+    field f: type10<int, Y>;
+}

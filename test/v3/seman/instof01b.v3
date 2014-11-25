@@ -1,0 +1,5 @@
+//@seman
+class instof01b {
+    field bar: instof01b;
+    field foo: bool = <:instof01b(bar);
+}

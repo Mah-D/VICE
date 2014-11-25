@@ -1,0 +1,7 @@
+//@parse
+
+class type05 {
+    field f: bool -> int;
+    field g: bool -> ();
+    field h: bool -> ();
+}

@@ -1,0 +1,6 @@
+//@parse
+class instof04b {
+   method m() {
+      if ( <: (Type<Array<int> >) x) ;
+   }
+}

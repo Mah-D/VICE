@@ -1,0 +1,2 @@
+scheduler = fixed
+stages = virgil,init,opt2,emit-c

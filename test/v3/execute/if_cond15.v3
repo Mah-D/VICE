@@ -1,0 +1,9 @@
+//@execute true=true
+component if_cond15 {
+	method main(arg: bool) -> bool {
+		assert(arg);
+		return true;
+	}
+	method assert(val: bool) {
+	}
+}

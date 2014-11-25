@@ -1,0 +1,9 @@
+//@seman = AssignError @ 6:13
+
+class lvalue15 {
+    field foo: int = testm() = 0;
+    
+    method testm() -> int {
+        return 0;
+    }
+}

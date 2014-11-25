@@ -1,0 +1,6 @@
+//@seman
+class type_func01 {
+  field f: void -> void;
+  method test1() { f = null; }
+  method test2() -> void -> void { return null; }
+}

@@ -1,0 +1,52 @@
+8
+
+dir
+154
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack/virgil/apps/TestADC
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack
+
+
+
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f6311483-164f-4dc9-a362-1d9d7795f10a
+
+Makefile
+file
+
+
+
+
+2010-09-30T20:59:33.015000Z
+6846add4b5a7084fecd904a59432c2b7
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+TestADC.v
+file
+
+
+
+
+2010-09-30T20:59:33.009000Z
+c7405b1eb82a832dee7cfb8f0494aa98
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+

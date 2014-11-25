@@ -1,0 +1,10 @@
+//@seman = NotComputable @ 7:15
+
+class switch03 {
+    
+    method testm(a: int) {
+        match ( a ) {
+            ( a ): ;
+        }
+    }
+}

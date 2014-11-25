@@ -1,0 +1,11 @@
+// @Harness: v2-exec
+// @Test: initialization interpreter > raw types > and operator
+// @Result: 0=0, 1=0, 2=0, 5=1, 10=1, 12=0, 13=1, 15=1
+
+component raw_index03 {
+    field foo: 16 = 0xe7f0;
+
+    method main(arg: int): 1 {
+	return foo[arg];
+    }
+}

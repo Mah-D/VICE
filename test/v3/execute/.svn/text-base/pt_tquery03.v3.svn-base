@@ -1,0 +1,10 @@
+//@execute 0=true; 1=false
+component pt_tquery03 {
+	field a: Array<int> = new Array<int>(2);
+	field b: Array<bool> = new Array<bool>(3);
+	method main(arg: int) -> bool {
+		if (arg == 0) return test(a);
+		return test(b);
+	}
+	method test<T>(o: Array<T>) -> bool { return <:Array<int>(o); }
+}

@@ -1,0 +1,12 @@
+// @Harness: v2-seman
+// @Result: PASS
+
+component mp_unify01 {
+    method test() {
+	local x = id(0, 'x');
+	local y = id(true, false);
+    }
+    method id<X>(x: X, y: X): X {
+	return x;	
+    }
+}

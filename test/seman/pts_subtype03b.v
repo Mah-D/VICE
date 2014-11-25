@@ -1,0 +1,8 @@
+// @Harness: v2-seman
+// @Result: TypeMismatch @ 5:26
+
+class subtype03_a<X> extends subtype03_b {
+  field f: subtype03_a<X> = new subtype03_b();
+}
+class subtype03_b {
+}

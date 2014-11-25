@@ -1,0 +1,4 @@
+//@seman
+component type_void10 {
+	field f: Array<void> = new Array<void>(2);
+}

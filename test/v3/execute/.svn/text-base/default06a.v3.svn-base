@@ -1,0 +1,12 @@
+//@execute 0='*'; 1='\0'; 2='\0'; 3='*'
+
+component default06a {
+    field foo: char;
+    field bar: char = foo;
+
+    method main(arg: int) -> char {
+	if ( arg == 1 ) return foo;
+	if ( arg == 2 ) return bar;
+	return '*';
+    }
+}

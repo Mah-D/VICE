@@ -1,0 +1,2 @@
+//@parse
+class test2 { method foo() -> int { return foo(); } }

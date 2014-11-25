@@ -1,0 +1,14 @@
+// @Harness: v2-exec
+// @Test: reading of arrays of raws
+// @Result: 0=42, 1=15, 2=0, 3=99, 4=42
+
+component array_raw01 {
+    field a: 8[] = { 0xf, 0b00, 'c' };
+
+    method main(arg: int): 8 {
+	if ( arg == 1 ) return a[0];
+	if ( arg == 2 ) return a[1];
+	if ( arg == 3 ) return a[2];
+	return 0x2a;
+    }
+}

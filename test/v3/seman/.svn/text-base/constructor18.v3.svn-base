@@ -1,0 +1,7 @@
+//@seman = InheritanceError @ 5:20
+
+component new18 {
+    new() : super() {
+    }
+
+}

@@ -1,0 +1,8 @@
+//@execute 0 = 42
+component delegate20 {
+	method m42() -> int { return 42; }
+	method main(arg: int) -> int {
+		local f = m42;
+		return f();
+	}
+}

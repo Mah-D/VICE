@@ -1,0 +1,9 @@
+// @Harness: v2-parse
+// @Result: PASS
+
+class field01 {
+          field f1: type<X>;
+
+  private field f2: type<X>;
+
+}

@@ -1,0 +1,11 @@
+// @Harness: v2-seman
+// @Result: PASS
+
+class inh_method05_a<X> extends inh_method05_b<X, int> {
+  field h: X = f();
+}
+
+class inh_method05_b<Y, Z> {
+  method f(): Y;
+  method g(): Z;
+}

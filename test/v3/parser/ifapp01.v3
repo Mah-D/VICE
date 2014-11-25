@@ -1,0 +1,5 @@
+//@parse
+class C {
+    field f: bool = !m();
+    method m() -> bool { return false; }
+}

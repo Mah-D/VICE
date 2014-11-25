@@ -1,0 +1,6 @@
+//@seman
+class C<int> { }
+class D<void> { }
+class E<char> { }
+class F<bool> { }
+class G<Array> { }

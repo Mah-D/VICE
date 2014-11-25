@@ -1,0 +1,6 @@
+//@seman
+class new11<X> {
+   method m() {
+      local f = new new11<X>();
+   }
+}

@@ -1,0 +1,8 @@
+//@parse
+
+
+class type13 {
+    field f: (int, char) -> void;
+    field f: (int, int -> int) -> void;
+    field g: (((int) -> (char))) -> (char, char, (((char))));
+}

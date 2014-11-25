@@ -1,0 +1,32 @@
+// @Harness: v2-exec
+// @Test: arithmetic operators
+// @Result: 0=0, 1=1, 2=1, 3=1, 4=1, 5=1, 6=1, 7=1, 8=1, 9=1, 10=0
+
+component raw_shr06 {
+    field res_01: 5 = op(0b01111,  1);
+    field res_02: 5 = op(0b01101,  2);
+    field res_03: 5 = op(0b00001,  3);
+    field res_04: 5 = op(0b10001,  4);
+    field res_05: 5 = op(0b00111,  5);
+    field res_06: 5 = op(0b11111,  6);
+    field res_07: 5 = op(0b10111,  0);
+    field res_08: 5 = op(0b10000,  1);
+    field res_09: 5 = op(0b01010,  3);
+
+    method op(a: 5, b: int): 5 {
+	return a >> b;
+    }
+
+    method main(arg: int): bool {
+        if ( arg == 1 ) return op(0b01111,  1) == res_01;
+        if ( arg == 2 ) return op(0b01101,  2) == res_02;
+        if ( arg == 3 ) return op(0b00001,  3) == res_03;
+        if ( arg == 4 ) return op(0b10001,  4) == res_04;
+        if ( arg == 5 ) return op(0b00111,  5) == res_05;
+        if ( arg == 6 ) return op(0b11111,  6) == res_06;
+        if ( arg == 7 ) return op(0b10111,  0) == res_07;
+        if ( arg == 8 ) return op(0b10000,  1) == res_08;
+        if ( arg == 9 ) return op(0b01010,  3) == res_09;
+	return false;
+    }
+}

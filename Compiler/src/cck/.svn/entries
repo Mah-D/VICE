@@ -1,0 +1,62 @@
+8
+
+dir
+154
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack/virgil/Compiler/src/cck
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack
+
+
+
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f6311483-164f-4dc9-a362-1d9d7795f10a
+
+Version.java
+file
+
+
+
+
+2010-09-30T20:59:39.003000Z
+f3103d1aeb4741b61646d7dea8fd09cd
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+has-props
+
+elf
+dir
+
+help
+dir
+
+parser
+dir
+
+stat
+dir
+
+test
+dir
+
+text
+dir
+
+util
+dir
+

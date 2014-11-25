@@ -1,0 +1,7 @@
+//@seman
+
+class infer02 {
+  method testm(a: int) {
+    local foo = null;
+  }
+}

@@ -1,0 +1,6 @@
+//@seman = TypeError @ 6:32
+
+class type_func11 {
+  field f: (bool) = g;
+  method g(a: int) { }
+}

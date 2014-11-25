@@ -1,0 +1,9 @@
+//@seman
+component mp_id08 {
+    method test() {
+	while ( id(true) ) ;
+    }
+    method id<X>(x: X) -> X {
+	return x;	
+    }
+}

@@ -1,0 +1,10 @@
+//@execute 0 = 42
+component new02 {
+	field i: int = 33;
+	field j: int = 17;
+	method main(arg: int) -> int {
+		i = i + 9;
+		j = j + 7;
+		return i;
+	}
+}

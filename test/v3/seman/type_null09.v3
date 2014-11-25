@@ -1,0 +1,7 @@
+//@seman = UnresolvedType @ 4:26 
+component type_null09 {
+	method foo() {
+		local a: null = null;
+		local b: Array<char> = a;
+	}
+}

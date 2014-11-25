@@ -1,0 +1,6 @@
+//@seman = TypeQueryError @ 3:24
+class tquery_err02<T> {
+	method m(arg: tquery_err02<int>) -> bool {
+		return <:tquery_err02<bool>(arg);
+	}
+}

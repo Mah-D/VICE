@@ -1,0 +1,7 @@
+//@parse
+
+
+class type16 {
+    field f: (int -> void);
+    field g: (int -> 3);
+}

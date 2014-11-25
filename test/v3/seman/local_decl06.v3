@@ -1,0 +1,11 @@
+//@seman = VarDeclError @ 8:12
+
+class bound5 {
+
+    method testm() {
+        while ( true ) {
+            local a: int;
+            local a: char = 'i';
+        }
+    }
+}

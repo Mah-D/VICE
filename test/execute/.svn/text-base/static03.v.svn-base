@@ -1,0 +1,17 @@
+// @Harness: v2-exec
+// @Test: static method invocations
+// @Result: 0=0, 1=10, 2=11, 3=12, 4=0
+
+component static03 {
+
+    method main(arg: int): int {
+	if ( arg == 1 ) return val1();
+	if ( arg == 2 ) return val2();
+	if ( arg == 3 ) return val3();
+	return 0;
+    }
+
+    method val1(): int { return 10; }
+    method val2(): int { return val1()+1; }
+    method val3(): int { return val2()+1; }
+}

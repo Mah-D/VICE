@@ -1,0 +1,15 @@
+//@execute 0 = 0
+class ptex_delvar01_a {
+}
+class ptex_delvar01_b<T> extends ptex_delvar01_a {
+}
+component ptex_delvar01 {
+	field f: void -> ptex_delvar01_a = m;
+	method main(arg: int) -> int {
+		f();
+		return 0;
+	}
+	method m() -> ptex_delvar01_b<int> {
+		return new ptex_delvar01_b<int>();
+	}
+}

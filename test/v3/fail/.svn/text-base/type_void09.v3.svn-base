@@ -1,0 +1,8 @@
+//@execute 0=1
+component type_void09 {
+	method main(arg: int) -> int {
+		local f = ((), 0);
+		if (f.0 == ()) return 1;
+		return 2;
+	}
+}

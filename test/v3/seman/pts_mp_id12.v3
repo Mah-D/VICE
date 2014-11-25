@@ -1,0 +1,10 @@
+//@seman
+component mp_id12 {
+    method test() -> (int) -> int {
+	local x: (int) -> int = id;
+	return x;
+    }
+    method id<X>(x: X) -> X {
+	return x;	
+    }
+}

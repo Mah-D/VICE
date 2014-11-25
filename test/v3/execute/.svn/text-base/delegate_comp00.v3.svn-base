@@ -1,0 +1,11 @@
+//@execute 0=true; 1=false
+component delegate_comp00 {
+	method main(arg: int) -> bool {
+		local f = a;
+		if (arg == 0) return f == a;
+		if (arg == 1) return f == b;
+		return false;
+	}
+	method a();
+	method b();
+}

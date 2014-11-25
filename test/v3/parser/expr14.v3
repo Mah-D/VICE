@@ -1,0 +1,6 @@
+//@parse
+
+
+class expr14 {
+  field foo: unit = foo.bar(foo).bar(foo);
+}

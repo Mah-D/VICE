@@ -1,0 +1,5 @@
+//@seman
+component pts_delegate01 {
+	field f: int -> int = id;
+	method id<A>(a: A) -> A { return a; }
+}

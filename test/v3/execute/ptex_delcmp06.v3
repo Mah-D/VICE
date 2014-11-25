@@ -1,0 +1,14 @@
+//@execute 0=false
+class ptex_delcmp06_c<T> {
+	method m<U>(a: T) -> U;
+}
+component ptex_delcmp06 {
+	method main(arg: int) -> bool {
+		local a: int -> int = new ptex_delcmp06_c<int>().m;
+		local b: bool -> int = new ptex_delcmp06_c<bool>().m;
+		return cmp(a, b);
+	}
+	method cmp<A, B, T, U>(a: A -> B, b: T -> U) -> bool {
+		return a == b;
+	}
+}

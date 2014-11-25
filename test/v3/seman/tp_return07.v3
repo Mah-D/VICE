@@ -1,0 +1,16 @@
+//@seman
+class C {
+	field f: L<bool, int>;
+	method caller() {
+		if (f == null) f = H.m();
+	}
+}
+
+class L<X, Y> {
+}
+
+component H {
+	method m<T>() -> L<bool, T> { 
+		return new L<bool, T>();
+	}
+}

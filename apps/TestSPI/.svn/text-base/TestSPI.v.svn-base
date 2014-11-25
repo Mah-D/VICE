@@ -1,0 +1,46 @@
+/*
+ * This program tests the operation of the SPI driver for the AVR.
+ * @author Akop Palyan
+ */
+program TestSPI {
+	entrypoint main = TestSPI.start;
+	entrypoint spi_stc = SPI.interruptHandler;
+}
+
+component TestSPI {
+	field master: boolean = true;
+	field buffer: char[] = new char[32];
+	field windex: int = 0;
+	field rindex: int = 0;
+
+	method start() {
+		Mica2.startSPI(master);
+		MCU.enable();
+		while (true) {
+			receive();
+			transmit();
+			MCU.sleep();
+		}
+	}
+
+	method receive() {
+		if (master) receiveMaster();
+		else receiveSlave();
+	}
+
+	method receiveMaster() {
+		// in master mode, we must transfer data in order to receive data.
+		while (windex < buffer.length) {
+			windex += SPI.write(buffer, windex, buffer.length - windex);
+			MCU.sleepTransfer(buffer, rindex, windex - rindex, SPI.read);
+		}
+	}
+
+	method receiveSlave() {
+		MCU.sleepTransfer(buffer, 0, buffer.length, SPI.read);
+	}
+
+	method transmit() {
+		MCU.sleepTransfer(buffer, 0, buffer.length, SPI.write);
+	}
+}

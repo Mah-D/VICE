@@ -1,0 +1,10 @@
+//@seman
+class new01 {
+
+    field f: int;
+
+    new() {
+        f = 1;
+    }
+
+}

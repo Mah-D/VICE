@@ -1,0 +1,4 @@
+//@seman
+class type_func05 {
+    method testm(b: void -> int) -> int { return b(); }
+}

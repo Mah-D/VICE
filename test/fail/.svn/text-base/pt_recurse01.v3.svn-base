@@ -1,0 +1,11 @@
+// @Harness: v3-seman
+// @Result: PASS
+
+class L<T> {
+}
+
+component C {
+	method m<T>(x: T) {
+		m(::L<T>(null));
+	}
+}

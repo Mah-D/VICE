@@ -1,0 +1,23 @@
+//@parse
+class while3 {
+  method m() {
+     local a: int;
+     local foo: bool;
+
+     while ( true ) while ( true ) ;
+     while ( true ) while ( true ) { }
+
+     while ( foo ) while ( foo ) ;
+     while ( foo ) while ( foo ) { }
+
+     while ( func(a) ) while ( func(a) ) ;
+     while ( func(a) ) while ( func(a) ) { }
+
+     while ( func(a) ) {
+       while ( func(a) ) {
+         while ( func(a) ) {
+         }
+       }
+     }
+  }
+}

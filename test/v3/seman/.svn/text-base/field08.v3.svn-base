@@ -1,0 +1,8 @@
+//@seman
+
+class field8 {
+    field testf: field8c;
+}
+
+component field8c {
+}

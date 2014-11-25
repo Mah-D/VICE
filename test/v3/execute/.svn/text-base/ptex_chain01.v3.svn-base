@@ -1,0 +1,17 @@
+//@execute 0=0; 1=1; 2=2; 3=!NullCheckException
+class ptex_chain01_a {
+	value val: int;
+	value next: ptex_chain01_a;
+	new(val, next) { }
+}
+component ptex_chain01 {
+	field chain: ptex_chain01_a = new ptex_chain01_a(0, new ptex_chain01_a(1, new ptex_chain01_a(2, null)));
+	method main(arg: int) -> int {
+		local c = chain;
+		while (arg > 0) {
+			c = c.next;
+			arg = arg - 1;
+		}
+		return c.val;
+	}
+}

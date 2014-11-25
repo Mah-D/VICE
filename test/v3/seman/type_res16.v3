@@ -1,0 +1,6 @@
+//@seman = UnresolvedType @ 7:40
+
+class type_res16 {
+    field bar: type_res16;
+    field foo: type_res16 = new unknown();
+}

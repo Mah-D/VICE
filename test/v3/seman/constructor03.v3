@@ -1,0 +1,13 @@
+//@seman
+class new03 {
+
+    field f: int;
+
+    new() {
+        f = 1;
+    }
+
+    method testm() -> new03 {
+        return new new03();
+    }
+}

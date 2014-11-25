@@ -1,0 +1,14 @@
+//@execute 0=false; 1=true; 2=true; 3=true; 4=true; 5=false
+
+component array_raw12 {
+    field a: Array<64> = [0x111f];
+
+    method main(arg: int) -> bool {
+	local x: 64 = 0x2a;
+	if ( arg == 1 ) a(0) = x = 0xf0000000fe710000;
+	if ( arg == 2 ) a(0) = x = 0x0000000000000004;
+	if ( arg == 3 ) a(0) = x = 'c';
+	if ( arg == 4 ) a(0) = x = -1;
+	return a(0) == x;
+    }
+}

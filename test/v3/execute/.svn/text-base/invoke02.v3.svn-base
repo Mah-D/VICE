@@ -1,0 +1,7 @@
+//@execute = !UnimplementedException
+component invoke02 {
+	method main() -> int {
+		return m();
+	}
+	method m() -> int;
+}

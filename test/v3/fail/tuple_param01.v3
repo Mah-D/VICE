@@ -1,0 +1,12 @@
+//@seman =TypeError @ 4:29
+program tuple_param01 {
+	entrypoint main = tuple_param01.main;
+}
+component tuple_param01 {
+	method main(arg: Array<string>) -> int {
+		return test(0, 0);
+	}
+	method test(pair: (int, int)) -> int {
+		return pair.0;
+	}
+}

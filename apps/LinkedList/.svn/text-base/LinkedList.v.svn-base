@@ -1,0 +1,124 @@
+/*
+ * This program implements a simple doubly-linked list. This
+ * program performs some simple operations on linked lists
+ * and is used to measure the performance overhead of compiler
+ * optimizations.
+ *
+ * @author Ben L. Titzer
+ */
+program LinkedList {
+	entrypoint main = LinkedList.start;
+}
+
+component LinkedList {
+
+	field list: List;
+	field finder: Finder;
+
+	constructor() {
+		finder = new Finder();
+		list = new List();
+		list.add(new Data(0));
+		list.add(new Data(1));
+		list.add(new Data(2));
+		list.add(new Data(3));
+		list.add(new Data(4));
+		list.add(new Data(5));
+		list.add(new Data(6));
+		list.add(new Data(7));
+		list.add(new Data(8));
+		list.add(new Data(9));
+		list.add(new Data(10));
+		list.add(new Data(11));
+		list.add(new Data(12));
+	}
+
+	method start() {
+		local i: int;
+		for (i = 0; i < 1000; i++ ) {
+			finder.reset(7);
+		list.apply(print);
+			list.apply(finder.compare);
+			list.apply(print);
+		}
+	}
+
+	method print(d: Data) {
+	// do nothing
+	}
+}
+
+class List {
+	field head: Link;
+	field tail: Link;
+
+	method add(d: Data) {
+		if ( head == null ) {
+			head = tail = new Link(d);
+		} else {
+			local next = new Link(d);
+			tail.next = next;
+			next.prev = tail;
+		tail = tail.next;
+		}
+	}
+
+	method apply(f: function(Data)) {
+		local pos = head;
+		while ( pos != null ) {
+			f(pos.data);
+			pos = pos.next;
+		}
+	}
+
+	method applyRev(f: function(Data)) {
+		local pos = tail;
+		while ( pos != null ) {
+			f(pos.data);
+			pos = pos.prev;
+		}
+	}
+}
+
+class Link {
+	field data: Data;
+	field next: Link;
+	field prev: Link;
+
+	constructor(d: Data) {
+		data = d;
+	}
+
+	method insert(d: Data) {
+		local next = new Link(d);
+		next.next = this.next;
+		this.next.prev = next;
+		this.next = next;
+	}
+}
+
+class Data {
+	field val: int;
+	constructor(i: int) {
+		val = i;
+	}
+}
+
+class Finder {
+	field found: boolean;
+	field val: int;
+	field index: int;
+
+	method compare(d: Data) {
+		if ( !found ) {
+			index++;
+			if ( val == d.val ) found = true;
+		}
+	}
+
+	method reset(v: int) {
+		val = v;
+		found = false;
+		index = 0;
+	}
+}

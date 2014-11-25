@@ -1,0 +1,10 @@
+//@seman = UnreachableCode @ 5:25
+component unreach10 {
+	method test() -> int {
+		while (true) {
+			continue;
+			continue;
+		}
+		return 0;
+	}
+}

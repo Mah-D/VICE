@@ -1,0 +1,7 @@
+//@seman = MemberRedefined @ 6:15
+class B {
+	field m: int;
+}
+class C extends B {
+	field m: int;
+}

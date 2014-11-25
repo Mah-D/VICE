@@ -1,0 +1,9 @@
+AVR=$(LIB)/avr
+MICA2=$(LIB)/mica2
+UTIL=$(LIB)/util
+CONFIG=../config.avr
+AVRLIB=$(MICA2)/Mica2.v $(MICA2)/LED.v $(MICA2)/Terminal.v $(MICA2)/HPLChipcon.v $(MICA2)/CC1000Control.v $(MICA2)/CC1000Radio.v $(AVR)/Timer0.v $(AVR)/Port.v $(AVR)/ADC.v $(AVR)/SPI.v $(AVR)/USART.v $(AVR)/MCU.v  $(AVR)/HPLPowerManagement.v $(UTIL)/TOS_Msg.v $(UTIL)/Queue.v $(UTIL)/ArrayUtil.v $(UTIL)/crc.v
+LIBRARIES=$(AVRLIB)
+
+%.srec:%.elf
+	avr-objcopy --output-target=srec $< $@

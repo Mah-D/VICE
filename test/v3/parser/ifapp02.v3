@@ -1,0 +1,4 @@
+//@parse
+class C {
+    method m() -> bool { if (!m()) ; return false; }
+}

@@ -1,0 +1,7 @@
+//@parse
+
+component get04 {
+   method m() {
+      local get: int;
+   }
+}

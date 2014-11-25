@@ -1,0 +1,11 @@
+//@seman
+class V<T> {
+	method m();
+}
+component pts_deep01 {
+	method t() {
+		local x: V<V<V<int>>> = null;
+		m(x);
+	}
+	method m<A>(l: V<V<V<A>>>) { l.m(); }
+}

@@ -1,0 +1,6 @@
+//@parse
+class instof03b {
+   method m() {
+      if ( <: (Type<int>) x) ;
+   }
+}

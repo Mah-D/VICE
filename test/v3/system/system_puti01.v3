@@ -1,0 +1,6 @@
+component system_puti01 {
+	method main(args: Array<string>) {
+		System.puti(33);
+		System.puti(-11);
+	}
+}

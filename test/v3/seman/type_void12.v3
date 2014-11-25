@@ -1,0 +1,6 @@
+//@seman
+class C<T> {
+}
+component type_void12 {
+	field c: C<void> = new C<void>();
+}

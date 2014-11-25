@@ -1,0 +1,14 @@
+//@execute 0=false
+class ptex_delcmp05_c<T> {
+	method m(a: T) -> void;
+}
+component ptex_delcmp05 {
+	method main(arg: int) -> bool {
+		local a = new ptex_delcmp05_c<int>();
+		local b = new ptex_delcmp05_c<bool>();
+		return cmp(a.m, b.m);
+	}
+	method cmp<A, B>(a: A -> void, b: B -> void) -> bool {
+		return a == b;
+	}
+}

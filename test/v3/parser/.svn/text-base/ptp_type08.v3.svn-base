@@ -1,0 +1,4 @@
+//@parse
+class type08<X> {
+    field f: Array<Array<type08<X>>>;
+}

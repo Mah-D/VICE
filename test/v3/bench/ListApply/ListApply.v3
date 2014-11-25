@@ -1,0 +1,61 @@
+//
+// A program to test the performance of the functional implementation of lists
+//
+program ListApply {
+	entrypoint main = ListApply.main;
+}
+
+class List<T> {
+	value head: T;
+	value tail: List<T>;
+	new(head, tail) { }
+}
+
+component Lists {
+	method apply<T>(list: List<T>, func: T -> void) {
+		while (list != null) {
+			func(list.head);
+			list = list.tail;
+		}
+	}
+	method applyRev<T>(list: List<T>, func: T -> void) {
+		if (list.tail != null) applyRev(list.tail, func);
+		func(list.head);
+	}
+}
+
+component ListApply {
+	value LENGTH: int = 100;
+	value ITERATIONS: int = 1000;
+	field cumul: int = 0;
+	method main(args: Array<Array<char>>) -> int {
+		local list: List<int> = null;
+		local i = 0;
+		while (i < LENGTH) {
+			list = new List<int>(i, list);
+			i = i + 1;
+		}
+		local j = 0;
+		while (j < ITERATIONS) {
+			Lists.apply(list, nothing);
+			Lists.apply(list, sum);
+			Lists.applyRev(list, nothing);
+			Lists.applyRev(list, sum);
+			print(j);
+			j = j + 1;
+		}
+		Lists.apply(list, print);
+		Lists.applyRev(list, print);
+		return cumul;
+	}
+	method nothing(val: int) {
+		// do nothing.
+	}
+	method print(val: int) {
+		System.puti(val);
+		System.putc(' ');
+	}
+	method sum(val: int) {
+		cumul = cumul + val;
+	}
+}

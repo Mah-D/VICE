@@ -1,0 +1,9 @@
+//@parse
+
+
+class type23 {
+    field f: 1 -> void;
+    field g: 2 -> 2;
+    field h: 3 -> 3;
+    field i: void -> void;
+}

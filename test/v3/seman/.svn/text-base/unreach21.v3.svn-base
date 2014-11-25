@@ -1,0 +1,11 @@
+//@seman = UnreachableCode @ 7:8 
+
+class unreach6 {
+    
+    method testm() {
+        return ();
+        {
+            local foo: int = 0;
+        }
+    }
+}

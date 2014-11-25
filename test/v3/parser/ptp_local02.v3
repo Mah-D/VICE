@@ -1,0 +1,6 @@
+//@parse
+class local02 {
+    method m() {
+       local g: type<X, Y>;
+    }
+}

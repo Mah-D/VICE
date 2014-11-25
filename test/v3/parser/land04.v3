@@ -1,0 +1,4 @@
+//@parse
+class land04 {
+	method m() -> bool { return <:land04(null) && false == false; }
+}

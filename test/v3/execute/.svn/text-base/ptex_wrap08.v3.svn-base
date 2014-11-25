@@ -1,0 +1,21 @@
+//@execute 0=42; 1=0; 2=0; 3=!NullCheckException; 4=0; 5=42
+
+class ptex_wrap08_w<T> {
+    field val: T;
+}
+
+component ptex_wrap08 {
+
+    field a: ptex_wrap08_w<int> = new ptex_wrap08_w<int>();
+    field b: ptex_wrap08_w<int> = new ptex_wrap08_w<int>();
+    field c: ptex_wrap08_w<Array<int>> = new ptex_wrap08_w<Array<int>>();
+    field d: ptex_wrap08_w<char> = new ptex_wrap08_w<char>();
+
+    method main(arg: int) -> int {
+	if ( arg == 1 ) return a.val;
+	if ( arg == 2 ) return b.val;
+	if ( arg == 3 ) return c.val(0);
+	if ( arg == 4 ) return d.val;
+	return 42;
+    }
+}

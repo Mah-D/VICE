@@ -1,0 +1,53 @@
+8
+
+dir
+154
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack/virgil/apps/TestSPI
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack
+
+
+
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f6311483-164f-4dc9-a362-1d9d7795f10a
+
+Makefile
+file
+
+
+
+
+2010-09-30T20:59:33.140000Z
+774d4ce2665c44d2be862473ba075b46
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+TestSPI.v
+file
+
+
+
+
+2010-09-30T20:59:33.133000Z
+581e1803a2aa803dd4b57864ec2fe052
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+has-props
+

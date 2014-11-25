@@ -1,0 +1,17 @@
+component system_putc01 {
+	method main(args: Array<string>) {
+		System.putc('H');
+		System.putc('e');
+		System.putc('l');
+		System.putc('l');
+		System.putc('o');
+		System.putc(' ');
+		System.putc('W');
+		System.putc('o');
+		System.putc('r');
+		System.putc('l');
+		System.putc('d');
+		System.putc('!');
+		System.putc('\n');
+	}
+}

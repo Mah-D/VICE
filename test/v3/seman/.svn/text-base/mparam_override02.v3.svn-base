@@ -1,0 +1,8 @@
+//@seman
+class C<X> {
+	method m<T>(v: T, x: X) {}
+}
+
+class D<Y> extends C<Y> {
+	method m<P>(v: P, y: Y) {}
+}

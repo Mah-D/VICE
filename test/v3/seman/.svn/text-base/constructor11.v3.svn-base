@@ -1,0 +1,7 @@
+//@seman = InheritanceError @ 6:35
+
+class new11 {
+
+    new(a: int, b: int) : super(a,b) {
+    }
+}

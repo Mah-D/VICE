@@ -1,0 +1,11 @@
+//@execute 0 = 0
+class object01_o {
+}
+
+component object01 {
+	field obj: object01_o = new object01_o();
+
+	method main(arg: int) -> int {
+		return 0;
+	}
+}

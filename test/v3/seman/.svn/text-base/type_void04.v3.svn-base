@@ -1,0 +1,6 @@
+//@seman
+class type_void04 {
+	method test1(b: int, val: void) -> void {
+		test1(0, ());
+	}
+}

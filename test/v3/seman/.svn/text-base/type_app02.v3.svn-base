@@ -1,0 +1,8 @@
+//@seman = ArityMismatch @ 6:12
+
+class type05 {
+    
+    method testm(a: int) {
+        testm();
+    }
+}

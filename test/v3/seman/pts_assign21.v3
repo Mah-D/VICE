@@ -1,0 +1,10 @@
+//@seman =TypeError @ 8:14
+
+class assign21<X, Y> {
+   field f: Array<X>;
+
+   method m(x: Y) {
+      f(0) = x;
+      x = f(0);
+   }
+}

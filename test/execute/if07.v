@@ -1,0 +1,11 @@
+// @Harness: v2-exec
+// @Test: if statements and ternary expressions
+// @Result: 0=5, 1=5, 2=3, 3=4, 4=4, 5=4
+
+component if07 {
+    
+    method main(arg: int): int {
+	if ( arg > 1 ) if ( arg == 2 ) return 3; else return 4;
+	return 5;
+    }
+}

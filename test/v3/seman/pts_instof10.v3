@@ -1,0 +1,8 @@
+//@seman
+class A<X> { } 
+
+class instof10 {
+   method m<T>(x: A<T>) {
+      local f = <: (A<int>) x;
+   }
+}

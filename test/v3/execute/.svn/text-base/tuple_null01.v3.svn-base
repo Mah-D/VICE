@@ -1,0 +1,7 @@
+//@execute 0=0
+component tuple_null01 {
+	field f: (int, int);
+	method main(arg: int) -> int {
+		return f.0;
+	}
+}

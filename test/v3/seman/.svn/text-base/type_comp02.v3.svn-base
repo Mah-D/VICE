@@ -1,0 +1,11 @@
+//@seman
+
+class local5 {
+    
+    method testm() {
+        local foo: local5c;
+    }
+}
+
+component local5c {
+}

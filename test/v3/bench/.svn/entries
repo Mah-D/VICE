@@ -1,0 +1,70 @@
+8
+
+dir
+154
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack/virgil/test/v3/bench
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack
+
+
+
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f6311483-164f-4dc9-a362-1d9d7795f10a
+
+Ackermann
+dir
+
+BinaryTrees
+dir
+
+BubbleSort
+dir
+
+Decoder
+dir
+
+Fannkuch
+dir
+
+LinkedList
+dir
+
+ListApply
+dir
+
+ListMap
+dir
+
+MatrixMult
+dir
+
+PolyTree
+dir
+
+PrimeSieve
+dir
+
+Random
+dir
+
+ReverseComp
+dir
+
+WordCount
+dir
+

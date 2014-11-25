@@ -1,0 +1,6 @@
+//@seman
+class array19 {
+    method testm() -> int {
+        return new Array<int>(2).length;
+    }
+}

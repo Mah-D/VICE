@@ -1,0 +1,39 @@
+//
+// The famous Ackermann function.
+//
+program Ackermann {
+	entrypoint main = Ackermann.main;
+}
+
+component Ackermann {
+	method main(args: Array<Array<char>>) -> int {
+		local m = 3, n = 8;
+		if (args.length > 1) {
+			m = parseInt(args(0));
+			n = parseInt(args(1));
+		}
+		local result = ack(m, n);
+		System.puti(result);
+		System.putc('\n');
+		return result;
+	}
+	method ack(m: int, n: int) -> int {
+		if (m == 0) return n + 1;
+		if (n == 0) return ack(m - 1, 1);
+		return ack(m - 1, ack(m, n - 1));
+	}
+
+	method parseInt(a: Array<char>) -> int {
+		local accum = 0;
+		local cntr = 0;
+		local zero = ::int('0');
+
+		while (cntr < a.length) {
+			local dig = ::int(a(cntr));
+			accum = accum * 10 + dig - zero; 
+			cntr = cntr + 1;
+		}
+
+		return accum;
+	}
+}

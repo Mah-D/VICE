@@ -1,0 +1,20 @@
+//@execute 0=false; 1=true; 2=true; 3=false
+
+class ptex_cast03_a<X> { } 
+
+component ptex_cast03 {
+
+   field a: ptex_cast03_a<int> = new ptex_cast03_a<int>();
+
+   method m<T>(x: ptex_cast03_a<T>) -> bool {
+      local f = :: (ptex_cast03_a<int>) x;
+      return true;
+   }
+
+   method main(arg: int) -> bool {
+       local meth: (ptex_cast03_a<int>) -> bool = m;
+       if ( arg == 1 ) return meth(null);
+       if ( arg == 2 ) return meth(a);
+       return false;  
+   }
+}

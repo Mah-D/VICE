@@ -1,0 +1,5 @@
+component system_puts01 {
+	method main(args: Array<string>) {
+		System.puts("Hello world!\n");
+	}
+}

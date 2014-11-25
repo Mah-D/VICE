@@ -1,0 +1,40 @@
+//@seman
+class object {
+  field name: Array<char>;
+}
+
+class ht_link {
+  field obj: object;
+  field link: ht_link;
+}
+
+class hashtable {
+ 
+  field size: int;
+  field table: Array<ht_link>;
+
+  method app(f: object -> void) {
+     local cntr = 0;
+     while ( cntr < size ) {
+       local head = table(cntr);
+       while (head != null) {
+         f(head.obj);
+         head = head.link;
+       }
+     cntr = cntr + 1;
+     }
+      
+  }
+}
+
+class test {
+
+  method testm() {
+    local ht = new hashtable();
+    ht.app(this.visit);
+  }
+
+  method visit(o: object) {
+  }
+
+}

@@ -1,0 +1,11 @@
+//@execute 0 = 32
+component init02 {
+	field f: int = init02_b.g;
+	method main(args: int) -> int {
+		return f;
+	}
+}
+
+component init02_b {
+	field g: int = 32;
+}

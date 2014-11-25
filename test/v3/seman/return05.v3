@@ -1,0 +1,8 @@
+//@seman = TypeError @ 7:15
+
+class return5 {
+    
+    method testm() {
+        if ( false ) return 5;
+    }
+}

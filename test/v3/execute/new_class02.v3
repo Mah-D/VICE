@@ -1,0 +1,11 @@
+//@execute 0 = 42
+component new_class02 {
+	method main(arg: int) -> int {
+		return new new02_a(42).x;
+	}
+}
+
+class new02_a {
+	value x: int;
+	new (x) { }
+}

@@ -1,0 +1,27 @@
+//@execute 0=10
+class ptex_apply01_l<T> {
+	value head: T;
+	value tail: ptex_apply01_l<T>;
+	new(head, tail) { }
+}
+component ptex_apply01 {
+	field listA: ptex_apply01_l<int> = new ptex_apply01_l<int>(10, null);
+	field listB: ptex_apply01_l<bool> = new ptex_apply01_l<bool>(false, null);
+	method main(arg: int) -> int {
+		apply(listA, print_int);
+		apply(listB, print_bool);
+		return 10;
+	}
+	method print_int(val: int) {
+		// do nothing.
+	}
+	method print_bool(val: bool) {
+		// do nothing.
+	}
+	method apply<T>(list: ptex_apply01_l<T>, func: T -> void) {
+		while (list != null) {
+			func(list.head);
+			list = list.tail;
+		}
+	}
+}

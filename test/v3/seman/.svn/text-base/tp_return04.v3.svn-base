@@ -1,0 +1,13 @@
+//@seman
+class C {
+	field f: L<int>;
+	method m<T>() -> L<T> { 
+		return new L<T>();
+	}
+	method caller() {
+		f = m();
+	}
+}
+
+class L<T> {
+}

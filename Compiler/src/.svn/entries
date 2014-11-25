@@ -1,0 +1,37 @@
+8
+
+dir
+154
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack/virgil/Compiler/src
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack
+
+
+
+2010-10-16T00:09:10.150862Z
+154
+gbb21
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f6311483-164f-4dc9-a362-1d9d7795f10a
+
+aeneas
+dir
+
+cck
+dir
+
+vpc
+dir
+

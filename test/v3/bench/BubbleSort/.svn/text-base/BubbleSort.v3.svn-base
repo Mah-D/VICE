@@ -1,0 +1,68 @@
+// A simple bubble sort program to test array performance and optimizations
+program BubbleSort {
+	entrypoint main = BubbleSort.main;
+}
+
+component BubbleSort {
+	field array: Array<int>;
+
+	method main(args: Array<Array<char>>) {
+		local max = 500;
+		if (args.length > 0) max = parseInt(args(0));
+		init(max);
+		bubblesort();
+		print();
+	}
+
+	method init(max: int) {
+		array = new Array<int>(max);
+		local i = 0;
+		local f = max - 13;
+		local h = ((max - 117) * (max - 13)) / max;
+		while (i < array.length) {
+			array(i) = (f * i) % h - (h / 2);
+			i = i + 1;
+		}
+		print();
+	}
+
+	method bubblesort() {
+		local i = 0;
+
+		while (i < array.length - 1) {
+			local j = 0;
+			while (j < array.length - 1) {
+				if (array(j) > array(j + 1)) {
+					local tmp = array(j);
+					array(j) = array(j + 1);
+					array(j + 1) = tmp;
+				}
+				j = j + 1;
+			}
+			i = i + 1;
+		}
+	}
+
+	method print() {
+		local i = 0;
+
+		while (i < array.length) {
+			System.puti(array(i));
+			System.putc('\n');
+			i = i + 1;
+		}
+	}
+	method parseInt(a: Array<char>) -> int {
+		local accum = 0;
+		local cntr = 0;
+		local zero = ::int('0');
+
+		while (cntr < a.length) {
+			local dig = ::int(a(cntr));
+			accum = accum * 10 + dig - zero; 
+			cntr = cntr + 1;
+		}
+
+		return accum;
+	}
+}

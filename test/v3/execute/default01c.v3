@@ -1,0 +1,13 @@
+//@execute 0=0
+
+class default01c_1 {
+    field foo: int;
+}
+
+component default01c {
+    field baz: default01c_1 = new default01c_1();
+
+    method main(arg: int) -> int {
+	return baz.foo;
+    }
+}

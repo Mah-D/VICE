@@ -1,0 +1,11 @@
+//@execute 0=true
+class logical09_a {
+	method m() -> bool { return true; }
+}
+component logical09 {
+	value f: logical09_a = new logical09_a();
+	method main(arg: int) -> bool {
+		local a = f.m() && f.m();
+		return a;
+	}
+}

@@ -1,0 +1,9 @@
+//@execute = 9
+component void01 {
+	method main() -> int {
+		meth();
+		return 9;
+	}
+	method meth() {
+	}
+}

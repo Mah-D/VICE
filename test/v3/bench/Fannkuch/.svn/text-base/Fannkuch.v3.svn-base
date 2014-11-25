@@ -1,0 +1,117 @@
+//
+// This program is adapted from the programming language shootout
+// benchmarks and is used to measure the impact of various compiler
+// optimizations on run time performance. The primary operations
+// are array permutations.
+// @author Ben L. Titzer
+//
+program Fannkuch {
+	entrypoint main = Fannkuch.main;
+}
+
+component Fannkuch {
+	field MAX: int = 20;
+
+	field fperm: Array<int> = new Array<int>(MAX);
+	field fperm1: Array<int> = new Array<int>(MAX);
+	field fcount: Array<int> = new Array<int>(MAX);
+	field fmaxPerm: Array<int> = new Array<int>(MAX);
+
+	method fannkuch(n: int) -> int {
+		local check = 0;
+		local maxFlipsCount = 0;
+		local m = n - 1;
+		local i: int, j: int;
+
+		local perm = fperm;				 // FUNCTIONALITY: runtime allocation
+		local perm1 = fperm1;
+		local count = fcount;
+		local maxPerm = fmaxPerm;
+
+		i = 0;
+		while (i < n) { perm1(i) = i; i = i + 1; }
+
+		local r = n;
+
+		while (true) {
+			// write-out the first 30 permutations
+			if (check < 30) {
+				i = 0;
+				while (i < n) { System.puti(perm1(i) + 1); i = i + 1; }
+				System.putc('\n');
+				check = check + 1;
+			}
+
+			while (r != 1) { 
+				count(r - 1) = r; 
+				r = r - 1; 
+			}
+
+			if (!(perm1(0) == 0 || perm1(m) == m)) {
+				copy(perm, perm1, n);		// OPTIMIZATION: inlining
+
+				local flipsCount = 0;
+				local k = perm(0);
+
+				while (k != 0) {
+					local k2 = (k + 1) / 2;		// OPTIMIZATION: strength reduction
+					j = 0;
+					while (j < k2) {
+						local temp = perm(j); 
+						perm(j) = perm(k - j); 
+						perm(k - j) = temp;
+						j = j + 1;
+					}
+					flipsCount = flipsCount + 1;
+					k = perm(0);
+				}
+
+				if (flipsCount > maxFlipsCount) {
+					maxFlipsCount = flipsCount;
+					copy(maxPerm, perm1, n);		// OPTIMIZATION: inlining
+				}
+			}
+
+			while (true) {
+				if (r == n) return maxFlipsCount;
+				local perm0 = perm1(0);
+				i = 0;
+				while (i < r) {
+					perm1(i) = perm1(i + 1);
+					i = i + 1;
+				}
+				perm1(r) = perm0;
+
+				count(r) = count(r) - 1;
+				if (count(r) > 0) break;
+				r = r + 1;
+			}
+		}
+		return maxFlipsCount;
+	}
+
+	method main(args: Array<Array<char>>) -> int {
+		local max = 6;
+		if (args.length > 0) max = parseInt(args(0));
+		return fannkuch(max);
+	}
+
+	method copy(a: Array<int>, b: Array<int>, n: int) {
+		local j = 0;
+		while (j < n) { a(j) = b(j); j = j + 1; }
+	}
+
+	method parseInt(a: Array<char>) -> int {
+		local accum = 0;
+		local cntr = 0;
+		local zero = ::int('0');
+
+		while (cntr < a.length) {
+			local dig = ::int(a(cntr));
+			accum = accum * 10 + dig - zero; 
+			cntr = cntr + 1;
+		}
+
+		return accum;
+	}
+}

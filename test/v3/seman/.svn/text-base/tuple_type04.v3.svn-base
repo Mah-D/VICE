@@ -1,0 +1,6 @@
+//@seman
+
+class tuple_type03 {
+    field f: (int, bool) = (1, false);
+    field g: (int, bool) = f;
+}

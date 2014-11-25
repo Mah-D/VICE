@@ -1,0 +1,7 @@
+//@execute 0 = 0
+component array34 {
+	field array: Array<int> = new Array<int>(1);
+	method main(a: int) -> int {
+		return array(0);
+	}
+}

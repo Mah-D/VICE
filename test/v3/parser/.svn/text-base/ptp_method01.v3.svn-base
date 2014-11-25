@@ -1,0 +1,9 @@
+//@parse
+
+
+class method01 {
+          method m1() -> tuple<X>;
+
+  private method m2() -> tuple<X>;
+
+}

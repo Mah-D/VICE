@@ -1,0 +1,8 @@
+//@seman
+class C {
+	method m<T>(v: L<T>) {}
+	method caller() { m(new L<int>()); }
+}
+
+class L<T> {
+}

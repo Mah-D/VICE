@@ -1,0 +1,9 @@
+//@execute 0=1
+class type_void11_c<T> {
+}
+component type_void11 {
+	method main(arg: int) -> int {
+		local c = new type_void11_c<void>();
+		return 1;
+	}
+}

@@ -1,0 +1,11 @@
+//@execute 0=1
+class type_void13_c<T> {
+	method m(a: T, b: T) -> T { return a; }
+}
+component type_void13 {
+	method main(arg: int) -> int {
+		local c = new type_void13_c<void>();
+		if (c.m((), ()) == ()) return 1;
+		return 2;
+	}
+}

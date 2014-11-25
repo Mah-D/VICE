@@ -1,0 +1,8 @@
+//@seman = ParseError @ 6:16
+
+class type36 {
+    
+    method testm() {
+        local a: int = 2 >> null;
+    }
+}

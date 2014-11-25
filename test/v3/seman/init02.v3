@@ -1,0 +1,5 @@
+//@seman = 
+class init02 {
+	field f: int;
+	new(f: int) { }
+}

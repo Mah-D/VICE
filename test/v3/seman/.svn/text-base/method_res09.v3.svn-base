@@ -1,0 +1,7 @@
+//@seman
+class method_res09 {
+    method foo() { }
+    method testm() {
+        foo();
+    }
+}

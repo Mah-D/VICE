@@ -1,0 +1,14 @@
+//@seman =TypeError @ 13:34
+
+class new08 {
+
+    field f: int;
+
+    new(a: int) {
+        f = a;
+    }
+
+    method testm() -> new08 {
+        return new new08(false);
+    }
+}

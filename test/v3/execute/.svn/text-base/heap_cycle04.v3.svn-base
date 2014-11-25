@@ -1,0 +1,17 @@
+//@execute 0=42
+class heap_cycle04_o {
+	field val: int = 42;
+	field array: Array<heap_cycle04_o> = [this];
+}
+component heap_cycle04 {
+	field root: heap_cycle04_o = new heap_cycle04_o();
+	method main(arg: int) -> int {
+		local i = 0;
+		local r = root;
+		while (i < 100) {
+			i = i + 1;
+			r = r.array(0);
+		}
+		return r.val;
+	}
+}

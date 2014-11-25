@@ -1,0 +1,11 @@
+//@execute 0=0; 1=1
+class value01_a {
+	value v: int;
+	new(v) { }
+}
+component value01 {
+	method main(arg: int) -> int {
+		new value01_a(arg);
+		return arg;
+	}
+}

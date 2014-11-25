@@ -1,0 +1,35 @@
+//@execute 0=42; 1=0; 2=0; 3=0; 4=0; 5=42
+
+component alloc_array04 {
+    field a: Array<int>  = a_int();
+    field b: Array<bool> = a_bool();
+    field c: Array<char> = a_char();
+    field d: Array<char> = a_str();
+
+    method a_int() -> Array<int> {
+	local a: Array<int> = [];
+        return a;
+    }
+
+    method a_bool() -> Array<bool> {
+	local a: Array<bool> = [];
+        return a;
+    }
+
+    method a_char() -> Array<char> {
+	local a: Array<char> = [];
+        return a;
+    }
+
+    method a_str() -> Array<char> {
+        return "";
+    }
+
+    method main(arg: int) -> int {
+	if ( arg == 1 ) return a.length;
+	if ( arg == 2 ) return b.length;
+	if ( arg == 3 ) return c.length;
+	if ( arg == 4 ) return d.length;
+	return 42;
+    }
+}

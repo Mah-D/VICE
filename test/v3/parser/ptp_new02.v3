@@ -1,0 +1,6 @@
+//@parse
+class new02 {
+   method m() {
+      local f = new Type<X, Y>();
+   }
+}

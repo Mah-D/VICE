@@ -1,0 +1,5 @@
+//@seman
+class assign01<X> {
+   field f: X;
+   field g: X = f;
+}

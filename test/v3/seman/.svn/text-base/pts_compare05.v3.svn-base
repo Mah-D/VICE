@@ -1,0 +1,6 @@
+//@seman
+class compare05<X> {
+	field f: compare05<int>;
+	field b: bool = neq(f, f);
+	method neq<T>(a: T, b: T) -> bool { return a != b; }
+}

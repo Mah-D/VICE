@@ -1,0 +1,7 @@
+//@execute 0=true
+component logical08 {
+	method m() -> bool { return true; }
+	method main(arg: int) -> bool {
+		return m() && m();
+	}
+}

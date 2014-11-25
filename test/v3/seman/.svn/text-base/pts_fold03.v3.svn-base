@@ -1,0 +1,32 @@
+//@seman
+component fold03 {
+    field a: int;
+    field b: int;
+
+    new() {
+        local array = new Array<int>(1000);
+	a = fold(add, array, array.length - 1);
+        b = fold2(mult, array, array.length - 1);
+    }
+
+    method add(a: int, b: int) -> int {
+	return a + b;
+    }
+
+    method mult(a: int, b: int) -> int {
+        return a * b;
+    }
+
+    // iterative version of fold
+    method fold(f: (int, int) -> int, a: Array<int>, m: int) -> int {
+	if (m == 0) return a(0);
+	else return f(fold(f, a, m-1), a(m));
+    }
+
+    method fold2<T>(f: (T, T) -> T, a: Array<T>, m: int) -> T {
+	if ( m == 0 ) return a(0);
+	local p: T = fold2(f, a, m-1);
+	local r: T = f(p, a(m));
+	return r;
+    }
+}

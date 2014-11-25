@@ -1,0 +1,6 @@
+//@seman
+class array03 {
+    method testm(a: Array<int>) {
+        a(0) = 0;
+    }
+}

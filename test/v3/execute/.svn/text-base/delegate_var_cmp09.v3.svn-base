@@ -1,0 +1,14 @@
+//@execute 0=true
+class delegate_var_cmp09_a {
+	method m() -> delegate_var_cmp09_b { return delegate_var_cmp09.obj; }
+}
+class delegate_var_cmp09_b extends delegate_var_cmp09_a {
+}
+component delegate_var_cmp09 {
+	field obj: delegate_var_cmp09_b = new delegate_var_cmp09_b();
+	field func: void -> delegate_var_cmp09_a = obj.m;
+	method main(arg: int) -> bool {
+		local f: void -> delegate_var_cmp09_a = func;
+		return obj.m().m == func;
+	}
+}

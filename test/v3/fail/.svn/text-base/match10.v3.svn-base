@@ -1,0 +1,10 @@
+//@seman = TypeError @ 9:24
+
+class switch10 {
+    method testm(a: int) -> int {
+        match(a) {
+            'a': ;
+        }
+        return 0;
+    }
+}    

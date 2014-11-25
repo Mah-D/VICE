@@ -1,0 +1,5 @@
+//@seman
+class type_func04 {
+    field a: Array<void -> int>;
+    method testm(b: Array<void -> int>) { a = b; }
+}

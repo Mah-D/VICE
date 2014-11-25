@@ -1,0 +1,6 @@
+//@parse
+class new04 {
+   method m() {
+      local f = new Type<Array<int>, Y>();
+   }
+}

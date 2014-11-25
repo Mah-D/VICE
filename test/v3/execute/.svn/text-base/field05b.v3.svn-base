@@ -1,0 +1,18 @@
+//@execute 0='*'; 1='h'; 2='e'; 3='l'; 4='l'; 5='o'; 6='*'
+
+class field05b_obj {
+    field a: Array<char> = "hello";
+}
+
+component field05b {
+    field foo: field05b_obj = new field05b_obj();
+
+    method main(arg: int) -> char {
+	if ( arg == 1 ) return foo.a(0);
+	if ( arg == 2 ) return foo.a(1);
+	if ( arg == 3 ) return foo.a(2);
+	if ( arg == 4 ) return foo.a(3);
+	if ( arg == 5 ) return foo.a(4);
+	return '*';
+    }
+}

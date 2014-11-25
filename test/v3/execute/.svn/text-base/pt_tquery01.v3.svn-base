@@ -1,0 +1,12 @@
+//@execute 0=true; 1=false
+class pt_tquery01_a<T> {
+}
+component pt_tquery01 {
+	field a: pt_tquery01_a<int> = new pt_tquery01_a<int>();
+	field b: pt_tquery01_a<bool> = new pt_tquery01_a<bool>();
+	method main(arg: int) -> bool {
+		if (arg == 0) return test(a);
+		return test(b);
+	}
+	method test<T>(o: pt_tquery01_a<T>) -> bool { return <:pt_tquery01_a<int>(o); }
+}

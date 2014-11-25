@@ -1,0 +1,9 @@
+//@execute 0 = 7
+class tuple06_o {
+	field val: (int, int) = (3, 7);
+}
+component tuple06 {
+    method main(arg: int) -> int {
+	return new tuple06_o().val.1;
+    }
+}

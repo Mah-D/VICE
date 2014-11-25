@@ -1,0 +1,8 @@
+//@seman
+
+
+class new10<X> {
+   method m() {
+      local f = new Array<X>(1);
+   }
+}

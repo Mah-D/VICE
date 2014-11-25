@@ -1,0 +1,4 @@
+//@parse
+class land02 {
+	method m() -> bool { return true == true && false == false; }
+}

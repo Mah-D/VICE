@@ -1,0 +1,7 @@
+//@seman
+component array26 {
+    field a_01: Array<void -> int> = [m, m];
+    method m() -> int {
+	return 0;
+    }
+}

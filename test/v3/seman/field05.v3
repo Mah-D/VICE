@@ -1,0 +1,5 @@
+//@seman
+
+component field5 {
+    field testf: void;
+}

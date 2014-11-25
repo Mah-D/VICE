@@ -1,0 +1,18 @@
+//@execute 0 = 7
+program array_fill { entrypoint main = array_fill02.main; }
+component array_fill02 {
+	field array: Array<int> = new Array<int>(12);
+
+	method main(arg: int) -> int {
+		local i = 0;
+		while (i < array.length) {
+			local j = 0;
+			while (j < 4) {
+				array(i + j) = i + j;
+				j = j + 1;
+			}
+			i = i + j;
+		}
+		return array(7);
+	}
+}

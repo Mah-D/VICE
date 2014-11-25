@@ -1,0 +1,6 @@
+//@seman
+class type64 {
+    method testm() {
+        local a: Array<int> = [];
+    }
+}

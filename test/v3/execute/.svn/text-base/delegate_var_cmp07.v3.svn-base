@@ -1,0 +1,14 @@
+//@execute 0=true
+class delegate_var_cmp07_a {
+	method m() -> delegate_var_cmp07_a { return null; }
+}
+class delegate_var_cmp07_b extends delegate_var_cmp07_a {
+	method m() -> delegate_var_cmp07_b { return delegate_var_cmp07.obj; }
+}
+component delegate_var_cmp07 {
+	field obj: delegate_var_cmp07_b = new delegate_var_cmp07_b();
+	method main(arg: int) -> bool {
+		local f: void -> delegate_var_cmp07_a = obj.m;
+		return obj.m().m().m == f;
+	}
+}

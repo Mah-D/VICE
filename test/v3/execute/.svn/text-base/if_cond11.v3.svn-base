@@ -1,0 +1,25 @@
+//@execute 0=0
+class if_cond11_a {
+}
+class if_cond11_b {
+}
+class if_cond11_c {
+}
+component if_cond11 {
+	method main(arg: int) -> int {
+		m1(null, null);
+		return 0;
+	}
+	method m1(expr: if_cond11_a, outer: if_cond11_b) -> if_cond11_b {
+		local arity = 0;
+		local etypes: Array<if_cond11_b>;
+		if (outer == null || arity != (etypes = toArray(outer)).length) {
+			etypes = null;
+		}
+		typeCheckExpr(expr, etypes);
+		return null;
+	}
+
+	method toArray(expr: if_cond11_b) -> Array<if_cond11_b> { return null; }
+	method typeCheckExpr(expr: if_cond11_a, t: Array<if_cond11_b>) { }
+}

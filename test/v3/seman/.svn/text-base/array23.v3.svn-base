@@ -1,0 +1,7 @@
+//@seman
+class type66 {
+    field a: Array<int> = [];
+    method testm() {
+        local a: Array<int> = [];
+    }
+}

@@ -1,0 +1,4 @@
+//@parse
+class type03<X> {
+    field f: Array<X>;
+}

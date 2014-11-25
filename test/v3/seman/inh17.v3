@@ -1,0 +1,14 @@
+//@seman
+class inh17_a {
+    method getf() -> void -> int { return val; }
+    private method val() -> int { return 1; }
+}
+
+class inh17_b extends inh17_a {
+    private method val() -> int { return 2; }
+}
+
+component inh17 {
+    field a: void -> int = new inh17_a().getf();
+    field b: void -> int = new inh17_b().getf();
+}

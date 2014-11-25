@@ -1,0 +1,39 @@
+//@execute 0=42; 1=11; 2=21; 3=31; 4=7; 5=42
+
+class virtual15_0 {
+    method m0() -> int { return -1; }
+    method m1() -> int { return -3; }
+    method m2() -> int { return -5; }
+    method foo() -> int { return 7; }
+    method m3() -> int { return -8; }
+    method m4() -> int { return -9; }
+}
+
+class virtual15_1 extends virtual15_0 {
+    method val() -> int { return 11; }
+    method m4() -> int { return -10; }
+}
+
+class virtual15_2 extends virtual15_1 {
+    method val() -> int { return 21; }
+    method m3() -> int { return -2; }
+}
+
+class virtual15_3 extends virtual15_1 {
+    method val() -> int { return 31; }
+    method m1() -> int { return -6; }
+}
+
+component virtual15 {
+    field a: virtual15_1 = new virtual15_1();
+    field b: virtual15_1 = new virtual15_2();
+    field c: virtual15_1 = new virtual15_3();
+
+    method main(arg: int) -> int {
+	if ( arg == 1 ) return a.val();
+	if ( arg == 2 ) return b.val();
+	if ( arg == 3 ) return c.val();
+	if ( arg == 4 ) return a.foo();
+	return 42;
+    }
+}

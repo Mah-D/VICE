@@ -1,0 +1,184 @@
+// the "interface" modifier can turn any top-level declaration into a interface declaration
+
+class C {
+	method m() -> int;
+}
+
+class interface I {
+	method m() -> int;
+}
+
+type state <: int {
+	value CLOSED = 0;
+	value OPEN = 1;
+	value DONE = 2;
+}
+
+type interface state {
+	value CLOSED, OPEN, DONE;
+}
+
+component K {
+	value GLOBAL: int = 0;
+	method m() -> int;
+}
+
+component interface I {
+	value GLOBAL: int;
+	method m() -> int;
+}
+
+// types can be declared to implement interfaces
+
+type T implements state {
+	value CLOSED: T = new T();
+	value OPEN: T = new T();
+	value DONE: T = new T();
+}
+
+// as can classes
+
+class C implements I {
+	method m() -> int;
+}
+
+// and components
+
+component K implements I {
+	value GLOBAL: int = 0;
+	method m() -> int;
+}
+
+// however, interfaces are not types, but constraints on types.
+
+class C<T | T implements I> {
+}
+
+// a possible shorthand could be an operator such as [: <: -: ::, or even "implements"
+
+// interfaces can be implemented at the declaration site or at the usage site.
+// classes can implement class or type interfaces
+// types can only implement type interfaces
+// and components can only implement component interfaces
+
+class C implements I {
+}
+
+class K<T | T implements I> {
+}
+
+component Client {
+	field f: K<C>;
+}
+
+// or
+
+expander E<T> of T implements I {
+}
+
+expander E of C implements I {
+}
+
+component Client {
+	field f: K<E<C>>;
+}
+
+module M {
+	requires X, Y, Z;
+	provides T; 
+}
+
+module interface M {
+	provides T;
+}
+
+module interface FileSystem {
+	provides class interface File {
+		method read() -> byte;
+		method write(val: byte) -> int;
+		method seek(pos: int);
+		method length() -> int;
+		method flush();
+		method close();
+	}
+
+	provides class interface Path {
+		method exists() -> bool;
+		method createFile(path: Path) -> Path;
+		method createDirectory(path: Path) -> Path;
+		method parent() -> Path;
+		method enumPaths(f: Path -> bool);
+	}
+
+	provides type interface Mode {
+		READ, WRITE, APPEND
+	}
+
+	provides component interface FileSystem {
+		method Path rootPath() -> Path;
+		method Path workingPath() -> Path;
+		method File openFile(path: Path, mode: Mode) -> File;
+		method Path newPath(path: String) -> Path;
+	}
+}
+
+module interface Terminal {
+
+	provides class interface ViewPort {
+		method width() -> int;
+		method height() -> int;
+	}
+
+	provides class interface Decorator {
+	}
+
+	provides component interface Terminal {
+		method puts(val: String);
+		method puti(val: int);
+		method putc(val: char);
+		method putb(val: bool);
+		method nextln();
+
+		method viewport() -> ViewPort;
+		method decorator() -> Decorator;
+	}
+}
+
+module interface BuildSystem {
+	requires FileSystem;
+
+	provides class interface Program {
+	}
+
+	provides component interface BuildSystem {
+		method newProgram(name: string) -> Program;
+		method loadDirectory(program: Program, path: FileSystem.Path);
+		method loadFile(program: Program, path: FileSystem.Path);
+	}
+}
+
+type interface for<I, E> {
+	method iter(): I;
+	method next(i: I) -> E;
+	method done(i: I) -> bool;
+}
+
+// transforms
+for (x in A) {
+}
+// to
+local iter = A.iter();
+while (!A.done(iter)) {
+	local x = A.next(iter);
+	...
+}
+// but what about null lists/arrays?
+
+type interface '->' <P, R> {
+}
+
+type interface '=>' <P, R> {
+}
+
+type interface Map extends '=>' {
+}

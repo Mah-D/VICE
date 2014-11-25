@@ -1,0 +1,6 @@
+//@seman
+class subtype03_a<X> extends subtype03_b {
+  field f: subtype03_b = new subtype03_a<X>();
+}
+class subtype03_b {
+}

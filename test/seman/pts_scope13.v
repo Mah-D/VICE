@@ -1,0 +1,9 @@
+// @Harness: v2-seman
+// @Result: UnresolvedType @ 5:15
+
+class scope13_a extends scope13_b<int> {
+  method m(x: X) { }
+}
+
+class scope13_b<X> {
+}

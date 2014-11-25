@@ -1,0 +1,12 @@
+//@seman = ParseError @ 8:11
+
+class switch09 {
+    method testm(a: int) -> int {
+        match(a) {
+            1: ;
+        } else {
+	} else {
+	}
+        return 0;
+    }
+}    

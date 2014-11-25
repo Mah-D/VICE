@@ -1,0 +1,7 @@
+//@seman
+component type_null08 {
+	method foo() {
+		local a = null;
+		local b: Array<char> = a;
+	}
+}

@@ -1,0 +1,327 @@
+// TODO: fixe Decoder compilation problems and port raw arithmetic to Virgil3
+class Pattern {
+	field next: Pattern;
+
+	field pattern: 32;
+	field concrete: 32;
+	field matched: 32;
+
+	field func: int -> void;
+
+	new(p: 32, c: 32, f: int -> void) {
+		pattern = p;
+		concrete = c;
+		func = f;
+	}
+
+	method count(cnt: Array<int>) {
+		local i = 0;
+		while (i < Const.MAX) {
+			if ( unmatched(i) ) cnt(i) = cnt(i) + 1;
+			i = i + 1; 
+		}
+	}
+
+	method length(len: Array<int>) {
+		local i = Const.MAX - 1;
+		local l = 0;
+		while (i >= 0) {
+			if (unmatched(i)) l = l + 1;
+			else l = 0;
+			if (l < len(i)) len(i) = l;
+			i = i - 1;
+		}
+	}
+
+	method unmatched(b: int) -> boolean {
+		return concrete[b] == 0b1 and matched[b] == 0b0;
+	}
+
+	method valueOf(left: int, mask: 32) -> 32 {
+		return (pattern >> left) & mask;
+	}
+
+	method setMatched(left: int, len: int) {
+		local max = left + len;
+		while (left < max) {
+			matched[left] = 0b1;
+			left = left + 1;
+		}
+	}
+}
+
+class EncodingSet {
+
+	field left: int;
+	field length: int;
+	field size: int;
+
+	field lenarr: Array<int>;
+	field cntarr: Array<int>;
+
+	field head: Pattern; // head of patterns list
+	field tail: Pattern; // tail of the patterns list
+	field children: Array<EncodingSet>;
+
+	method add(p: Pattern) {
+		if ( head == null ) head = tail = p;
+		else { tail.next = p; tail = p; }
+		p.next = null;
+		size = size + 1;
+	}
+
+	method compute() {
+		scan();
+		split();
+		recurse();
+	}
+
+	method recurse() {
+		if ( children == null ) return;
+		local i = 0;
+		while (i < children.length) {
+			local child = children(i);
+			if ( child != null ) child.compute();
+			i = i + 1;
+		}
+	}
+
+	method scan() {
+		if ( size < 2 ) return;
+		local cnt = cntarr = computeCount();
+		local len = lenarr = computeLength();
+		left = 0;
+		local i = 0;
+		while (i < Const.MAX) {
+			if ( cnt[i] > cnt[left] ) left = i;
+			i = i + 1;
+		}
+		length = len[left];
+		if ( cnt[left] != size ) ambiguous();
+		if ( length < 1 ) zerolength();
+	}
+
+	method ambiguous() {
+		(new Array<int>(0))[-1] = -1;
+	}
+
+	method zerolength() {
+		(new Array<int>(0))[length] = -1;
+	}
+
+	method split() {
+		if ( size < 2 or length == 0 ) return;
+		children = new Array<EncodingSet>((1 << length) :: int);
+		local pat = head;
+		local m = mask(length);
+		while ( pat != null ) {
+			local next = pat.next;
+			local val = pat.valueOf(left, m) :: int;
+			if ( children[val] == null ) 
+				children[val] = new EncodingSet();
+			children[val].add(pat);
+			pat.setMatched(left, length);
+			pat = next;
+		}
+	}
+
+	method computeCount() -> Array<int> {
+		local cnt = new Array<int>(Const.MAX), pat = head;
+		while ( pat != null ) {
+			pat.count(cnt);
+			pat = pat.next;
+		}
+		return cnt;
+	}
+
+	method computeLength() -> Array<int> {
+		local len = new Array<int>(Const.MAX), pat = head, i = 0;
+		while (i < Const.MAX) {
+			len[i] = Const.MAX - i;
+			i = i + 1;
+		}
+		while (pat != null) {
+			pat.length(len);
+			pat = pat.next;
+		}
+		return len;
+	}
+
+	method mask(l: int) -> 32 {
+		return Const.MASK >> (Const.MAX - l);
+	}
+
+	method build() -> Node {
+		if ( children == null ) return new Leaf(head.func);
+		local nodes = new Array<Node>(children.length);
+		local i = 0;
+		while (i < children.length) {
+			if ( children[i] != null ) 
+				nodes[i] = children[i].build();
+			i = i + 1;
+		}
+		return new Internal(left, mask(length), new EdgeList(nodes));
+	}
+
+}
+
+class Builder {
+
+	field root: EncodingSet = new EncodingSet();
+	field err: Node;
+
+	method add(pat: 32, conc: 32, f: int -> void) {
+		root.add(new Pattern(pat, conc, f));
+	}
+
+	method error(f: int -> void) {
+		err = new Leaf(f);
+	}
+
+	method build() -> Recognizer {
+		root.compute();
+		return new Recognizer(root.build(), err);
+	}
+}
+
+component Const {
+	field MAX: int = 16;
+	field MASK: 32 = 0xffff;
+}
+
+program Decoder {
+	entrypoint main = Decoder.start;
+}
+
+component Decoder {
+//	field db1: Builder;
+//	field db2: Builder;
+	field d1: Recognizer = build_D1(new Builder());
+//	field d2: Recognizer = build_D2(db2 = new Builder());
+	field values: Array<int> = [34, 75, 92, 11, 8, 112, 0b0000010100000000 :: int, 0b0000010100001111 :: int];
+
+
+	method start() {
+		local i = 0;
+		while (i < 1000) {
+			local j = 0;
+			while (j < values.length) {
+				d1.decode(values[j]);
+				j = j + 1;
+			}
+			i = i + 1;
+		}
+	}
+
+	method build_D1(d: Builder) -> Recognizer {
+		d.add(0b0000000000000000, 0b0000100100001111, A);
+		d.add(0b0000100000000000, 0b0000100100001111, B);
+		d.add(0b0000000100000000, 0b0000010100001111, C);
+		d.add(0b0000010100000000, 0b0000010100001111, D);
+
+		d.add(0b00001011, 0b00001111, E);
+		d.add(0b00001001, 0b00001111, F);
+		d.add(0b00000011, 0b00001111, none);
+		d.add(0b00001100, 0b00001111, none);
+		d.add(0b11001111, 0b11001111, none);
+		d.add(0b01001111, 0b11001111, none);
+		d.add(0b00000111, 0b11001111, none);
+		d.add(0b10000111, 0b11001111, none);
+		d.add(0b00000101, 0b11111111, none);
+		d.add(0b00010101, 0b11111111, none);
+		d.add(0b00100101, 0b11111111, none);
+		d.add(0b00110101, 0b11111111, none);
+		d.error(error);
+
+		return d.build();
+	}
+
+	method build_D2(d: Builder) -> Recognizer {
+		d.add(0, 0b11111111, none);
+		d.add(1, 0b11111111, none);
+//		d.add(2, 0b11111111, none);
+//		d.add(3, 0b11111111, none);
+//		d.add(4, 0b11111111, none);
+//		d.add(5, 0b11111111, none);
+//		d.add(6, 0b11111111, none);
+//		d.add(7, 0b11111111, none);
+		d.error(error);
+		return d.build();
+	}
+
+	method none(v: int) { }
+	method error(v: int) { }
+	method A(v: int) { }
+	method B(v: int) { }
+	method C(v: int) { }
+	method D(v: int) { }
+	method E(v: int) { }
+	method F(v: int) { }
+	method G(v: int) { }
+	method H(v: int) { }
+	method I(v: int) { }
+	method J(v: int) { }
+	method K(v: int) { }
+	method L(v: int) { }
+	method M(v: int) { }
+	method N(v: int) { }
+}
+class EdgeList {
+	value nodes: Array<Node>;
+
+	new(nodes) { }
+
+	method next(val: int, error: Node) -> Node {
+		local n = nodes(val);
+		if (n == null) return error;
+		return n;
+	}
+}
+
+class Node {
+	method move(val: 32, error: Node) -> Node { return this; }
+	method invoke(i: int) { }
+}
+
+class Internal extends Node {
+	field shift: int;
+	field mask: 32;
+	field edges: EdgeList;
+
+	new(s: int, m: 32, e: EdgeList) {
+		shift = s;
+		mask = m;
+		edges = e;
+	}
+
+	method move(i: 32, error: Node) -> Node { 
+		local val = (i >> shift) & mask;
+		return edges.next(val :: int, error);
+	}
+}
+
+class Leaf extends Node {
+	value func: int -> void;
+	new(func) { }
+	method invoke(i: int) { func(i); }
+}
+
+class Recognizer {
+
+	field root: Node;
+	field error: Node;
+
+	new(r: Node, e: Node) {
+		root = r;
+		error = e;
+	}
+
+	method decode(i: 32) {
+		local pos = root;
+		while ( true ) {
+			if ( pos <: Leaf ) break;
+			pos = pos.move(i, error);
+		}
+		pos.invoke(i :: int);
+	}
+}

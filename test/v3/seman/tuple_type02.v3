@@ -1,0 +1,5 @@
+//@seman = TypeError @ 4:34
+class tuple_type02 {
+    field f: (int, int);
+    field g: (int, int -> int) = f;
+}

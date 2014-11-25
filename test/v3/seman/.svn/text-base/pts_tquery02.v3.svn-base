@@ -1,0 +1,8 @@
+//@seman = TypeQueryError @ 8:19
+
+class A<X> { } 
+class instof09 {
+   method m(x: A<int>) {
+      local f = <: (A<char>) x;
+   }
+}

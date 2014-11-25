@@ -1,0 +1,6 @@
+//@seman
+class char_int05 {
+    field a: int;
+    field b: char = m(::char a);
+    method m<T>(x: T) -> T { return x; }
+}

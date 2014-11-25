@@ -1,0 +1,5 @@
+//@seman
+class C {
+	method m<T>(v: T) {}
+	method caller() { m(0); }
+}

@@ -1,0 +1,25 @@
+//@execute 0=42; 1=15; 2=120; 3=42
+
+component ptex_fold01 {
+
+    field iarr: Array<int> = [1, 2, 3, 4, 5];
+
+    method main(arg: int) -> int {
+	if ( arg == 1 ) return fold(add, iarr, iarr.length - 1);
+	if ( arg == 2 ) return fold(mult, iarr, iarr.length - 1);
+        return 42;
+    }
+
+    method add(a: int, b: int) -> int {
+	return a + b;
+    }
+
+    method mult(a: int, b: int) -> int {
+        return a * b;
+    }
+
+    method fold<T>(f: (T, T) -> T, a: Array<T>, m: int) -> T {
+	if (m == 0) return a(0);
+	return f(fold(f, a, m-1), a(m));        
+    }
+}

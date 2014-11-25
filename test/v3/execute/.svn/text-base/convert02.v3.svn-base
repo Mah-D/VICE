@@ -1,0 +1,6 @@
+//@execute 0 = 'a'
+component convert02 {
+	method main(arg: int) -> char {
+		return ::char(97);
+	}
+}

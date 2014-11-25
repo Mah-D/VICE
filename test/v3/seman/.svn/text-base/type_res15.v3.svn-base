@@ -1,0 +1,6 @@
+//@seman = UnresolvedType @ 7:40
+
+class type_res15 {
+    field bar: type_res15;
+    field foo: bool = <: unknown bar;
+}

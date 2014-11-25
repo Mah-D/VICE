@@ -1,0 +1,52 @@
+8
+
+dir
+154
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack/virgil/apps/Fannkuch
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack
+
+
+
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f6311483-164f-4dc9-a362-1d9d7795f10a
+
+Fannkuch.v
+file
+
+
+
+
+2010-09-30T20:59:33.189000Z
+bb64db1dd7748242448566979d219b84
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+Makefile
+file
+
+
+
+
+2010-09-30T20:59:33.194000Z
+0a0ad1723ae0b9dfb0a1800e5865a69f
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+

@@ -1,0 +1,17 @@
+//@execute 0 = 0
+component ptex_new_list02 {
+	method main(arg: int) -> int {
+		return new ptex_new_list02_a<int>().x.y;
+	}
+}
+
+class ptex_new_list02_a<T> {
+	field x: ptex_new_list02_b<T>;
+	new() {
+		x = new ptex_new_list02_b<T>();
+	}
+}
+
+class ptex_new_list02_b<U> {
+	field y: U;
+}

@@ -1,0 +1,11 @@
+//@parse = ParseError @ 7:7
+class dowhile1 {
+  method m() {
+     local a: int;
+     local foo: bool;
+
+     do {} while ( true ) ;
+     do {} while ( foo ) ;
+     do {} while ( func(a) ) ;
+  }
+}

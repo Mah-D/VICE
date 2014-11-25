@@ -1,0 +1,6 @@
+//@execute 0 = 57
+component nest01 {
+	method main(arg: int) -> int {
+		return(57);
+	}
+}

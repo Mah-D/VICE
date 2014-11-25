@@ -1,0 +1,6 @@
+//@seman =MemberRedefined @ 6:8
+
+class field1 {
+    field testf: int;
+    field testf: char;
+}

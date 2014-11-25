@@ -1,0 +1,41 @@
+8
+
+dir
+154
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack/virgil/test/v3/tmp
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack
+
+
+
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f6311483-164f-4dc9-a362-1d9d7795f10a
+
+convert.bash
+file
+
+
+
+
+2010-09-30T20:58:32.033000Z
+849df3af60e1853a1d0c462c9f922cda
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+has-props
+

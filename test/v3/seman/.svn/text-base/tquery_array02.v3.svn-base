@@ -1,0 +1,10 @@
+//@seman
+component new_array02 {
+	method main() -> bool {
+		return <:Array<int>(new A<int>().m());
+	}
+}
+
+class A<T> {
+	method m() -> Array<T> { return new Array<T>(0); }
+}

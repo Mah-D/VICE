@@ -1,0 +1,8 @@
+//@execute 0 = -6
+component new01 {
+	field i: int = -15;
+	method main(arg: int) -> int {
+		i = i + 9;
+		return i;
+	}
+}

@@ -1,0 +1,6 @@
+//@parse
+
+
+class method02 {
+    method m1(a: tuple<X>) -> tuple<X>;
+}

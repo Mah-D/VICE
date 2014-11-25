@@ -1,0 +1,4 @@
+//@parse
+class nest01<X> {
+    field f: nest01<nest01<X> >;
+}

@@ -1,0 +1,11 @@
+//@seman
+
+
+component mp_array08 {
+    method test() {
+	local x: Array<int> = makeArray();
+    }
+    method makeArray<X>() -> Array<X> {
+	return new Array<X>(0);	
+    }
+}

@@ -1,0 +1,14 @@
+//@execute 0=false
+component ptex_delcmp03 {
+	method main(arg: int) -> bool {
+		local a: int -> int = id;
+		local b: bool -> bool = id;
+		return cmp(a, b);
+	}
+	method id<T>(x: T) -> T {
+		return x;
+	}
+	method cmp<A, B>(a: A -> A, b: B -> B) -> bool {
+		return a == b;
+	}
+}

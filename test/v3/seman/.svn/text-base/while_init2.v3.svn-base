@@ -1,0 +1,8 @@
+//@seman
+class init34 {
+    method testm() -> bool {
+        local b: bool;
+        while ( b = true ) return b;
+        return false;
+    }
+}

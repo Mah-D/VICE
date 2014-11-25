@@ -1,0 +1,10 @@
+//@seman
+component unreach14 {
+	method test() -> int {
+		while (true) {
+			if (false) continue;
+			else continue;
+		}
+		return 0;
+	}
+}

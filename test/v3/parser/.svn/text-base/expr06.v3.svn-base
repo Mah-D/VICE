@@ -1,0 +1,6 @@
+//@parse
+
+
+class expr6 {
+  field foo: unit = new foo();
+}

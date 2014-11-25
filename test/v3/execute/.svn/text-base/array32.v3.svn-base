@@ -1,0 +1,8 @@
+//@execute 0 = -12
+component array32 {
+	method main(a: int) -> int {
+		local array = new Array<int>(1);
+		array(0) = -12;
+		return array(0);
+	}
+}

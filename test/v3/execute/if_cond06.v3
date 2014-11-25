@@ -1,0 +1,9 @@
+//@execute 0=11
+
+component if_cond06 {
+    method main(arg: int) -> int {
+	local r: int;
+	if (true && true) r = 11;
+	return 11;
+    }
+}

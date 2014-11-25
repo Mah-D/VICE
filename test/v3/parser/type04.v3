@@ -1,0 +1,7 @@
+//@parse
+
+class type04 {
+    field g: (bool, int, n) -> n;
+    field h: (bool, int, n) -> n;
+    field i: (bool, int) -> (int, bool);
+}

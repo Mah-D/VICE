@@ -1,0 +1,9 @@
+//@seman
+class switch02 {
+    
+    method testm(a: int) {
+        match ( a ) {
+            0 + 1: ;
+        }
+    }
+}

@@ -1,0 +1,52 @@
+8
+
+dir
+154
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack/virgil/apps/Blink
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack
+
+
+
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f6311483-164f-4dc9-a362-1d9d7795f10a
+
+Blink.v
+file
+
+
+
+
+2010-09-30T20:59:33.396000Z
+15cc5f55c26583f240aeaf0d4f293134
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+Makefile
+file
+
+
+
+
+2010-09-30T20:59:33.402000Z
+245a5a6c3253bf79154c0eb8267fb65b
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+

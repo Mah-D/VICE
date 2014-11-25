@@ -1,0 +1,15 @@
+//@execute 0 = 33; 1 = 32
+class object03_o {
+	value other: object03_o;
+	value val: int;
+	new(other, val) { }
+}
+
+component object03 {
+	field obj: object03_o = new object03_o(new object03_o(null, 32), 33);
+
+	method main(arg: int) -> int {
+		if (arg == 0) return obj.val;
+		return obj.other.val;
+	}
+}

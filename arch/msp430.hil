@@ -1,0 +1,10 @@
+device msp430 {
+
+    space data[16]: 16;
+
+    region regs = data[0...255];
+    region wregs = data[256...511];
+    region sram = data[512...10239];
+    region code = data[16384...65535];
+
+}

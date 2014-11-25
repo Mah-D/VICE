@@ -1,0 +1,6 @@
+//@seman
+
+
+class this02_a<X> {
+  field f: this02_a<X> = this;
+}

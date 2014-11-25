@@ -1,0 +1,7 @@
+//@parse
+
+
+class type12 {
+    field f: void -> void -> int;
+    field g: void -> 3 -> void;
+}

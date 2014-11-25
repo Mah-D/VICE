@@ -1,0 +1,6 @@
+//@seman
+component array20 {
+    field a_01: Array<Array<int>> =  new Array<Array<int>>(4);
+    field a_02: Array<Array<bool>> =  new Array<Array<bool>>(3);
+    field a_03: Array<Array<char>> = new Array<Array<char>>(6);
+}

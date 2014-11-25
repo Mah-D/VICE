@@ -1,0 +1,446 @@
+/**
+ * Copyright (c) 2007, Regents of the University of California
+ * See the file "license.txt" for details.
+ *
+ * Creation date: Feb 15, 2007
+ */
+
+package vpc;
+
+import cck.parser.SourcePoint;
+import cck.text.*;
+import cck.util.Util;
+import vpc.core.*;
+import vpc.core.base.*;
+import vpc.core.csr.CSRType;
+import vpc.core.decl.Method;
+import vpc.core.types.Type;
+import vpc.core.types.TypeRef;
+import vpc.core.virgil.VirgilArray;
+import vpc.hil.parser.HILParser;
+import vpc.sched.*;
+import vpc.simu.IntptrScheduler;
+import vpc.stack.InterruptGraph;
+import vpc.stack.StackSizeMonitor;
+import vpc.tir.TIRInterpreter;
+import vpc.tir.TIRRep;
+import vpc.tir.TIRUtil;
+import vpc.tir.expr.Operator;
+import vpc.util.*;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.*;
+
+/**
+ * The <code>Interpreter</code> class implements a simple command-line
+ * interpreter for Virgil programs.
+ * 
+ * @author Ben L. Titzer
+ */
+public class Interpreter {
+
+	public static final BasicOptionSet options = new BasicOptionSet();
+
+	public static final Option<Boolean> HELP = options.newOption("help", false,
+			"Displays this help message.");
+	static final Option<List> CONFIG = options
+			.newListOption(
+					"config",
+					"",
+					"This option can be used to specify a list of configuration files that contain "
+							+ "compiler options and switches. This is useful to reuse a large number "
+							+ "of command line options without cluttering the invocation of the compiler. "
+							+ "The configuration files are loaded in the order that they are specified, and "
+							+ "additional command line options specified override the options specified "
+							+ "in the configuration file(s).");
+	static final Option<Boolean> COLORS = options.newOption("colors", false,
+			"This option enables or disables the printing of control characters "
+					+ "that color text output to the terminal.");
+	static final Option<Boolean> STATS = options.newOption("stats", false,
+			"This option enables or disables printing of program statistics.");
+	static final Option<Boolean> VERSION = options
+			.newOption("version", false,
+					"Display the detailed compiler version, copyright and license text.");
+	static final Option<List> STAGES = options
+			.newListOption(
+					"stages",
+					"virgil,init",
+					"This option specifies a list of the compilation stages (or phases) to "
+							+ "apply to the program. Each phase produces a representation of the "
+							+ "program that is fed into the next stage.");
+	static final Option<Integer> PROFILE_TREE = options.newOption(
+			"profile-tree", 0,
+			"When specified to be greater than 0, this option enables the collection"
+					+ "of a profiling tree for the executed program.");
+	static final Option<Boolean> PROFILE_INVOKE_COUNT = options
+			.newOption(
+					"profile-invoke-count",
+					false,
+					"This option enables or disables the reporting of method-level statistics (sorted by invocation "
+							+ "count) during profiling.");
+	static final Option<Boolean> PROFILE_INVOKE_TIME = options
+			.newOption(
+					"profile-method-time",
+					false,
+					"This option enables or disables the reporting of method-level statistics (sorted by invocation "
+							+ "time) during profiling.");
+	static final Option<Float> THRESHOLD = options
+			.newOption(
+					"profile-threshold",
+					0.0f,
+					"This option controls the threshold at which call subtrees are show in the profiler.");
+	static final Option<String> LANGUAGE = options
+			.newOption(
+					"language",
+					"virgil2",
+					"This option selects the source language of the specified program. The compiler "
+							+ "uses the source language to select an appropriate parser, typechecker, and "
+							+ "front end.");
+	static final Option<Boolean> PRINT_VALUE = options.newOption("print-value",
+			true,
+			"When specified, this option causes the interpreter to print the return value "
+					+ "of the program's main method.");
+
+	// ///////////////////////// option added for the hardware level interpret
+	static final Option<Float> SECONDS = options.newOption("seconds", 0.0f,
+			"This option controls the maxium run time of the interpreter.");
+	static final Option<String> TARGET = options
+			.newOption(
+					"device",
+					"./arch/atmega128.hil",
+					"This option selects the target device of the specified program."
+							+ "The register selection and device descripter is based on this option. ");
+	// //////////////////////////
+
+	static final Option<Boolean> IS_DART = options.newOption("dart", false,
+			"weather run DART process");
+
+	protected static String[] programFiles;
+	protected static String[] programArgs;
+
+	protected static VirgilArray.IType charArray;
+	protected static VirgilArray.IType charArrayArray;
+
+	protected static BaseMonitor monitor;
+
+	public static void main(String[] argv) throws FileNotFoundException {
+		Compiler.startMillis = System.currentTimeMillis();
+		System.out.println(System.getProperty("user.dir"));
+		// System.setErr(new PrintStream("log.txt"));
+//		 argv = new String[] {"-dart", "C:/temp/a.v",
+//		 "-config =./apps/config.avr"};
+		argv = new String[] { "-dart", "-stats", "-profile-invoke-count",
+				"-config =./apps/config.avr", "./doc/intro/HelloWorldIntr.v",
+				"./lib/mica2/LED.v", "./lib/mica2/Terminal.v",
+				"./lib/mica2/HPLChipcon.v", "./lib/mica2/CC1000Control.v",
+				"./lib/mica2/CC1000Radio.v", "./lib/avr/Timer0.v",
+				"./lib/avr/Port.v", "./lib/avr/ADC.v", "./lib/avr/SPI.v",
+				"./lib/avr/USART.v", "./lib/avr/MCU.v",
+				"./lib/avr/HPLPowerManagement.v", "./lib/util/TOS_Msg.v",
+				"./lib/util/Queue.v", "./lib/util/ArrayUtil.v",
+				"./lib/mica2/Mica2.v", "./lib/util/crc.v" };
+
+		// argv = new String[] {"-dart", "-seconds=5", "-stats",
+		// "-profile-invoke-count",
+		// "-config =./apps/config.avr", "./apps/Blink/Blink.v",
+		// "./lib/mica2/LED.v", "./lib/mica2/Terminal.v",
+		// "./lib/mica2/HPLChipcon.v", "./lib/mica2/CC1000Control.v",
+		// "./lib/mica2/CC1000Radio.v", "./lib/avr/Timer0.v",
+		// "./lib/avr/Port.v", "./lib/avr/ADC.v", "./lib/avr/SPI.v",
+		// "./lib/avr/USART.v", "./lib/avr/MCU.v",
+		// "./lib/avr/HPLPowerManagement.v", "./lib/util/TOS_Msg.v",
+		// "./lib/util/Queue.v", "./lib/util/ArrayUtil.v",
+		// "./lib/mica2/Mica2.v", "./lib/util/crc.v" };
+
+		try {
+			// parse the command line options
+			parseOptions(argv);
+
+			// if the user specified the -version option, print it and exit
+			if (VERSION.getValue()) {
+				Help.displayVersionAndCopyright();
+				return;
+			}
+
+			// no files specified on command line, print help
+			if (programFiles.length == 0) {
+				Util.userError("no input files");
+				return;
+			}
+
+			// if all the files exist, begin compilation
+			Util.verifyFilesExist(programFiles);
+
+			// if all the files exist, begin compilation
+			Program p = runCompileChain("temp", getStages());
+
+			// if compilation worked, interpret the program
+			if (IS_DART.getValue()) {
+				runDartWithInterrupt(p);
+			} else
+				System.exit(runProgram(p));
+
+		} catch (Util.Error e) {
+			e.report();
+			System.exit(1);
+		} catch (Throwable t) {
+			Terminal.print(Terminal.ERROR_COLOR, "Unexpected exception");
+			Terminal.println(": " + t.getClass());
+			t.printStackTrace();
+			System.exit(2);
+		}
+	}
+
+	private static void runDartWithInterrupt(Program p) {
+
+		try {
+			DartHarness harness = new DartHarness(p);
+			harness.startTest("main");
+		} finally {
+			if (monitor != null) {
+				monitor.report();
+			}
+		}
+	}
+
+	private static Stage[] getStages() {
+		Stage[] stages = Scheduler.getFixedPath(STAGES.getString());
+		if (stages == null)
+			Util.userError("cannot build compilation path for stages "
+					+ StringUtil.quote(STAGES.getString()));
+		return stages;
+	}
+
+	// set the target as atmega128
+	private static vpc.hil.Device getDevice() throws Exception {
+		String fname = TARGET.getValue();
+		Util.verifyFileExists(fname);
+		HILParser hp = new HILParser(new FileInputStream(fname));
+		return hp.Device();
+	}
+
+	private static Program runCompileChain(String name, Stage[] stages)
+			throws Exception {
+		Language language = (Language) Compiler.LANGUAGES
+				.getObjectOfClass(LANGUAGE.getValue());
+		Program program = new Program(name, language);
+		// add the target information
+		program.setDevice(getDevice());
+
+		Compilation comp = new Compilation(program, stages,
+				new cck.util.Options());
+		for (String f : programFiles)
+			comp.addFile(f);
+		comp.run();
+
+		if (STATS.getValue()) {
+			comp.printReport();
+		}
+		return program;
+	}
+
+	public static void parseOptions(String[] args) throws IOException {
+		options.parseArguments(args, false);
+
+		// if there are configuration files, parse them
+		if (!CONFIG.getValue().isEmpty())
+			loadConfigs(CONFIG.getValue(), args);
+
+		// set the terminal colors
+		Terminal.useColors = COLORS.getValue();
+
+		if (PROFILE_TREE.getValue() > 0 || PROFILE_INVOKE_COUNT.getValue()
+				|| PROFILE_INVOKE_TIME.getValue()) {
+			//monitor = new StackSizeMonitor();
+		} else if (STATS.getValue()) {
+			monitor = new StatsMonitor();
+		}
+
+		parseProgramFiles(options.getArguments());
+	}
+
+	private static int runProgram(Program p) {
+		TIRInterpreter interp = new TIRInterpreter(p);
+		ProgramDecl.EntryPoint mainEntry = ProgramDecl.lookupEntryPoint("main",
+				p);
+		// typeCheckMain(p, mainEntry);
+
+		interp.setMonitor(monitor);
+		System.out.println("After set monitor!!!!!!!!!!");
+
+		Value v;
+
+		IntptrScheduler.Instance.initScheduler(interp, p);
+
+		try {
+			v = interp.invokeComponentMethod(mainEntry.method, packageArgs(p,
+					programArgs));
+			// v = interp.invokeComponentMethod(mainEntry.method, new Value[]
+			// {PrimInt32.toValue(4), PrimInt32.toValue(6)});
+		} finally {
+			if (monitor != null) {
+				monitor.report();
+			}
+		}
+		if (v == PrimVoid.VALUE)
+			return 0;
+		if (PRINT_VALUE.getValue()) {
+			printValue(v);
+		}
+		if (v instanceof PrimInt32.Val)
+			return PrimInt32.fromValue(v);
+		else
+			return 0;
+	}
+
+	private static void typeCheckMain(Program p,
+			ProgramDecl.EntryPoint mainEntry) {
+		charArray = VirgilArray.getArrayType(p.typeCache, PrimChar.TYPE);
+		charArrayArray = VirgilArray.getArrayType(p.typeCache, charArray);
+		TypeRef[] refs = mainEntry.method.getParameterTypes();
+		if (refs.length != 1) {
+			Util.userError(mainEntry.method + " accepts " + refs.length
+					+ " arguments, required 1");
+		}
+		Type mtype = refs[0].getType();
+		if (mtype != charArrayArray) {
+			Util.userError(mainEntry.method
+					+ " has incorrect parameter type, required "
+					+ charArrayArray);
+		}
+	}
+
+	public static void printValue(Value v) {
+		if (isCharArray(v)) {
+			Terminal.print(TIRInterpreter.toJavaString(v));
+		} else {
+			Terminal.println(v.toString());
+		}
+	}
+
+	private static boolean isCharArray(Value v) {
+		return v != null && v.getType() == charArray;
+	}
+
+	private static Value[] packageArgs(Program p, String[] jargv) {
+		Value[] res = new Value[jargv.length];
+		for (int argn = 0; argn < jargv.length; argn++) {
+			res[argn] = TIRInterpreter.fromJavaString(p, jargv[argn]);
+		}
+		return res;
+	}
+
+	private static void parseProgramFiles(String[] files) {
+		int filen = files.length;
+		int argn = 0;
+
+		for (int cntr = 0; cntr < files.length; cntr++) {
+			String fn = files[cntr];
+			if (fn.endsWith(".v") || fn.endsWith(".v3")) {
+				continue;
+			}
+			filen = cntr;
+			argn = files.length - filen;
+			break;
+		}
+		programFiles = new String[filen];
+		programArgs = new String[argn];
+
+		// copy the files and arguments into separate arrays
+		System.arraycopy(files, 0, programFiles, 0, filen);
+		System.arraycopy(files, filen, programArgs, 0, argn);
+	}
+
+	private static void loadConfigs(List configs, String[] args)
+			throws IOException {
+		// if the config-file option is specified, load config file options
+		for (Object o : configs) {
+			String fname = (String) o;
+			Util.verifyFileExists(fname);
+			options.loadFile(fname);
+		}
+		options.parseArguments(args, false);
+	}
+
+	public static abstract class BaseMonitor implements TIRInterpreter.Monitor {
+		protected abstract void report();
+	}
+
+	public static class StatsMonitor extends BaseMonitor {
+		private HashMap<Method, Integer> invocations = Ovid.newHashMap();
+		private HashMap<Class<? extends Operator>, Integer> applications = Ovid
+				.newHashMap();
+
+		public void fireBeforeCall(SourcePoint callpt, Method method) {
+			Integer i = invocations.get(method);
+			if (i == null) {
+				invocations.put(method, 1);
+			} else {
+				invocations.put(method, 1 + i);
+			}
+		}
+
+		public void fireAfterReturn(SourcePoint callpt) {
+		}
+
+		public void fireBeforeApply(SourcePoint srcpt, Operator operator) {
+			Integer i = applications.get(operator.getClass());
+			if (i == null) {
+				applications.put(operator.getClass(), 1);
+			} else {
+				applications.put(operator.getClass(), 1 + i);
+			}
+
+		}
+
+		protected void report() {
+			TreeSet<Entry> calls = new TreeSet<Entry>();
+			for (Map.Entry<Method, Integer> entry : invocations.entrySet()) {
+				calls.add(new Entry(entry.getKey().getFullName(), entry
+						.getValue()));
+			}
+			TreeSet<Entry> applies = new TreeSet<Entry>();
+			for (Map.Entry<Class<? extends Operator>, Integer> entry : applications
+					.entrySet()) {
+				applies.add(new Entry(entry.getKey().getName(), entry
+						.getValue()));
+			}
+			printSet(calls, "invocations");
+			Terminal.nextln();
+			printSet(applies, "applications");
+		}
+
+		void printSet(TreeSet<Entry> set, String units) {
+			int total = 0;
+			for (Entry e : set) {
+				total += e.count;
+				TermUtil.reportQuantity(StringUtil.leftJustify(e.name, 42),
+						StringUtil.rightJustify(e.count, 10), units);
+			}
+			TermUtil.printThinSeparator();
+			TermUtil.reportQuantity(StringUtil.leftJustify("Total", 42),
+					StringUtil.rightJustify(total, 10), units);
+		}
+	}
+
+
+	static class Entry implements Comparable<Entry> {
+		final String name;
+		final int count;
+
+		Entry(String name, int count) {
+			this.name = name;
+			this.count = count;
+		}
+
+		public int compareTo(Entry e) {
+			if (count < e.count)
+				return -1;
+			if (count == e.count)
+				return name.compareTo(e.name);
+			return 1;
+		}
+	}
+}

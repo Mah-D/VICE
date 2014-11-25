@@ -1,0 +1,101 @@
+Plan for writing Virgil language spec:
+
+The benefit:
+  - solidify language philosophy and implementation into a coherent, 
+    semi-formal description of language syntax and semantics
+  - sketch out mature parts of the language and identify research problems
+  - allows independent parties to develop implementations
+  - guide for "power" users and language gurus
+  - build a community and generate interest
+  - draw serious consideration from big shots
+
+The risks/cost:
+  - time writing spec: 4 months?
+  - may preclude important implementation work
+  - may "ossify" parts of the language (restrain evolution),
+    possibly due to several implementations
+  - opportunity cost: solving research problems, writing papers?
+
+Conclusion:
+  - worth more time sketching a plan
+  - but fix all front end issues first
+  - and make last syntactic changes
+
+One (parallel plan)
+
+1. sketch spec overview			1. fix front end issues
+2. write intro + first chapter		2. make syntactic changes
+3. flesh out informal chapters		3. cleanup and simplify Aeneas
+4. formalize and polish			4. machine code bootstrap
+
+
+Brainstorming:
+
+- When defining the basic primitive data types in Virgil, it will be important
+to separate the semantic definition (i.e. formal definition of value sets and
+semantics of operations on values) from the source representation (i.e. the source
+syntax for specifying values and operations on values) as well as from the
+machine representation (i.e. actual layout of values in bits and in memory).
+
+- Build a core language and incrementally flesh out the details. E.g. define
+the non-parametric core types and flesh out definitions and semantics before
+adding the parametric type system as a new (almost orthogonal) dimension. 
+(As long as the core language is a proper subset).
+
+- Evaluation order rules should be specified precisely, likely with a small-step
+operational semantics.
+
+- Have the small step operational semantics modularized by chapter and/or
+language construct, rather than having a single formal section. The discussion
+and explanation is then augmented by the formal definition and vice versa.
+
+- Type rules should be explained informally, in non-typespeak, as well as formally,
+so that nonexperts in the field understand the operation of the typechecker
+(and its limitations).
+
+- Implementation issues can be discussed, usually to build confidence in end users
+that the compiler will generate excellent code with minimal overhead, and to
+head off poor implementation strategies. Perhaps "implementation suggestions"
+and "implementation guarantees" and "other implementation issues" could be added.
+Avoid any implementation details leaking into the visible semantics of the 
+language (i.e. every implementation is semantically equivalent to the 
+straightforward translation of the operational semantics and typechecker).
+
+- Shortcomings / pitfalls / future work. Should the language spec point to areas
+in the language that need to be addressed (e.g. concurrency, memory model?). Or
+should the language spec just simply specify what exists, and not would should
+exist?
+
+- Should the spec be written in terms of a more formal IR that elides source-level
+issues (e.g. closer to Aeneas IR), or should it be written like most specs in terms 
+of source level expressions?
+
+- Should the spec also serve as a learning aid for Virgil programming (i.e. a tutorial
+or programmer's manual?) If not, should it have a companion document that serves that 
+role?
+
+- Explain all error messages that a compiler must generate, as well
+as exceptions that can be generated at runtime. Potentially discuss 
+implementation issues for generating  good and informative error messages. 
+Describe the various levels of detail that may be available for runtime 
+exceptions and the implications for the metadata cost in implementation.
+
+- Make the language test suite publically available and reference it often in
+the document! (Of course, make the obvious point that testing does not 
+demonstrate the absence of bugs).
+
+- Motivate well the need to have a compile-time interpreter for the language and
+make its value explicit in example after example. (i.e. try to steer potential
+implementors towards building an interpreter first).
+
+- Define a suite of extended static checks that may be performed by future compilers
+(i.e. typically run after initialization time).
+
+- Discuss the potential for smart IDEs in the future (i.e. motivate someone else to do it!)
+
+- Point out nasty language warts like single-tuple methods, void arguments, and others
+that can lead to some dark corners where bugs may lie. Point out test cases that probe
+those dark corners (i.e. impress upon users that the implementation must be thoroughly
+tested and robust).
+
+- Take correctness seriously! Punch people in the face with it!

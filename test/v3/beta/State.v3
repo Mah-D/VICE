@@ -1,0 +1,28 @@
+class State<T> {
+	field val: T;
+	field getter: T -> T;
+	field setter: (T, T) -> T;
+	field notify: (State<T>, T, T) -> void;
+
+	new(val) { }
+
+	method get() -> T {
+		if (getter != null) {
+			local oldval = this.val;
+			local newval = this.val = getter(oldval);
+			if (notify != null && newval != oldval) notify(this, oldval, newval);
+			return newval;
+		}
+		return this.val;
+	}
+	method set(val: T) {
+		local oldval = this.val;
+		local newval = val;
+		if (setter != null) newval = setter(oldval, val);
+		this.val = newval;
+		if (notify != null && newval != oldval) notify(this, oldval, newval);
+	}
+	method attachNotify(notify: (State<T>, T, T) -> void) { this.notify = notify; }
+	method attachGetter(getter: T -> T) { this.getter = getter; }
+	method attachSetter(setter: (T, T) -> T) { this.setter = setter; }
+}

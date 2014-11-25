@@ -1,0 +1,24 @@
+// TODO: what is the best way to model clocks and timers in Virgil?
+// model: timers with interrupts, high resolution clocks, real time clocks, system clock
+// allow event-queue-like functionality, where work can be inserted into the queue for the future
+
+class Clock {
+	// Returns ticks / nanoseconds
+	method getPeriod() -> (int64, int64);
+	method getTicks() -> int64;
+	method getEventQueue() -> EventQueue;
+}
+
+class EventQueue {
+	method insert(func: void -> void, delta: int64);
+	method remove(func: void -> void, delta: int64);
+	method getClock() -> Clock;
+}
+
+component Clocks {
+	method time<A, B>(clock: Clock, func: A -> B, a: A) -> (B, int64) {
+		local start = clock.getTicks();
+		local result = func(a);
+		return (result, clock.getTicks() - start);
+	}
+}

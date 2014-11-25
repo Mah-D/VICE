@@ -1,0 +1,6 @@
+//@parse
+component cassign01 {
+	method test() {
+		x = x = y;
+	}
+}

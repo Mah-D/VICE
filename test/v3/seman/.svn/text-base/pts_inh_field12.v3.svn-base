@@ -1,0 +1,10 @@
+//@seman
+class inh_field12_a<X, Y> extends inh_field12_b<int, bool> {
+    field h: int = f;
+    field i: bool = g;
+}
+
+class inh_field12_b<X, Y> {
+    field f: X;
+    field g: Y;
+}

@@ -1,0 +1,6 @@
+//@seman = AssignError @ 7:15
+class method5 {
+    method testm() {
+        this.testm = this.testm;
+    } 
+}

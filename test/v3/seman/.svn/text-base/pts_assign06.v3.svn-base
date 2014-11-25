@@ -1,0 +1,7 @@
+//@seman
+class assign06<X> {
+   field f: X;
+   method m(x: X) {
+      x = f;
+   }
+}

@@ -1,0 +1,8 @@
+//@seman
+
+
+class new09<X> {
+   method m() {
+      local f = new new09<Array<int>>();
+   }
+}

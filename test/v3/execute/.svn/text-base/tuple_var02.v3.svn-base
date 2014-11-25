@@ -1,0 +1,19 @@
+//@execute 0=13
+
+class tuple_var02_a {
+	field r: int;
+	new() { r = 12; }
+}
+
+class tuple_var02_b extends tuple_var02_a {
+	new() { r = 13; }
+}
+
+component tuple_var02 {
+	field a: (int, tuple_var02_a) = (0, new tuple_var02_b());
+	field b: (int, tuple_var02_b) = (0, new tuple_var02_b());
+	method main(arg: int) -> int {
+		a = b;
+		return a.1.r;
+	}
+}

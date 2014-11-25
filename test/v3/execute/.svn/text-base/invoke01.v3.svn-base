@@ -1,0 +1,7 @@
+//@execute = -12
+component invoke01 {
+	method main() -> int {
+		return m();
+	}
+	method m() -> int { return -12; }
+}

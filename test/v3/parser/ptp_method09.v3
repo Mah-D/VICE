@@ -1,0 +1,8 @@
+//@parse
+
+
+class method09 {
+    method m1<X, Y>(a: X -> Y, b: X) -> Y {
+        return a(b);
+    }
+}

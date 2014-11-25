@@ -1,0 +1,11 @@
+//@seman
+class Item {
+	method accept<T, U>(visitor: Visitor<T, U>, env: T) -> U { return visitor.visit(env); }
+}
+class Visitor<E, R> {
+	field none: R;
+	method visit(a: E) -> R { return none; }
+}
+component pts_delegate03 {
+	field f: (Visitor<int, bool>, int) -> bool = new Item().accept;
+}

@@ -1,0 +1,7 @@
+//@seman
+component method_res10 {
+    method foo() { }
+    method testm() {
+        foo();
+    }
+}

@@ -1,0 +1,38 @@
+// Pseudo-random number generator
+program Random {
+	entrypoint main = Random.main;
+}
+component Random {
+	value IM: int = 98234759;
+	value IA: int = 3877;
+	value IC: int = 295730021;
+
+	field last: int = 42;
+
+	method main(args: Array<Array<char>>) -> int {
+		local max = 10000;
+		if (args.length > 0) max = parseInt(args(0));
+		while (max > 0) {
+			gen();
+			max = max - 1;
+		}
+		System.puti(last);
+		System.putc('\n');
+		return last;
+	}
+	method gen() -> int {
+		return last = (last * IA + IC) % IM;
+	}
+	method parseInt(a: Array<char>) -> int {
+		local accum = 0;
+		local cntr = 0;
+		local zero = ::int('0');
+
+		while (cntr < a.length) {
+			local dig = ::int(a(cntr));
+			accum = accum * 10 + dig - zero; 
+			cntr = cntr + 1;
+		}
+		return accum;
+	}
+}

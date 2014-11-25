@@ -1,0 +1,13 @@
+//@execute 0=42; 1=13; 2=29; 3=14; 4=42
+
+component field_init02 {
+	value f: int = 13;
+	field g: int = f + 16;
+	field h: int = g - 15;
+	method main(arg: int) -> int {
+		if (arg == 1) return f;
+		if (arg == 2) return g;
+		if (arg == 3) return h;
+		return 42;
+	}
+}

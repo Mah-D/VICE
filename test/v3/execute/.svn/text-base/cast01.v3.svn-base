@@ -1,0 +1,18 @@
+//@execute 0=42; 1=42; 2=11; 3=42
+
+class cast01_obj {
+    field f: int = 11;
+}
+
+component cast01 {
+    field foo: cast01_obj;
+    field bar: cast01_obj = new cast01_obj();
+    
+    method main(arg: int) -> int {
+	local o: cast01_obj = null;
+	if ( arg == 1 ) o = (:: cast01_obj foo);
+	if ( arg == 2 ) o = (:: cast01_obj bar);
+	if (o == null) return 42;
+	return o.f;
+    }
+}

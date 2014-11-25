@@ -1,0 +1,33 @@
+//@execute 0=41; 1=!TypeCheckException; 2=11; 3=!TypeCheckException; 4=!TypeCheckException; 5=!TypeCheckException; 6=12; 7=41
+
+class rtex_type02_a {
+    field foo: int;
+
+    new(f: int) { 
+	foo = f; 
+    }
+}
+
+class rtex_type02_b extends rtex_type02_a {
+    new() : super(11) { }
+}
+
+class rtex_type02_c extends rtex_type02_a {
+    new() : super(12) { }
+}
+
+component rtex_type02 {
+    field a: rtex_type02_a = new rtex_type02_a(10);
+    field b: rtex_type02_a = new rtex_type02_b();
+    field c: rtex_type02_a = new rtex_type02_c();
+
+    method main(arg: int) -> int {
+	if ( arg == 1 ) return (::rtex_type02_b a).foo;
+	if ( arg == 2 ) return (::rtex_type02_b b).foo;
+	if ( arg == 3 ) return (::rtex_type02_b c).foo;
+	if ( arg == 4 ) return (::rtex_type02_c a).foo;
+	if ( arg == 5 ) return (::rtex_type02_c b).foo;
+	if ( arg == 6 ) return (::rtex_type02_c c).foo;
+	return 41;
+    }
+}

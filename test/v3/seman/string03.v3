@@ -1,0 +1,10 @@
+//@seman
+
+
+class string03 {
+    field testf: Array<char>;
+    method foo(str: Array<char>) {
+        testf = str;
+        foo("this is a string constant");
+    }
+}

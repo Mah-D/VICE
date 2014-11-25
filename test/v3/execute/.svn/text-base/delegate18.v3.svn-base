@@ -1,0 +1,8 @@
+//@execute 0 = 42
+component delegate18 {
+	field f42: void -> int = m42;
+	method m42() -> int { return 42; }
+	method main(arg: int) -> int {
+		return f42();
+	}
+}

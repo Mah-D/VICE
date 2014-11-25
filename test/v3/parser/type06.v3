@@ -1,0 +1,8 @@
+//@parse
+
+
+class type06 {
+    field f: ();
+    field g: () -> ();
+    field h: void -> ();
+}

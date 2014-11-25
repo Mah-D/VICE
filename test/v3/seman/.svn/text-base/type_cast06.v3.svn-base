@@ -1,0 +1,6 @@
+//@seman
+component type_cast06 {
+	method m<T>(arg: T) -> int {
+		return ::int(arg);
+	}
+}

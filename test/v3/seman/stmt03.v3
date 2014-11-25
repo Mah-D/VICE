@@ -1,0 +1,9 @@
+//@seman =StatementError @ 7:5
+
+class stmt03 {
+    
+    method testm() {
+        local foo: int = 0;
+        foo;
+    }
+}

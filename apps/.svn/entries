@@ -1,0 +1,148 @@
+8
+
+dir
+154
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack/virgil/apps
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack
+
+
+
+2010-04-03T18:09:59.433451Z
+152
+gbb21
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f6311483-164f-4dc9-a362-1d9d7795f10a
+
+BinaryTree
+dir
+
+Blink
+dir
+
+BubbleSort
+dir
+
+Decoder
+dir
+
+Empty
+dir
+
+Fannkuch
+dir
+
+LinkedList
+dir
+
+Makefile
+file
+
+
+
+
+2010-09-30T20:59:34.119000Z
+d2c00ff744246e8633601ceb0cc309bc
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+Makefile.avr
+file
+
+
+
+
+2010-09-30T20:59:33.616000Z
+e54da60cb611624083aac6d04ce9851f
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+Makefile.inc
+file
+
+
+
+
+2010-09-30T20:59:32.941000Z
+517a185c277455984682c92ac79efb34
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+MsgKernel
+dir
+
+Oscilloscope
+dir
+
+PolyTree
+dir
+
+TestADC
+dir
+
+TestPM
+dir
+
+TestRadio_Receive
+dir
+
+TestRadio_Send
+dir
+
+TestSPI
+dir
+
+TestUSART
+dir
+
+config.avr
+file
+
+
+
+
+2010-09-30T20:59:33.171000Z
+1e038cfcc2e1a13e6fa71afe97d933d6
+2009-12-24T06:51:22.616427Z
+29
+gbb21
+
+testresult
+file
+
+
+
+
+2010-09-30T20:59:34.124000Z
+83e6c127c865d987eb2035b2995388ef
+2010-02-04T22:32:59.850495Z
+85
+gbb21
+
+version
+file
+
+
+
+
+2010-09-30T20:59:32.935000Z
+ea7c6afcc83d6852b6387dcfff974119
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+

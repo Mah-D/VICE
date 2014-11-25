@@ -1,0 +1,13 @@
+program Echo { entrypoint main = Echo.main; }
+
+component Echo {
+	method main(args: Array<string>) {
+		local i = 0;
+		while (i < args.length) {
+			System.puts(args(i));
+			System.putc(' ');
+			i = i + 1;
+		}
+		System.putc('\n');
+	}
+}

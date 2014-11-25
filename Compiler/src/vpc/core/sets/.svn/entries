@@ -1,0 +1,41 @@
+8
+
+dir
+154
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack/virgil/Compiler/src/vpc/core/sets
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack
+
+
+
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f6311483-164f-4dc9-a362-1d9d7795f10a
+
+ConstraintSystem.java
+file
+
+
+
+
+2010-09-30T20:59:44.395000Z
+bff8318c783f18b3273307ce5a346dfb
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+has-props
+

@@ -1,0 +1,22 @@
+//@execute 0 = -1
+program bubblesort { entrypoint main = bubblesort01.main; }
+component bubblesort01 {
+	field array: Array<int> = [0, -400000, 1, 8, 9, 1024, 0, -1, 55, -8, 7, 122, 7637782, -89237];
+
+	method main(arg: int) -> int {
+		local i = 0;
+		while (i < array.length) {
+			local j = i + 1;
+			while (j < array.length) {
+				if (array(i) > array(j)) {
+					local t = array(i);
+					array(i) = array(j);
+					array(j) = t;
+				}
+				j = j + 1;
+			}
+			i = i + 1;
+		}
+		return array(3);
+	}
+}

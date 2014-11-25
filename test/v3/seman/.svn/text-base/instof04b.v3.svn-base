@@ -1,0 +1,9 @@
+//@seman = TypeQueryError @ 7:30
+
+class instof04b_01 {
+    field bar: instof04b_01;
+    field foo: bool = <:instof04b_02(bar);
+}
+
+component instof04b_02 {
+}

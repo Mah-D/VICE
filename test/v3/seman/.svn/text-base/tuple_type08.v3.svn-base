@@ -1,0 +1,9 @@
+//@seman
+class tuple_type08_a {
+}
+class tuple_type08_b extends tuple_type08_a {
+}
+component tuple_type08 {
+	field a: (tuple_type08_b, tuple_type08_b);
+	field b: (tuple_type08_a, tuple_type08_a) = a;
+}

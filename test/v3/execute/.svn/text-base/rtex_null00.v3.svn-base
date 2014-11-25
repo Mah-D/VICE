@@ -1,0 +1,7 @@
+//@execute 0=!NullCheckException
+component rtex_null00 {
+	field foo: Array<int>;
+	method main(arg: int) -> int {
+		return foo(0);
+	}
+}

@@ -1,0 +1,7 @@
+//@execute true = true; false = false
+component cond05 {
+	method main(arg: bool) -> bool {
+		local result = arg == true;
+		return result;
+	}
+}

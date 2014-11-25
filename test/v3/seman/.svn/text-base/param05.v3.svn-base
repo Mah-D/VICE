@@ -1,0 +1,5 @@
+//@seman =
+class param05 {
+	value a: int;
+	new(a) { local x: int = a; }
+}

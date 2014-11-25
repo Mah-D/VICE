@@ -1,0 +1,7 @@
+//@execute 0 = 32
+component heap01 {
+	field array: Array<int> = [];
+	method main(arg: int) -> int {
+		return 32;
+	}
+}

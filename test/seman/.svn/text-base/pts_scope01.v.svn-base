@@ -1,0 +1,7 @@
+// @Harness: v2-seman
+// @Result: PASS
+
+class scope01 {
+  method m1<X>(): int;
+  method m2<X>(): int;
+}

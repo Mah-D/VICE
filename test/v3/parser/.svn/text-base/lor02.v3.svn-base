@@ -1,0 +1,4 @@
+//@parse
+class lor02 {
+	method m() -> bool { return true == true || false; }
+}

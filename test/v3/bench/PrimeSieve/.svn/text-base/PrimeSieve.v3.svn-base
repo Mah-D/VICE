@@ -1,0 +1,51 @@
+program PrimeSieve {
+	entrypoint main = PrimeSieve.main;
+}
+
+component PrimeSieve {
+	method main(args: Array<Array<char>>) -> int {
+		local max = 1000;
+		if (args.length > 0) max = parseInt(args(0));
+
+		local array = new Array<bool>(max);
+		array(0) = true;
+		array(1) = true;
+		local i = 2;
+		while (i < max) {
+			if (!array(i)) {
+				local j = i * 2;
+				while (j < max) {
+					array(j) = true;
+					j = j + i;
+				}
+			}
+			i = i + 1;
+		}
+		local count = 0;
+		local k = 0;
+		while (k < max) {
+			if (!array(k)) count = count + 1;
+			k = k + 1;
+		}
+		System.puts("Number of primes less than ");
+		System.puti(max);
+		System.puts(": ");
+		System.puti(count);
+		System.putc('\n');
+		return 0;
+	}
+
+	method parseInt(a: Array<char>) -> int {
+		local accum = 0;
+		local cntr = 0;
+		local zero = ::int('0');
+
+		while (cntr < a.length) {
+			local dig = ::int(a(cntr));
+			accum = accum * 10 + dig - zero; 
+			cntr = cntr + 1;
+		}
+
+		return accum;
+	}
+}

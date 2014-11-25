@@ -1,0 +1,19 @@
+//@execute 0=true
+class delegate_comp03_a {
+	method m();
+}
+class delegate_comp03_b extends delegate_comp03_a {
+	method m();
+}
+class delegate_comp03_c extends delegate_comp03_b {
+	method m();
+}
+component delegate_comp03 {
+	method main(arg: int) -> bool {
+		local obj = new delegate_comp03_c();
+		local a: delegate_comp03_a = obj;
+		local b: delegate_comp03_b = obj;
+		local c: delegate_comp03_c = obj;
+		return a.m == b.m && b.m == c.m && a.m == c.m;		
+	}
+}

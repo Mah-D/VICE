@@ -1,0 +1,4 @@
+//@seman
+component break02 {
+	method m() { while (true) break; }
+}

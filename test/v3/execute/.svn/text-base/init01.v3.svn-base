@@ -1,0 +1,7 @@
+//@execute 0 = 0
+component init01 {
+	method main(arg: int) -> int {
+		local f: int;
+		return f;
+	}
+}

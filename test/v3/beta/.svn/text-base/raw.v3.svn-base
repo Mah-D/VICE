@@ -1,0 +1,9 @@
+// bitfield access and update.
+e[0|X|X] = expr;
+e[..xx|..xxxx.x] = expr;
+e = expr[xx..|0|..xx....];
+
+// bitfield access and update with scatter and gather
+e[>0|X|X|0<] = expr;
+e = expr[>..xx|xx..xx.x<];
+

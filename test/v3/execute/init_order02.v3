@@ -1,0 +1,23 @@
+//@execute 0=0; 1=2; 2=3
+component init_order02 {
+	field a: int = init_order02_a.get();
+	field b: int = init_order02_a.get();
+	method main(arg: int) -> int {
+		if (arg == 0) return a;
+		if (arg == 1) return init_order02_b.b;
+		return init_order02_c.c;
+	}
+}
+component init_order02_a {
+	field a: int;
+	method get() -> int {
+		a = a + 1;
+		return a - 1;
+	}
+}
+component init_order02_b {
+	field b: int = init_order02_a.get();
+}
+component init_order02_c {
+	field c: int = init_order02_a.get();
+}

@@ -1,0 +1,124 @@
+8
+
+dir
+154
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack/virgil/Compiler/src/vpc/core
+svn+ssh://samoa.cs.ucla.edu/services/svn/virgilstack
+
+
+
+2010-02-04T09:02:55.683831Z
+83
+gbb21
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f6311483-164f-4dc9-a362-1d9d7795f10a
+
+Heap.java
+file
+
+
+
+
+2010-09-30T20:59:44.371000Z
+b13920e2b875bde6de41ff1343788313
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+has-props
+
+Language.java
+file
+
+
+
+
+2010-09-30T20:59:41.804000Z
+abb1ca708f9dec1093559b72cd4caec4
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+has-props
+
+Program.java
+file
+
+
+
+
+2010-09-30T20:59:42.480000Z
+2c6053863f01eb101985882f95fad791
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+has-props
+
+ProgramDecl.java
+file
+
+
+
+
+2010-09-30T20:59:41.618000Z
+41a231a0d63190658645a1cf27be7f18
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+has-props
+
+ProgramPrinter.java
+file
+
+
+
+
+2010-09-30T20:59:43.547000Z
+a98d62d57d2bce5be8e183198ff04282
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+has-props
+
+Value.java
+file
+
+
+
+
+2010-09-30T20:59:43.559000Z
+74ed988a5b87aaf62d0a1d2ceb958a32
+2009-12-05T06:27:30.926857Z
+4
+gbb21
+has-props
+
+base
+dir
+
+csr
+dir
+
+decl
+dir
+
+sets
+dir
+
+types
+dir
+
+virgil
+dir
+

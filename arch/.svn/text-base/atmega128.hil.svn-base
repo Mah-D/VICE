@@ -1,0 +1,176 @@
+device atmega128 {
+
+    space data[16]: 8;
+    space flash[24]: 8;
+    space eeprom[16]: 8;
+
+    region regs   = data[0...31];
+    region ioregs = data[32...255];
+    region sram   = data[255...4351];
+
+    region itable = flash[0...139];
+
+    instruction sleep();
+    instruction break();
+    instruction nop();
+
+    //----{ Interrupts }----------------------------------
+    //        num  name            enable     flagbit
+    //----------------------------------------------------
+    interrupt 0  = reset           ;
+    interrupt 1  = int0            EIMSK[0]   EIFR[0];
+    interrupt 2  = int1            EIMSK[1]   EIFR[1];
+    interrupt 3  = int2            EIMSK[2]   EIFR[2];
+    interrupt 4  = int3            EIMSK[3]   EIFR[3];
+    interrupt 5  = int4            EIMSK[4]   EIFR[4];
+    interrupt 6  = int5            EIMSK[5]   EIFR[5];
+    interrupt 7  = int6            EIMSK[6]   EIFR[6];
+    interrupt 8  = int7            EIMSK[7]   EIFR[7];
+    interrupt 9  = timer2_comp     TIMSK[7]   TIFR[7];
+    interrupt 10 = timer2_overflow TIMSK[6]   TIFR[6];
+    interrupt 11 = timer1_capture  TIMSK[5]   TIFR[5];
+    interrupt 12 = timer1_compA    TIMSK[4]   TIFR[4];
+    interrupt 13 = timer1_compB    TIMSK[3]   TIFR[3];
+    interrupt 14 = timer1_overflow TIMSK[2]   TIFR[2];
+    interrupt 15 = timer0_comp     TIMSK[1]   TIFR[1];
+    interrupt 16 = timer0_overflow TIMSK[0]   TIFR[0];
+    interrupt 17 = spi_stc         SPCR[7]    SPSR[7];
+    interrupt 18 = usart0_rx       UCSR0B[7]  UCSR0A[7];
+    interrupt 19 = usart0_udre     UCSR0B[5]  UCSR0A[5];
+    interrupt 20 = usart0_tx       UCSR0B[6]  UCSR0A[6];
+    interrupt 21 = adc             ACSR[3]    ADCSRA[4];
+    interrupt 22 = ee_ready        EECR[3];
+    interrupt 23 = analog_comp     ACSR[3]    ACSR[4];
+    interrupt 24 = timer1_compC    ETIMSK[0]  ETIFR[0];
+    interrupt 25 = timer3_capture  ETIMSK[5]  ETIFR[5];
+    interrupt 26 = timer3_compA    ETIMSK[4]  ETIFR[4];
+    interrupt 27 = timer3_compB    ETIMSK[3]  ETIFR[3];
+    interrupt 28 = timer3_compC    ETIMSK[1]  ETIFR[1];
+    interrupt 29 = timer3_overflow ETIMSK[2]  ETIFR[2];
+    interrupt 30 = usart1_rx       UCSR1B[7]  UCSR1A[7];
+    interrupt 31 = usart1_udre     UCSR1B[5]  UCSR1A[5];
+    interrupt 32 = usart1_tx       UCSR1B[6]  UCSR1A[6];
+    interrupt 33 = twi             TWCR[0]    TWCR[7];
+    interrupt 34 = spm_ready       SPMCSR[7]  SPMCSR[0];
+
+    //----{ IO Registers }----------------------------------
+    //       name     location
+    //------------------------------------------------------
+    register UCSR1C = ioregs[0x7D];
+    register UDR1   = ioregs[0x7C];
+    register UCSR1A = ioregs[0x7B];
+    register UCSR1B = ioregs[0x7A];
+    register UBRR1L = ioregs[0x79];
+    register UBRR1H = ioregs[0x78];
+
+    register UCSR0C = ioregs[0x75];
+
+    register UBRR0H = ioregs[0x70];
+
+    register TCCR3C = ioregs[0x6C];
+    register TCCR3A = ioregs[0x6B];
+    register TCCR3B = ioregs[0x6A];
+    register TCNT3H = ioregs[0x69];
+    register TCNT3L = ioregs[0x68];
+    register OCR3AH = ioregs[0x67];
+    register OCR3AL = ioregs[0x66];
+    register OCR3BH = ioregs[0x65];
+    register OCR3BL = ioregs[0x64];
+    register OCR3CH = ioregs[0x63];
+    register OCR3CL = ioregs[0x62];
+    register ICR3H  = ioregs[0x61];
+    register ICR3L  = ioregs[0x60];
+
+    register ETIMSK = ioregs[0x5D];
+    register ETIFR  = ioregs[0x5C];
+
+    register TCCR1C = ioregs[0x5A];
+    register OCR1CH = ioregs[0x59];
+    register OCR1CL = ioregs[0x58];
+
+    register TWCR   = ioregs[0x54];
+    register TWDR   = ioregs[0x53];
+    register TWAR   = ioregs[0x52];
+    register TWSR   = ioregs[0x51];
+    register TWBR   = ioregs[0x50];
+    register OSCCAL = ioregs[0x4F];
+
+    register XMCRA  = ioregs[0x4D];
+    register XMCRB  = ioregs[0x4C];
+
+    register EICRA  = ioregs[0x4A];
+
+    register SPMCSR = ioregs[0x48];
+
+    register PORTG  = ioregs[0x45];
+    register DDRG   = ioregs[0x44];
+    register PING   = ioregs[0x43];
+    register PORTF  = ioregs[0x42];
+    register DDRF   = ioregs[0x41];
+
+    //----{ Lower 64 registers }----------------------------------
+    register SREG   = ioregs[0x3F];
+    register SPH    = ioregs[0x3E];
+    register SPL    = ioregs[0x3D];
+    register XDIV   = ioregs[0x3C];
+    register RAMPZ  = ioregs[0x3B];
+    register EICRB  = ioregs[0x3A];
+    register EIMSK  = ioregs[0x39];
+    register EIFR   = ioregs[0x38];
+    register TIMSK  = ioregs[0x37];
+    register TIFR   = ioregs[0x36];
+    register MCUCR  = ioregs[0x35];
+    register MCUCSR = ioregs[0x34];
+    register TCCR0  = ioregs[0x33];
+    register TCNT0  = ioregs[0x32];
+    register OCR0   = ioregs[0x31];
+    register ASSR   = ioregs[0x30];
+    register TCCR1A = ioregs[0x2F];
+    register TCCR1B = ioregs[0x2E];
+    register TCNT1H = ioregs[0x2D];
+    register TCNT1L = ioregs[0x2C];
+    register OCR1AH = ioregs[0x2B];
+    register OCR1AL = ioregs[0x2A];
+    register OCR1BH = ioregs[0x29];
+    register OCR1BL = ioregs[0x28];
+    register ICR1H  = ioregs[0x27];
+    register ICR1L  = ioregs[0x26];
+    register TCCR2  = ioregs[0x25];
+    register TCNT2  = ioregs[0x24];
+    register OCR2   = ioregs[0x23];
+    register OCDR   = ioregs[0x22];
+    register WDTCR  = ioregs[0x21];
+    register SFIOR  = ioregs[0x20];
+    register EEARH  = ioregs[0x1F];
+    register EEARL  = ioregs[0x1E];
+    register EEDR   = ioregs[0x1D];
+    register EECR   = ioregs[0x1C];
+    register PORTA  = ioregs[0x1B];
+    register DDRA   = ioregs[0x1A];
+    register PINA   = ioregs[0x19];
+    register PORTB  = ioregs[0x18];
+    register DDRB   = ioregs[0x17];
+    register PINB   = ioregs[0x16];
+    register PORTC  = ioregs[0x15];
+    register DDRC   = ioregs[0x14];
+    register PINC   = ioregs[0x13];
+    register PORTD  = ioregs[0x12];
+    register DDRD   = ioregs[0x11];
+    register PIND   = ioregs[0x10];
+    register SPDR   = ioregs[0x0F];
+    register SPSR   = ioregs[0x0E];
+    register SPCR   = ioregs[0x0D];
+    register UDR0   = ioregs[0x0C];
+    register UCSR0A = ioregs[0x0B];
+    register UCSR0B = ioregs[0x0A];
+    register UBRR0L = ioregs[0x09];
+    register ACSR   = ioregs[0x08];
+    register ADMUX  = ioregs[0x07];
+    register ADCSRA = ioregs[0x06];
+    register ADCH   = ioregs[0x05];
+    register ADCL   = ioregs[0x04];
+    register PORTE  = ioregs[0x03];
+    register DDRE   = ioregs[0x02];
+    register PINE   = ioregs[0x01];
+    register PINF   = ioregs[0x00];
+}

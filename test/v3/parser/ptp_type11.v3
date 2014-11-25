@@ -1,0 +1,7 @@
+//@parse
+
+
+class type11<X, Y> {
+    field f: X -> Y;
+    field g: 8 -> X;
+}

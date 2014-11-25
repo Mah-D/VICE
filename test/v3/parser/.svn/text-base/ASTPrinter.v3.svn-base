@@ -1,0 +1,319 @@
+//@parse
+
+class ASTPrinter extends DepthFirstVisitor {
+
+    field o: PrintStream;
+    field indent: int;
+    field begLine: bool;
+
+    method visit(n: ClassDecl) {
+        println("class "+d.token+" {");
+        indent();
+        unindent();
+        println("}");
+    }
+
+    method visit(n: ComponentDecl) {
+        println("component "+d.token+" {");
+        indent();
+        unindent();
+        println("}");
+    }
+
+    method visit(n: FieldDecl) {
+        d.type.accept(this);
+        print(" "+d.token);
+        if ( d.init != null ) {
+            print(" = ");
+            d.init.accept(this);
+        }
+        println(";");
+    }
+
+    method visit(n: MethodDecl) {
+        d.returnType.accept(this);
+        print(" "+d.token+"(");
+        d.params.accept(this);
+        if ( d.block != null ) {
+            print(") ");
+            d.block.accept(this);
+        }
+        else println(");");
+    }
+
+    method visit(n: Block) {
+        println("{");
+        indent();
+        b.stmts.accept(this);
+        unindent();
+        println("}");
+    }
+
+    method visit(n: WhileStmt) {
+        print("while ( ");
+        s.cond.accept(this);
+        print(" ) ");
+        s.body.accept(this);
+        nextln();
+    }
+
+    method visit(n: SwitchStmt) {
+        print("switch ( ");
+        s.value.accept(this);
+        println(" ) {");
+        indent();
+        s.cases.accept(this);
+        unindent();
+        nextln();
+        println("}");
+    }
+
+    method visit(n: SwitchCase) {
+        if ( c.list != null ) {
+            print("case ( ");
+            c.list.accept(this);
+            print(" ) ");
+        } else {
+            print("default ");
+        }
+        c.stmt.accept(this);
+        nextln();
+    }
+
+    method visit(n: DoWhileStmt) {
+        print("do ");
+        s.body.accept(this);
+        print("while ( ");
+        s.cond.accept(this);
+        println(" );");
+    }
+
+    method visit(n: ListExpr) {
+        local prev = false;
+        local iter = l.iterator();
+        while ( iter.hasNext() ) {
+            local e = iter.next();
+            if ( prev ) print(", ");
+            e.accept(this);
+            prev = true;
+        }
+    }
+
+    method visit(n: ListParamDecl) {
+        local prev = false;
+        local iter = l.iterator();
+        while ( iter.hasNext() ) {
+            local p = iter.next();
+            if ( prev ) print(", ");
+            p.accept(this);
+        }
+
+    }
+    method visit(n: ForStmt) {
+        print("for ( ");
+        s.init.accept(this);
+        print("; ");
+        if ( s.cond != null ) s.cond.accept(this);
+        print("; ");
+        s.update.accept(this);
+        if ( !s.update.isEmpty() ) print(" "); // slight space adjustment
+        print(") ");
+        s.body.accept(this);
+        nextln();
+    }
+
+    method visit(n: IfStmt) {
+        print("if ( ");
+        s.cond.accept(this);
+        print(" ) ");
+        s.trueStmt.accept(this);
+        if ( !(<: EmptyStmt s.falseStmt) ) {
+            print("else ");
+            s.falseStmt.accept(this);
+        }
+        nextln();
+    }
+
+    method visit(n: BreakStmt) {
+        println("break;");
+    }
+
+    method visit(n: ContinueStmt) {
+        println("continue;");
+    }
+
+    method visit(n: ReturnStmt) {
+        print("return");
+        if ( s.expr != null ) {
+            print(" ");
+            s.expr.accept(this);
+        }
+        println(";");
+    }
+
+    method visit(n: EmptyStmt) {
+        println(";");
+    }
+
+    method visit(n: ExprStmt) {
+        s.expr.accept(this);
+        println(";");
+    }
+
+    method visit(n: Assign) {
+        embed(a, a.target);
+        print(" = ");
+        embed(a, a.value);
+    }
+    // helper for parentheses
+    method embed(out: Expr, in: Expr) {
+        if ( in.getPrecedence() < out.getPrecedence() ) print("(");
+        in.accept(this);
+        if ( in.getPrecedence() < out.getPrecedence() ) print(")");
+    }
+
+    method visit(n: TernaryExpr) {
+        embed(e, e.cond);
+        print(" ? ");
+        embed(e, e.trueExpr);
+        print(":");
+        embed(e, e.falseExpr);
+    }
+
+    method visit(n: BinOp) {
+        embed(b, b.left);
+        print(" "+b.token+" ");
+        embed(b, b.right);
+    }
+
+    method visit(n: UnaryOp) {
+        embed(u, u.expr);
+    }
+
+    method visit(n: PlainCall) {
+        print(c.token+"(");
+        c.params.accept(this);
+        print(")");
+    }
+
+    method visit(n: FieldExpr) {
+        embed(e, e.expr);
+        print("."+e.token);
+    }
+
+    method visit(n: ElementExpr) {
+        embed(e, e.array);
+        print("[");
+        e.index.accept(this);
+        print("]");
+    }
+
+    method visit(n: ExprCall) {
+        embed(c, c.expr);
+        print("."+c.token+"(");
+        if ( c.params != null ) c.params.accept(this);
+        print(")");
+    }
+
+    method visit(n: NewObjectExpr) {
+        print("new ");
+        n.type.accept(this);
+        print("(");
+        if ( n.args != null ) n.args.accept(this);
+        print(")");
+    }
+
+    method visit(n: NewArrayExpr) {
+        print("new ");
+        n.type.accept(this);
+        print("[");
+        if ( n.list != null ) n.list.accept(this);
+        print("]");
+    }
+
+    method visit(n: LocalVarDecl) {
+        d.type.accept(this);
+        print(" "+d.token);
+        if ( d.init != null ) {
+            print(" = ");
+            d.init.accept(this);
+        }
+        println(";");
+    }
+
+    method visit(n: VarUse) {
+        print(u.token.toString());
+    }
+
+    method visit(n: IntLiteral) {
+        print(l.token.toString());
+    }
+
+    method visit(n: BooleanLiteral) {
+        print(l.token.toString());
+    }
+
+    method visit(n: ThisLiteral) {
+        print(l.token.toString());
+    }
+
+    method visit(n: NullLiteral) {
+        print(l.token.toString());
+    }
+
+    method visit(n: CharLiteral) {
+        print(l.token.toString());
+    }
+
+    method visit(n: StringLiteral) {
+        print(l.token.toString());
+    }
+
+    method visit(n: ParamDecl) {
+        p.type.accept(this);
+        print(" "+p.token);
+    }
+
+    method visit(n: TypeRef) {
+        print(r.type.toString());
+    }
+
+    method println(s: String) {
+        spaces();
+        o.println(s);
+        begLine = true;
+    }
+
+    method print(s: String) {
+        spaces();
+        o.print(s);
+    }
+
+    method nextln() {
+        if ( !begLine ) {
+            o.print("\n");
+            begLine = true;
+        }
+    }
+
+    method indent() {
+        indent = indent + 1;
+    }
+
+    method spaces() {
+        if ( begLine ) {
+            local cntr: int = 0;
+            while (cntr < indent) {
+                o.print("    ");
+		cntr = cntr + 1;
+		}
+            begLine = false;
+        }
+    }
+
+    method unindent() {
+        indent = indent - 1;
+        if ( indent < 0 ) indent = 0;
+    }
+
+}

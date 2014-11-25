@@ -1,0 +1,7 @@
+//@parse
+
+
+class type03 {
+    field f: (int, int) -> Array<int>;
+    field g: (int, 3) -> Array<3>;
+}

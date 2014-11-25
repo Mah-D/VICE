@@ -1,0 +1,6 @@
+//@parse
+component try04 {
+   method m() {
+      local try: int;
+   }
+}

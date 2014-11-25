@@ -1,0 +1,8 @@
+//@seman
+
+
+class new06<X> {
+   method m() {
+      local f = new new06<X>();
+   }
+}

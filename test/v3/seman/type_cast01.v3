@@ -1,0 +1,6 @@
+//@seman = TypeCastError @ 3:24
+component type_cast01 {
+	method m(arg: int) -> bool {
+		return ::bool(arg);
+	}
+}

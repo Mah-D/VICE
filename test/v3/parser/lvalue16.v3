@@ -1,0 +1,6 @@
+//@seman = ParseError @ 6:17
+
+class lvalue16 {
+    field bar: int = 0;
+    field foo: int = bar + bar = 2;
+}

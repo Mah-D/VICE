@@ -1,0 +1,9 @@
+//@seman = InvalidTypeQuery @ 4:21
+component new_array01 {
+	method main() -> bool {
+		return <:Array<int>(m());
+	}
+	method m<T>() -> Array<T> {
+		return new Array<T>(0);
+	}
+}

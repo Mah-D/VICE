@@ -1,0 +1,11 @@
+//@execute 0=1
+class type_void12_c<T> {
+	field f: T;
+}
+component type_void12 {
+	method main(arg: int) -> int {
+		local c = new type_void12_c<void>();
+		if (c.f == ()) return 1;
+		return 2;
+	}
+}

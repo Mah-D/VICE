@@ -1,0 +1,8 @@
+//@execute true = true; false = false
+component cond06 {
+	method main(arg: bool) -> bool {
+		local result = id(arg == true);
+		return result;
+	}
+	method id(arg: bool) -> bool { return arg; }
+}

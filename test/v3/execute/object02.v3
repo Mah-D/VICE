@@ -1,0 +1,12 @@
+//@execute 0 = 32
+class object02_o {
+	field val: int = 32;
+}
+
+component object02 {
+	field obj: object02_o = new object02_o();
+
+	method main(arg: int) -> int {
+		return obj.val;
+	}
+}

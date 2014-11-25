@@ -1,0 +1,7 @@
+//@seman
+class type_func12 {
+  method m() {
+     local a = [m, null];
+     local b = [null, m];
+  }
+}

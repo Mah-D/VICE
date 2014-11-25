@@ -1,0 +1,10 @@
+//@execute 0 = 0
+component ptex_new_class03 {
+	method main(args: int) -> int {
+		return new ptex_new_class03_o<int>().x;
+	}
+}
+
+class ptex_new_class03_o<T> { 
+	field x: T;
+}

@@ -1,0 +1,28 @@
+//@execute 0=42; 1=11; 2=21; 3=48; 4=97; 5=42
+
+class ptex_self06_s<T> {
+    field self: T;
+    new(s: T) { self = s; }
+}
+
+class ptex_self06_w<T> extends ptex_self06_s<ptex_self06_w<T>> {
+    field val: T;
+    new(v: T) : super(this) {
+        val = v;
+    }
+}
+
+component ptex_self06 {
+    field f: ptex_self06_w<int> = new ptex_self06_w<int>(11);
+    field g: ptex_self06_w<int> = new ptex_self06_w<int>(21);
+    field h: ptex_self06_w<char> = new ptex_self06_w<char>('0');
+    field j: ptex_self06_w<char> = new ptex_self06_w<char>('a');
+
+    method main(arg: int) -> int {
+	if ( arg == 1 ) return f.self.val;
+	if ( arg == 2 ) return g.val;
+	if ( arg == 3 ) return h.self.val;
+	if ( arg == 4 ) return j.val;
+	return 42;
+    }
+}

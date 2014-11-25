@@ -1,0 +1,101 @@
+-- what is the best name for an immutable array type constructor?
+
+mutable			mutable			mutable			immutable		immutable
+(1 dim)			(2 dims)		(nested)		(1 dim)			(2 dim)
+---------------------------------------------------------------------------------------------------------------
+Array<T>					Array<Array<T>>
+
+@<T>			@@<T>			@<@<T>>			@+<T>			@@+<T>
+
+@+<T>			@+<T>			@+<@+<T>>		@<T>			@@<T>
+
+@!<T>			@@!<T>			@!<@!<T>>		@<T>			@@<T>
+
+Array<T>
+Vector<T>
+Sequence<T>
+Range<T>
+ImmutableArray<T>
++Array<T>
+-Array<T>
+!Array<T>
+*Array<T>
+@Array<T>
+#Array<T>
+^Array<T>
+Array<+T>
+Immut<T>
+Vec<T>
+Map<int, T>
+IndexedSequence<T>
+[T]
+![T]
++[T]
+@<T>
+@@<T>
+@2<T>
+@3<T>
+@@@<T>
+#<int>
+##<nat>
+
+[char]
+[bool]
+[int]
+[void]
+[[void]]
+@<int>
+@+<int>
+@!<int>
+@@<int>
+@<@<int>>
+
+
+-- Array literal syntax --
+
+local a: [int] = [0, 0, 0];
+local a: {int} = {0, 0, 0};
+local a: ![int] = [0, 0, 0];
+local a: -[int] = [0, 0, 0];
+local a: +[int] = [0, 0, 0];
+local a: int -> int = [0, 0, 0];
+
+
+-- New syntax --
+
+[T].new(0);
+Array.new(0);
+Array<T>.new(1);
+
+
+-- Cast / test syntax --
+Array<T>.cast(e)
+Array<T>.test(e)
+[T].cast(e)
+
+
+mutable		immutable	array literal		element		element			new mutable		immutable		type
+array of T	array of T				read		write			array with length	copy			cast/query
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Array<T>	array<T>	[e1, e2, e3]		expr(i)		expr(i) = expr		Array<T>.new(expr)	array<T>.new(expr)	Array<T>.cast(expr)
+												Array.new(expr)					array<T>.test(expr)
+
+[T]		[+T]		{e1, e2, e3}		expr(i)		expr(i) = expr		[T].new(expr)		[+T].new(expr)		[T].cast(expr)
+							? expr[i]	? expr[i] = expr	? [].new(expr)					[+T].test(expr)
+
+@<T>				[e1, e2, e3]		expr(i)		expr(i) = expr		@<T>.new(expr)					@<T>.cast
+												@.new(expr)					@<T>.test
+
+
+Advantages / considerations
+
+- reduce parsing complexity (fewest possible syntactic forms)
+- maintain typecon purity (no identifier typecons in the language except primitives)
+- provide for upward language unifications and abstractions
+	- e.g. all operations will eventually be first class like Class.new, Class<T>.new)
+	- don't constraint new potential syntactic forms
+- remain as intuitive as possible
+	- forms are fully parameterized (nest within each other nicely)
+	- a few simple rules cover all the cases
+
+

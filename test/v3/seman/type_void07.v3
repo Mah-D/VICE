@@ -1,0 +1,6 @@
+//@seman
+class type_void07 {
+	method test2() {
+		local v = test2();
+	}
+}

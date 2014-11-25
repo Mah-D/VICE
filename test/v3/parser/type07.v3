@@ -1,0 +1,9 @@
+//@parse
+
+class type07 {
+    field f: int -> void;
+    field g: bool -> void;
+    field h: void -> bool;
+    field i: 3 -> void;
+    field j: 4 -> 8;
+}

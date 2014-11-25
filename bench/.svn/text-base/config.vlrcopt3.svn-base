@@ -1,0 +1,4 @@
+vertical-model = true
+compress = true
+scheduler = fixed
+stages = virgil,init,opt3,emit-c
