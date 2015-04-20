@@ -1,4 +1,4 @@
 VICE
 ====
 
-This is the implementation of Virgil Integrated Concolic Engine, VICE, as it is explained in "Testing versus Static Analysis of Maximum Stack Size" , [COMPSAC '13](http://compsac-2013.cs.iastate.edu/) 
+This is the implementation of Virgil Integrated Concolic Engine. VICE uses a novel technique, namely, Event-Based Directed Tetsing to perform dynamic timing analysis and find Worst-Case Ececution Time of Virgil Programs.
